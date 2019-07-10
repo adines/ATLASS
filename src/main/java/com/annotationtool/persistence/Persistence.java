@@ -83,10 +83,11 @@ public interface Persistence {
      * Method that initialize the dataset and load all the images stored in the origin path.
      * @param pathOrigin A valid path to the folder that has the images to load. 
      * @param pathDest A valid path to the folder used to save the information.
+     * @param categories A list with dataset categories.
      * @return A list that contains all the images loaded.
      * @throws com.annotationtool.model.ExcepcionDeAplicacion
      */
-    public List<Image> initializeDataset(String pathOrigin, String pathDest) throws ExcepcionDeAplicacion;
+    public List<Image> initializeDataset(String pathOrigin, String pathDest, List<Category> categories) throws ExcepcionDeAplicacion;
     
     /**
      * Method that generates a zip file with the dataset organized. Also, an ipynb 

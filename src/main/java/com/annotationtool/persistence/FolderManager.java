@@ -152,9 +152,13 @@ public class FolderManager implements Persistence{
     }
 
     @Override
-    public List<Image> initializeDataset(String pathOrigin, String pathDest) throws ExcepcionDeAplicacion{
+    public List<Image> initializeDataset(String pathOrigin, String pathDest, List<Category> categories) throws ExcepcionDeAplicacion{
         this.outputPath=pathDest;
         
+        for(Category category:categories)
+        {
+            addCategory(category);
+        }
         return loadImages(pathOrigin);
     }
     

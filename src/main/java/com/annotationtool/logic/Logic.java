@@ -10,15 +10,20 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import net.sf.javaml.classification.KNearestNeighbors;
 import net.sf.javaml.clustering.KMeans;
 import net.sf.javaml.core.Dataset;
 import net.sf.javaml.core.DefaultDataset;
 import net.sf.javaml.core.DenseInstance;
 import net.sf.javaml.core.Instance;
+import net.sf.javaml.distance.NormalizedEuclideanSimilarity;
 import org.datavec.image.loader.NativeImageLoader;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.deeplearning4j.zoo.*;
@@ -178,11 +183,12 @@ public class Logic {
      *
      * @param pathOrigin A valid path to the folder that has the images to load.
      * @param pathDest A valid path to the folder used to save the information.
+     * @param categories A list with dataset categories.
      * @return A list that contains all the images loaded.
      * @throws com.annotationtool.model.ExcepcionDeAplicacion
      */
-    public List<Image> initializeDatasetManually(String pathOrigin, String pathDest,int numCat) throws ExcepcionDeAplicacion {
-        return persistence.initializeDataset(pathOrigin, pathDest);
+    public List<Image> initializeDatasetManually(String pathOrigin, String pathDest, List<Category> categories) throws ExcepcionDeAplicacion {
+        return persistence.initializeDataset(pathOrigin, pathDest, categories);
     }
 
     /**
@@ -191,14 +197,73 @@ public class Logic {
      *
      * @param pathOrigin A valid path to the folder that has the images to load.
      * @param pathDest A valid path to the folder used to save the information.
+     * @param categories A list with dataset categories.
      * @return A list that contains all the classified images.
      * @throws com.annotationtool.model.ExcepcionDeAplicacion
      */
-    public List<Image> initializeDatasetAutomatically(String pathOrigin, String pathDest,int numCat) throws ExcepcionDeAplicacion {
-        List<Image> images = persistence.initializeDataset(pathOrigin, pathDest);
+    public List<Image> initializeDatasetAutomatically(String pathOrigin, String pathDest, List<Category> categories) throws ExcepcionDeAplicacion {
+        List<Image> images = persistence.initializeDataset(pathOrigin, pathDest, categories);
+        int empty = 0;
+        int knn = 0;
+        Set<Category> cate=new HashSet<>();
+        for (Category cat : categories) {
+            if (persistence.getImagesCategory(cat).isEmpty()) {
+                empty++;
+            } else {
+                cate.add(cat);
+//                if (persistence.getImagesCategory(cat).size() >= 3) {
+                    knn++;
+//                }
+            }
+        }
+        List<Image> classifiedImages = null;
+        if (empty == categories.size()) {
+            //KMeans
+            List<Image> imagesDesc = extractDescriptors(images);
+            classifiedImages = classifyImagesKmeans(imagesDesc, categories.size());
 
-        //Clasificar imagenes sin asignar
-        return null;
+        } else if (knn == categories.size()) {
+            //Knn
+            List<Image>unnasigned=new ArrayList<>();
+            List<Image> dataset=new ArrayList<>();
+            for(Image im:images)
+            {
+                if(im.getCategory()!=null)
+                {
+                    dataset.add(im);
+                }else{
+                    unnasigned.add(im);
+                }
+            }
+            classifiedImages=classifyImagesKnn(extractDescriptors(dataset), extractDescriptors(unnasigned));
+
+        } else {
+            //Similarity
+            List<Image>unnasigned=new ArrayList<>();
+            List<Image> dataset=new ArrayList<>();
+            for(Image im:images)
+            {
+                if(im.getCategory()!=null)
+                {
+                    dataset.add(im);
+                }else{
+                    unnasigned.add(im);
+                }
+            }
+            classifiedImages=classifyImagesSimilarity(extractDescriptors(unnasigned), new ArrayList<>(cate), 0.75, categories.size()-cate.size());
+        }
+
+        //Organizar imagenes
+        for(Image im:classifiedImages)
+        {
+            addImageToCategory(im, im.getCategory());
+        }
+        ArrayList<Image>result=new ArrayList<>();
+        for(Category cat:categories)
+        {
+            result.addAll(getImagesCategory(cat));
+        }
+        return result;
     }
 
     /**
@@ -232,7 +297,7 @@ public class Logic {
      * @return A list with the images containing the corresponding descriptors.
      * @throws com.annotationtool.model.ExcepcionDeAplicacion
      */
-    public List<Image> extractDescriptors(List<Image> images) throws ExcepcionDeAplicacion{
+    public List<Image> extractDescriptors(List<Image> images) throws ExcepcionDeAplicacion {
         try {
             ZooModel zooModel = new VGG16();
             ComputationGraph vgg16 = (ComputationGraph) zooModel.initPretrained(PretrainedType.IMAGENET);
@@ -260,38 +325,111 @@ public class Logic {
     }
 
     /**
-     * Method that given a list of images, classify them.
+     * Method that given a list of images, classify them using Kmeans algorithm.
      *
      * @param images List of images to classify.
+     * @param numCat Number of categories to classify.
      * @return A list of images classified.
      */
-    public List<Image> classifyImages(List<Image> images, int numCat) {
-        KMeans kmeans=new KMeans(numCat);
-        Dataset data=new DefaultDataset();
-        for(Image image:images)
-        {
+    public List<Image> classifyImagesKmeans(List<Image> images, int numCat) {
+        KMeans kmeans = new KMeans(numCat);
+        Dataset data = new DefaultDataset();
+        for (Image image : images) {
             data.add(new DenseInstance(image.getDescriptors()));
         }
-        
-        Dataset clusters[]=kmeans.cluster(data);
-        int cl=0;
-        for(Dataset d:clusters)
-        {
-            for(Instance i:d)
-            {
-                for(int j=0;j<data.size();j++)
-                {
-                    if(data.instance(j).getID()==i.getID())
-                    {
-                        images.get(j).setCategory(new Category("Cluster "+cl));
+
+        Dataset clusters[] = kmeans.cluster(data);
+        int cl = 0;
+        for (Dataset d : clusters) {
+            for (Instance i : d) {
+                for (int j = 0; j < data.size(); j++) {
+                    if (data.instance(j).getID() == i.getID()) {
+                        images.get(j).setCategory(new Category("Cluster " + cl));
                         break;
                     }
                 }
             }
             cl++;
         }
-        
+
         return images;
     }
 
+    /**
+     * Method that given a list of images and a dataset, classify them using Knn
+     * algorithm.
+     *
+     * @param dataset List of images that represents the dataset.
+     * @param images List of images to classify.
+     * @return A list of images classified.
+     */
+    public List<Image> classifyImagesKnn(List<Image> dataset, List<Image> images) {
+        List<Image> result = new ArrayList<>();
+        KNearestNeighbors knn = new KNearestNeighbors(3);
+
+        Dataset data = new DefaultDataset();
+
+        for (Image image : dataset) {
+            data.add(new DenseInstance(image.getDescriptors(), image.getCategory()));
+        }
+
+        knn.buildClassifier(data);
+
+        for (Image im : images) {
+            Map<Object, Double> prediction = knn.classDistribution(new DenseInstance(im.getDescriptors()));
+            Set<Object> categories = prediction.keySet();
+            double max = 0;
+            Category maxCat = null;
+            for (Object o : categories) {
+                Category cat = (Category) o;
+                double d = prediction.get(o).doubleValue();
+                if (d > max) {
+                    max = d;
+                    maxCat = cat;
+                }
+            }
+            im.setCategory(maxCat);
+            result.add(im);
+
+        }
+        return result;
+    }
+
+    public List<Image> classifyImagesSimilarity(List<Image> images, List<Category> categories, double threshold,int numCat) {
+        Dataset data = new DefaultDataset();
+        List<Image>result=new ArrayList();
+        List<Image> unclassified=new ArrayList<>();
+        for (Category cat : categories) {
+            List<Image> imagesCat = getImagesCategory(cat);
+            for (Image i : imagesCat) {
+                data.add(new DenseInstance(i.getDescriptors(), i.getCategory()));
+            }
+        }
+        NormalizedEuclideanSimilarity similarity = new NormalizedEuclideanSimilarity(data);
+        for (Image im : images) {
+            for (Category cat : categories) {
+                int num=0;
+                double sim=0;
+                List<Image> imagesCat = getImagesCategory(cat);
+                for (Image i : imagesCat) {
+                    num++;
+                    sim = similarity.measure(new DenseInstance(i.getDescriptors()), new DenseInstance(im.getDescriptors()));
+                }
+                sim=sim/num;
+                if(sim>threshold)
+                {
+                    im.setCategory(cat);
+                    break;
+                }
+            }
+            if(im.getCategory()==null)
+            {
+                unclassified.add(im);
+            }
+        }
+
+        result.addAll(classifyImagesKmeans(unclassified,numCat-categories.size()));
+        
+        return result;
+    }
 }
