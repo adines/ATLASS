@@ -63,6 +63,11 @@ public class Logic {
      *
      */
     public void deleteCategory(Category category) {
+        List<Image> images=getImagesCategory(category);
+        for(Image image:images)
+        {
+            deleteImageCategory(image);
+        }
         persistence.deleteCategory(category);
     }
 
@@ -171,10 +176,9 @@ public class Logic {
      * @throws com.annotationtool.model.ExcepcionDeAplicacion
      */
     public List<Image> loadImagesAutomatically(String path) throws ExcepcionDeAplicacion {
-        List<Image> imagenes = persistence.loadImages(path);
+        persistence.loadImages(path);
 
-        //Clasificat las imágenes sin asignar
-        return null;
+        return classifyImages(getUnassignedImages(), getCategories());
     }
 
     /**
@@ -202,7 +206,24 @@ public class Logic {
      * @throws com.annotationtool.model.ExcepcionDeAplicacion
      */
     public List<Image> initializeDatasetAutomatically(String pathOrigin, String pathDest, List<Category> categories) throws ExcepcionDeAplicacion {
-        List<Image> images = persistence.initializeDataset(pathOrigin, pathDest, categories);
+        List<Image>images=persistence.initializeDataset(pathOrigin, pathDest, categories);
+        if(getUnassignedImages().isEmpty())
+        {
+            return images;
+        }else{
+            return classifyImages(getUnassignedImages(),categories);
+        }
+    }
+
+    
+    /**
+     * Method that classifies a list of images.
+     * @param images A list of images to classify.
+     * @param categories A list with dataset categories.
+     * @return A list that contains all the classified images.
+     * @throws ExcepcionDeAplicacion 
+     */
+    private List<Image> classifyImages(List<Image> images,List<Category> categories) throws ExcepcionDeAplicacion{
         int empty = 0;
         int knn = 0;
         Set<Category> cate=new HashSet<>();
@@ -265,7 +286,7 @@ public class Logic {
         }
         return result;
     }
-
+    
     /**
      * Method that generates a zip file with the dataset organized. Also, an
      * ipynb file with the necessary steps to train a model with this dataset is
@@ -331,7 +352,7 @@ public class Logic {
      * @param numCat Number of categories to classify.
      * @return A list of images classified.
      */
-    public List<Image> classifyImagesKmeans(List<Image> images, int numCat) {
+    private List<Image> classifyImagesKmeans(List<Image> images, int numCat) {
         KMeans kmeans = new KMeans(numCat);
         Dataset data = new DefaultDataset();
         for (Image image : images) {
@@ -363,7 +384,7 @@ public class Logic {
      * @param images List of images to classify.
      * @return A list of images classified.
      */
-    public List<Image> classifyImagesKnn(List<Image> dataset, List<Image> images) {
+    private List<Image> classifyImagesKnn(List<Image> dataset, List<Image> images) {
         List<Image> result = new ArrayList<>();
         KNearestNeighbors knn = new KNearestNeighbors(3);
 
@@ -395,7 +416,17 @@ public class Logic {
         return result;
     }
 
-    public List<Image> classifyImagesSimilarity(List<Image> images, List<Category> categories, double threshold,int numCat) {
+    /**
+     * Method that given a list of images, a list of categories, a threshold and
+     * the total number of categories, classify them using a similarity algorithm.
+     * 
+     * @param images List of images to classify.
+     * @param categories A list of categories to classify the images.
+     * @param threshold Similarity threshold to belong to a class. 
+     * @param numCat Total number of categories.
+     * @return A list of images classified.
+     */
+    private List<Image> classifyImagesSimilarity(List<Image> images, List<Category> categories, double threshold,int numCat) {
         Dataset data = new DefaultDataset();
         List<Image>result=new ArrayList();
         List<Image> unclassified=new ArrayList<>();

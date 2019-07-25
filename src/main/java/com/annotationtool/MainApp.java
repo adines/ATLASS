@@ -1,7 +1,9 @@
 package com.annotationtool;
 
 import com.annotationtool.logic.Logic;
+import com.annotationtool.model.Category;
 import com.annotationtool.presentation.DatasetController;
+import java.util.List;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -27,22 +29,37 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        
+
         DatasetController datasetController = (DatasetController) fxmlLoader.getController();
 
-        if (datasetController.getAccepted()) {
-            int numCat = datasetController.getNumCategories();
-            String dataset = datasetController.getDataset();
-            String savePath = datasetController.getSavePath();
-            boolean automatically = datasetController.getAutomatically();
-
-//            if (automatically) {
-//                logic.initializeDatasetAutomatically(dataset, savePath);
-//            } else {
-//                logic.initializeDatasetManually(dataset, savePath);
+//        if (datasetController.getAccepted()) {
+//            int numCat = datasetController.getNumCategories();
+//            String dataset = datasetController.getDataset();
+//            String savePath = datasetController.getSavePath();
+//            boolean automatically = datasetController.getAutomatically();
+//            List<Category> categories = datasetController.getCategories();
+//            int i = categories.size() + 1;
+//            while (numCat > categories.size()) {
+//                categories.add(new Category("Cluster " + i));
+//                i++;
 //            }
-
-        }
+//
+//            if (automatically) {
+//                logic.initializeDatasetAutomatically(dataset, savePath, categories);
+//            } else {
+//                logic.initializeDatasetManually(dataset, savePath, categories);
+//            }
+//
+//            FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("/fxml/Images.fxml"));
+//            Parent root2 = fxmlLoader2.load();
+//
+//            Scene scene2 = new Scene(root2);
+//            scene2.getStylesheets().add("/styles/Images.css");
+//
+//            stage.setScene(scene2);
+//            stage.show();
+//
+//        }
     }
 
     /**

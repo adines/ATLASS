@@ -54,7 +54,7 @@ public class FolderManager implements Persistence{
         {
             for(String f:files)
             {
-                File file=new File(f);
+                File file=new File(outputPath+System.getProperty("file.separator")+f);
                 if(file.isDirectory())
                 {
                     categories.add(new Category(file.getName()));
@@ -75,7 +75,8 @@ public class FolderManager implements Persistence{
     @Override
     public void deleteImageCategory(Image image) {
         File fichero=new File(image.getPath());
-        fichero.delete();
+        File destino=new File(outputPath+File.separator+image.getName());
+        fichero.renameTo(destino);
     }
 
     @Override

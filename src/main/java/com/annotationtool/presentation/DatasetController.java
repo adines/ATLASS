@@ -1,11 +1,22 @@
 package com.annotationtool.presentation;
 
+import com.annotationtool.logic.Logic;
+import com.annotationtool.model.Category;
+import com.annotationtool.model.ExcepcionDeAplicacion;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -22,13 +33,16 @@ import javafx.stage.Stage;
  */
 public class DatasetController implements Initializable {
 
-    private int numCategories = 2;
-    private String dataset="";
-    private String savePath="";
-    private boolean accepted=false;
-    private boolean automatically=false;
+    private static Logic logic = new Logic();
     
-    private int minCategories=2;
+    private int numCategories = 2;
+    private String dataset = "";
+    private String savePath = "";
+    private boolean accepted = false;
+    private boolean automatically = false;
+
+    private int minCategories = 2;
+    private List<Category> categories;
 
     /**
      * Initializes the controller class.
@@ -50,10 +64,10 @@ public class DatasetController implements Initializable {
 
     @FXML
     private AnchorPane anchorid;
-    
+
     @FXML
     private Button bMinus;
-    
+
     @FXML
     private CheckBox cbAuto;
 
@@ -66,23 +80,22 @@ public class DatasetController implements Initializable {
         File selectedDirectory = directoryChooser.showDialog(stage);
 
         if (selectedDirectory != null && selectedDirectory.exists()) {
-            dataset=selectedDirectory.getAbsolutePath();
+            categories = new ArrayList<>();
+            dataset = selectedDirectory.getAbsolutePath();
             lDataset.setText(dataset);
-            File direcory=new File(dataset);
-            File files[]=direcory.listFiles();
-            int numCat=0;
-            for(File f: files)
-            {
-                if(f.isDirectory())
-                {
+            File direcory = new File(dataset);
+            File files[] = direcory.listFiles();
+            int numCat = 0;
+            for (File f : files) {
+                if (f.isDirectory()) {
                     numCat++;
+                    categories.add(new Category(f.getName()));
                 }
             }
-            
-            if(numCat>=2)
-            {
-                this.minCategories=numCat;
-                this.numCategories=numCat;
+
+            if (numCat >= 2) {
+                this.minCategories = numCat;
+                this.numCategories = numCat;
                 this.lCategory.setText(String.valueOf(numCat));
                 this.bMinus.setDisable(true);
             }
@@ -99,7 +112,7 @@ public class DatasetController implements Initializable {
 
         if (selectedDirectory != null && selectedDirectory.exists()) {
             if (selectedDirectory.list().length == 0) {
-                savePath=selectedDirectory.getAbsolutePath();
+                savePath = selectedDirectory.getAbsolutePath();
                 lLocation.setText(savePath);
             } else {
                 Alert alert = new Alert(AlertType.ERROR);
@@ -125,8 +138,7 @@ public class DatasetController implements Initializable {
         if (numCategories > minCategories) {
             numCategories--;
             lCategory.setText(String.valueOf(numCategories));
-            if(numCategories==minCategories)
-            {
+            if (numCategories == minCategories) {
                 bMinus.setDisable(true);
             }
         }
@@ -136,10 +148,45 @@ public class DatasetController implements Initializable {
     void accept(ActionEvent event) {
         if (lDataset.getText().length() != 0) {
             if (lLocation.getText().length() != 0) {
+                try{
                 Stage stage = (Stage) lLocation.getScene().getWindow();
-                accepted=true;
-                automatically=cbAuto.isSelected();
-                stage.close();
+                accepted = true;
+                automatically = cbAuto.isSelected();
+
+                int numCat = getNumCategories();
+                String dataset = getDataset();
+                String savePath = getSavePath();
+                boolean automatically = getAutomatically();
+                List<Category> categories = getCategories();
+                int i = categories.size() + 1;
+                while (numCat > categories.size()) {
+                    categories.add(new Category("Cluster " + i));
+                    i++;
+                }
+
+                if (automatically) {
+                    logic.initializeDatasetAutomatically(dataset, savePath, categories);
+                } else {
+                    logic.initializeDatasetManually(dataset, savePath, categories);
+                }
+
+                FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("/fxml/Images.fxml"));
+                Parent root2 = fxmlLoader2.load();
+
+                Scene scene2 = new Scene(root2);
+                scene2.getStylesheets().add("/styles/Images.css");
+
+                stage.setScene(scene2);
+                stage.setResizable(true);
+                stage.setMaximized(true);
+                stage.show();
+                }catch(ExcepcionDeAplicacion ex)
+                {
+                    Logger.getLogger(DatasetController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(DatasetController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             } else {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error");
@@ -156,31 +203,30 @@ public class DatasetController implements Initializable {
 
             alert.showAndWait();
         }
-        
+
     }
-    
-    public int getNumCategories()
-    {
+
+    public int getNumCategories() {
         return numCategories;
     }
-    
-    public String getDataset()
-    {
+
+    public String getDataset() {
         return dataset;
     }
-    
-    public String getSavePath()
-    {
+
+    public String getSavePath() {
         return savePath;
     }
-    
-    public boolean getAccepted()
-    {
+
+    public boolean getAccepted() {
         return accepted;
     }
-    
-    public boolean getAutomatically()
-    {
+
+    public boolean getAutomatically() {
         return automatically;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
     }
 }

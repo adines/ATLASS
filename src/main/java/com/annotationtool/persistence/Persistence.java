@@ -20,7 +20,7 @@ public interface Persistence {
     
     /**
     * Method that deletes the category from the system.
-    * @param category This parameter defines the new category to delete. This category should exists in the system.
+    * @param category This parameter defines the category to delete. This category should exists in the system.
     **/
     public void deleteCategory(Category category);
     
