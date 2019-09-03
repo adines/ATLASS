@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorid" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.annotationtool.presentation.LoadImagesController">
+    <stylesheets>
+        <URL value="@/styles/loadimages.css" />
+    </stylesheets>
+   <children>
+      <CheckBox fx:id="cbAuto" layoutX="424.0" layoutY="252.0" mnemonicParsing="false" styleClass="toggle-switch" />
+      <Label layoutX="63.0" layoutY="252.0" text="Do you want to organize the images automatically?" />
+      <Label layoutX="65.0" layoutY="210.0" text="Organization">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lDataset" layoutX="162.0" layoutY="111.0" maxHeight="17.0" maxWidth="285.0" prefHeight="17.0" prefWidth="285.0" />
+      <Label layoutX="65.0" layoutY="111.0" text="Images:" />
+      <Button defaultButton="true" layoutX="284.0" layoutY="331.0" mnemonicParsing="false" onAction="#accept" text="Accept" />
+      <Label layoutX="65.0" layoutY="72.0" text="Data">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Separator layoutX="10.0" layoutY="167.0" prefHeight="9.0" prefWidth="600.0" />
+      <Button layoutX="449.0" layoutY="107.0" mnemonicParsing="false" onAction="#selecDataset" text="Select  Images" />
+   </children>
+</AnchorPane>

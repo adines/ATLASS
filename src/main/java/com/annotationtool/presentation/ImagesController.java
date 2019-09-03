@@ -2,6 +2,7 @@ package com.annotationtool.presentation;
 
 import com.annotationtool.logic.Logic;
 import com.annotationtool.model.Category;
+import com.annotationtool.model.ExcepcionDeAplicacion;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -24,15 +25,21 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
 /**
@@ -41,10 +48,10 @@ import javax.imageio.ImageIO;
  * @author adines
  */
 public class ImagesController implements Initializable {
-    
-    private List<Image> selectedIm=new ArrayList<>();
-    
-    private Map<javafx.scene.image.Image,Image> displayImages=new HashMap<>();
+
+    private List<Image> selectedIm = new ArrayList<>();
+
+    private Map<javafx.scene.image.Image, Image> displayImages = new HashMap<>();
 
     private static Logic logic = new Logic();
 
@@ -62,13 +69,25 @@ public class ImagesController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        paneImages.prefWidthProperty().bind(scrollPane.widthProperty());
+//        paneImages.prefWidthProperty().bind(scrollPane.widthProperty());
         List<Category> categories = logic.getCategories();
         for (Category cat : categories) {
             lCategories.getItems().add(cat.getName());
         }
         lCategories.getItems().add("Unassigned");
 
+        scrollPane.widthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                try {
+                    resizeImages();
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
+        
         paneImages.widthProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
@@ -94,6 +113,8 @@ public class ImagesController implements Initializable {
 
     private void changeImages(String category) throws FileNotFoundException {
         try {
+            if(category==null) return;
+            paneImages.prefWidth(scrollPane.getWidth());
             paneImages.getChildren().clear();
             displayImages.clear();
             selectedIm.clear();
@@ -107,7 +128,7 @@ public class ImagesController implements Initializable {
             if (!images.isEmpty()) {
                 int i = 0;
                 double w = paneImages.getWidth();
-                int tam = (int) ((w - 21) / 8);
+                int tam = (int) ((w - 24) / 8);
 
                 for (Image image : images) {
 
@@ -136,19 +157,17 @@ public class ImagesController implements Initializable {
                     imview.setOnMouseEntered(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
-                            if(!selectedIm.contains(displayImages.get(imview.getImage())))
-                            {
+                            if (!selectedIm.contains(displayImages.get(imview.getImage()))) {
                                 imview.setOpacity(0.5);
                             }
-                            
+
                         }
                     });
 
                     imview.setOnMouseExited(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
-                            if(!selectedIm.contains(displayImages.get(imview.getImage())))
-                            {
+                            if (!selectedIm.contains(displayImages.get(imview.getImage()))) {
                                 imview.setOpacity(1);
                             }
                         }
@@ -157,11 +176,10 @@ public class ImagesController implements Initializable {
                     imview.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
-                            if(selectedIm.contains(displayImages.get(imview.getImage())))
-                            {
+                            if (selectedIm.contains(displayImages.get(imview.getImage()))) {
                                 imview.setOpacity(1);
                                 selectedIm.remove(displayImages.get(imview.getImage()));
-                            }else{
+                            } else {
                                 imview.setOpacity(0.5);
                                 selectedIm.add(displayImages.get(imview.getImage()));
                             }
@@ -184,25 +202,31 @@ public class ImagesController implements Initializable {
 
     private void resizeImages() throws FileNotFoundException {
 
-        int i = 0;
-        double w = paneImages.getWidth();
-        int tam = (int) ((w - 21) / 8);
+        String category = lCategories.getSelectionModel().getSelectedItem();
+        if (category != null) {
+            changeImages(category);
+        } else {
 
-        for (Node n : paneImages.getChildren()) {
-            ((ImageView) n).setFitWidth(tam);
-            ((ImageView) n).setFitHeight(tam);
+            int i = 0;
+            double w = paneImages.getWidth();
+            int tam = (int) ((w - 21) / 8);
 
-            ((ImageView) n).setLayoutX((tam + 3) * (i % 8));
-            ((ImageView) n).setLayoutY((tam + 3) * (i / 8));
-            i++;
+            for (Node n : paneImages.getChildren()) {
+                ((ImageView) n).setFitWidth(tam);
+                ((ImageView) n).setFitHeight(tam);
+
+                ((ImageView) n).setLayoutX((tam + 3) * (i % 8));
+                ((ImageView) n).setLayoutY((tam + 3) * (i / 8));
+                i++;
+            }
         }
+
     }
 
     @FXML
     void addCategory(ActionEvent event) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("New Category");
-//        dialog.setHeaderText("Look, a Text Input Dialog");
         dialog.setContentText("Please enter the name of the new category:");
 
         Optional<String> result = dialog.showAndWait();
@@ -242,6 +266,129 @@ public class ImagesController implements Initializable {
             String cat = result.get();
             logic.modifyCategory(new Category(category), cat);
             lCategories.getItems().set(index, cat);
+        }
+    }
+
+    @FXML
+    void changeCategory(ActionEvent event) {
+
+        List<String> options = new ArrayList<>();
+        String selected = lCategories.getSelectionModel().getSelectedItem();
+        List<Category> categories = logic.getCategories();
+        for (Category cat : categories) {
+            if (!cat.getName().equalsIgnoreCase(selected)) {
+                options.add(cat.getName());
+            }
+
+        }
+
+        ChoiceDialog<String> dialog = new ChoiceDialog<>(options.get(0), options);
+        dialog.setTitle("New Category");
+        dialog.setHeaderText("Select the new category");
+        dialog.setContentText("Categories:");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            String newCat = result.get();
+
+            for (Image im : selectedIm) {
+                logic.modifyImageCategory(im, new Category(newCat));
+            }
+            lCategories.getSelectionModel().select(newCat);
+        }
+    }
+
+    @FXML
+    void deleteImagesCategory(ActionEvent event) {
+
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Delete Images Category");
+        alert.setContentText("Are you sure to delete these images from the category?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            for (Image im : selectedIm) {
+                logic.deleteImageCategory(im);
+            }
+            lCategories.getSelectionModel().select("Unassigned");
+        }
+
+    }
+
+    @FXML
+    void createDataset(ActionEvent event) {
+
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Create dataset");
+        alert.setContentText("Are you sure to create the dataset?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            try {
+                logic.generateDataset();
+            } catch (ExcepcionDeAplicacion ex) {
+                Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
+
+    @FXML
+    void loadImages(ActionEvent event) {
+        
+        try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/LoadImages.fxml"));
+                Parent root = fxmlLoader.load();
+
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add("/styles/LoadImages.css");
+
+                Stage stage = new Stage();
+                stage.setTitle("Annotation Tool");
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.showAndWait();
+                lCategories.getItems().clear();
+                for(Category cat:logic.getCategories())
+                {
+                    lCategories.getItems().add(cat.getName());
+                }
+                lCategories.getItems().add("Unassigned");
+                
+                lCategories.getSelectionModel().selectFirst();
+
+            } catch (IOException ex) {
+                Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    }
+
+    @FXML
+    void changeDataset(ActionEvent event) {
+
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Change dataset");
+        alert.setContentText("Are you sure to change the dataset?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Dataset.fxml"));
+                Parent root = fxmlLoader.load();
+
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add("/styles/Dataset.css");
+
+                Stage stage = (Stage) lCategories.getScene().getWindow();
+                stage.setTitle("Annotation Tool");
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+
+            } catch (IOException ex) {
+                Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 }

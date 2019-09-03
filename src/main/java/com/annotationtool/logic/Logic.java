@@ -176,9 +176,13 @@ public class Logic {
      * @throws com.annotationtool.model.ExcepcionDeAplicacion
      */
     public List<Image> loadImagesAutomatically(String path) throws ExcepcionDeAplicacion {
-        persistence.loadImages(path);
-
-        return classifyImages(getUnassignedImages(), getCategories());
+        List<Image> images=persistence.loadImages(path);
+        if(getUnassignedImages().isEmpty())
+        {
+            return images;
+        }else{
+            return classifyImages(getUnassignedImages(), getCategories());
+        }
     }
 
     /**
@@ -298,17 +302,17 @@ public class Logic {
         JSONParser parser = new JSONParser();
 
         persistence.generateDataset();
-        try (Reader reader = new FileReader("")) {
-            JSONObject jsonobject = (JSONObject) parser.parse(reader);
+//        try (Reader reader = new FileReader("")) {
+//            JSONObject jsonobject = (JSONObject) parser.parse(reader);
 
             //Generar archivo ipynb
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Logic.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ExcepcionDeAplicacion(ex);
-        } catch (IOException | ParseException ex) {
-            Logger.getLogger(Logic.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ExcepcionDeAplicacion(ex);
-        }
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(Logic.class.getName()).log(Level.SEVERE, null, ex);
+//            throw new ExcepcionDeAplicacion(ex);
+//        } catch (IOException | ParseException ex) {
+//            Logger.getLogger(Logic.class.getName()).log(Level.SEVERE, null, ex);
+//            throw new ExcepcionDeAplicacion(ex);
+//        }
     }
 
     /**

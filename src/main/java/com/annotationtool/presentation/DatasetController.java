@@ -177,8 +177,8 @@ public class DatasetController implements Initializable {
                 scene2.getStylesheets().add("/styles/Images.css");
 
                 stage.setScene(scene2);
-                stage.setResizable(true);
                 stage.setMaximized(true);
+                stage.setResizable(false);
                 stage.show();
                 }catch(ExcepcionDeAplicacion ex)
                 {

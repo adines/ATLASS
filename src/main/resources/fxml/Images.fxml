@@ -14,17 +14,44 @@
         <URL value="@/styles/Images.css" />
     </stylesheets>
    <children>
-      <ScrollPane fx:id="scrollPane" layoutX="182.0" layoutY="26.0" prefHeight="347.0" prefWidth="389.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="182.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="26.0">
+      <MenuBar prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#changeDataset" text="Change Dataset" />
+                  <MenuItem mnemonicParsing="false" onAction="#createDataset" text="Create Dataset" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#loadImages" text="Load Images" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" onAction="#addCategory" text="Categories">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Add" />
+                  <MenuItem mnemonicParsing="false" onAction="#modifyCategory" text="Edit" />
+                  <MenuItem mnemonicParsing="false" onAction="#deleteCategory" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Images">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#changeCategory" text="Change Category" />
+                  <MenuItem mnemonicParsing="false" onAction="#deleteImagesCategory" text="Uncategorize" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ScrollPane fx:id="scrollPane" layoutX="182.0" layoutY="43.0" prefHeight="330.0" prefWidth="389.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="182.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="43.0">
          <content>
-            <AnchorPane fx:id="paneImages" prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane fx:id="paneImages" />
          </content>
       </ScrollPane>
-      <Pane layoutX="-3.0" prefHeight="400.0" prefWidth="178.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="-3.0" prefHeight="371.0" prefWidth="178.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0">
          <children>
-            <ListView fx:id="lCategories" layoutX="24.0" layoutY="25.0" prefHeight="315.0" prefWidth="130.0" />
-            <Button fx:id="addButton" layoutX="24.0" layoutY="340.0" mnemonicParsing="false" onAction="#addCategory" prefHeight="25.0" prefWidth="44.0" text="Button" />
-            <Button fx:id="modifyButton" layoutX="66.0" layoutY="340.0" mnemonicParsing="false" onAction="#modifyCategory" prefHeight="25.0" prefWidth="44.0" text="Button" />
-            <Button fx:id="deleteButton" layoutX="110.0" layoutY="340.0" mnemonicParsing="false" onAction="#deleteCategory" prefHeight="25.0" prefWidth="44.0" text="Button" />
+            <ListView fx:id="lCategories" layoutX="24.0" layoutY="14.0" prefHeight="295.0" prefWidth="130.0" />
+            <Button fx:id="addButton" layoutX="26.0" layoutY="324.0" mnemonicParsing="false" onAction="#addCategory" prefHeight="25.0" prefWidth="25.0" styleClass="add" />
+            <Button fx:id="modifyButton" layoutX="79.0" layoutY="324.0" mnemonicParsing="false" onAction="#modifyCategory" prefHeight="25.0" prefWidth="25.0" styleClass="modify" />
+            <Button fx:id="deleteButton" layoutX="127.0" layoutY="324.0" mnemonicParsing="false" onAction="#deleteCategory" prefHeight="25.0" prefWidth="25.0" styleClass="delete" />
          </children>
       </Pane>
    </children>
