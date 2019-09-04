@@ -178,7 +178,7 @@ public class DatasetController implements Initializable {
 
                 stage.setScene(scene2);
                 stage.setMaximized(true);
-                stage.setResizable(false);
+                stage.setResizable(true);
                 stage.show();
                 }catch(ExcepcionDeAplicacion ex)
                 {

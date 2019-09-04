@@ -4,7 +4,7 @@ package com.annotationtool.model;
  * Class that defines a category of an image.
  * @author adines
  */
-public class Category {
+public class Category implements Comparable<Category>{
     //**************ATTRIBUTES*************************
     private String name; 
     
@@ -36,5 +36,15 @@ public class Category {
     public void setName(String name)
     {
         this.name=name;
+    }
+
+    @Override
+    public int compareTo(Category o) {
+        if(o.getName().equals(this.getName()))
+        {
+            return 0;
+        }else{
+            return 1;
+        }
     }
 }

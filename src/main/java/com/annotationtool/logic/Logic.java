@@ -249,33 +249,16 @@ public class Logic {
 
         } else if (knn == categories.size()) {
             //Knn
-            List<Image>unnasigned=new ArrayList<>();
             List<Image> dataset=new ArrayList<>();
-            for(Image im:images)
+            for(Category c:getCategories())
             {
-                if(im.getCategory()!=null)
-                {
-                    dataset.add(im);
-                }else{
-                    unnasigned.add(im);
-                }
+                dataset.addAll(getImagesCategory(c));
             }
-            classifiedImages=classifyImagesKnn(extractDescriptors(dataset), extractDescriptors(unnasigned));
+            classifiedImages=classifyImagesKnn(extractDescriptors(dataset), extractDescriptors(images));
 
         } else {
-            //Similarity
-            List<Image>unnasigned=new ArrayList<>();
-            List<Image> dataset=new ArrayList<>();
-            for(Image im:images)
-            {
-                if(im.getCategory()!=null)
-                {
-                    dataset.add(im);
-                }else{
-                    unnasigned.add(im);
-                }
-            }
-            classifiedImages=classifyImagesSimilarity(extractDescriptors(unnasigned), new ArrayList<>(cate), 0.75, categories.size()-cate.size());
+            //Similarity 
+            classifiedImages=classifyImagesSimilarity(extractDescriptors(images), new ArrayList<>(cate), 0.75, categories.size()-cate.size());
         }
 
         //Organizar imagenes
@@ -337,7 +320,7 @@ public class Logic {
 
                 Map<String, INDArray> stringINDArrayMap = vgg16.feedForward(image, false);
 
-                INDArray resultfc7 = stringINDArrayMap.get("fc7");
+                INDArray resultfc7 = stringINDArrayMap.get("fc2");
                 double descriptores[] = resultfc7.toDoubleVector();
                 im.setDescriptors(descriptores);
             }

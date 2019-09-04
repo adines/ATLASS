@@ -69,7 +69,7 @@ public class ImagesController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        paneImages.prefWidthProperty().bind(scrollPane.widthProperty());
+        paneImages.prefWidthProperty().bind(scrollPane.widthProperty());
         List<Category> categories = logic.getCategories();
         for (Category cat : categories) {
             lCategories.getItems().add(cat.getName());
