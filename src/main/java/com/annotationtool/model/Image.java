@@ -133,4 +133,20 @@ public class Image {
         this.category=c;
     }
     
+    @Override
+    public boolean equals(Object o)
+    {
+        if(this==o)
+        {
+            return true;
+        }else{
+            if(o instanceof Image)
+            {
+                Image im=(Image)o;
+                return im.getPath().equals(this.getPath()) && this.getName().equals(((Image) o).getName());
+            }else{
+                return false;
+            }
+        }
+    }
 }

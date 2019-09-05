@@ -10,11 +10,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import com.annotationtool.model.Image;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +23,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -40,7 +36,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javax.imageio.ImageIO;
 
 /**
  * FXML Controller class
@@ -79,22 +74,13 @@ public class ImagesController implements Initializable {
         scrollPane.widthProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                try {
-                    resizeImages();
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-        
-        
-        paneImages.widthProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                try {
-                    resizeImages();
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
+                paneImages.prefWidth(newValue.doubleValue());
+                if (!displayImages.values().isEmpty()) {
+                    try {
+                        changeImages(lCategories.getSelectionModel().getSelectedItems().get(0), newValue.doubleValue(), false);
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         });
@@ -103,7 +89,7 @@ public class ImagesController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 try {
-                    changeImages(newValue);
+                    changeImages(newValue, scrollPane.getWidth(), true);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -111,13 +97,16 @@ public class ImagesController implements Initializable {
         });
     }
 
-    private void changeImages(String category) throws FileNotFoundException {
-        try {
-            if(category==null) return;
-            paneImages.prefWidth(scrollPane.getWidth());
+    private void changeImages(String category, double tamPane, boolean clear) throws FileNotFoundException {
+
+            if (category == null) {
+                return;
+            }
             paneImages.getChildren().clear();
             displayImages.clear();
-            selectedIm.clear();
+            if (clear) {
+                selectedIm.clear();
+            }
             List<Image> images = null;
             if (!category.equalsIgnoreCase("Unassigned")) {
                 images = logic.getImagesCategory(new Category(category));
@@ -127,8 +116,7 @@ public class ImagesController implements Initializable {
 
             if (!images.isEmpty()) {
                 int i = 0;
-                double w = paneImages.getWidth();
-                int tam = (int) ((w - 24) / 8);
+                int tam = (int) ((tamPane - 24) / 8);
 
                 for (Image image : images) {
 
@@ -136,23 +124,15 @@ public class ImagesController implements Initializable {
                     imview.setFitWidth(tam);
                     imview.setFitHeight(tam);
 
-                    javaxt.io.Image imag = new javaxt.io.Image(image.getPath());
-                    if (imag.getHeight() > imag.getWidth()) {
-                        imag.setWidth(224);
-                        imag.crop(0, (imag.getHeight() - 224) / 2, 224, 224);
-                    } else {
-                        imag.setHeight(224);
-                        imag.crop((imag.getWidth() - 224) / 2, 0, 224, 224);
-                    }
-                    ByteArrayOutputStream os = new ByteArrayOutputStream();
-                    ImageIO.write(imag.getBufferedImage(), "jpg", os);
-                    InputStream fis = new ByteArrayInputStream(os.toByteArray());
-                    javafx.scene.image.Image im = new javafx.scene.image.Image(fis, tam, tam, true, false);
-                    displayImages.put(im, image);
-                    imview.setImage(im);
+                    javafx.scene.image.Image im2=new javafx.scene.image.Image("file:"+image.getPath(),tam,tam,true,false,true);
+                    displayImages.put(im2, image);
+                    imview.setImage(im2);
 
                     imview.setLayoutX((tam + 3) * (i % 8));
                     imview.setLayoutY((tam + 3) * (i / 8));
+                    if (selectedIm.contains(image)) {
+                        imview.setOpacity(0.5);
+                    }
 
                     imview.setOnMouseEntered(new EventHandler<MouseEvent>() {
                         @Override
@@ -189,36 +169,7 @@ public class ImagesController implements Initializable {
                     paneImages.getChildren().add(imview);
 
                     i++;
-                    os.close();
-                    fis.close();
                 }
-            }
-
-        } catch (IOException ex) {
-            Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private void resizeImages() throws FileNotFoundException {
-
-        String category = lCategories.getSelectionModel().getSelectedItem();
-        if (category != null) {
-            changeImages(category);
-        } else {
-
-            int i = 0;
-            double w = paneImages.getWidth();
-            int tam = (int) ((w - 21) / 8);
-
-            for (Node n : paneImages.getChildren()) {
-                ((ImageView) n).setFitWidth(tam);
-                ((ImageView) n).setFitHeight(tam);
-
-                ((ImageView) n).setLayoutX((tam + 3) * (i % 8));
-                ((ImageView) n).setLayoutY((tam + 3) * (i / 8));
-                i++;
-            }
         }
 
     }
@@ -335,33 +286,32 @@ public class ImagesController implements Initializable {
 
     @FXML
     void loadImages(ActionEvent event) {
-        
+
         try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/LoadImages.fxml"));
-                Parent root = fxmlLoader.load();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/LoadImages.fxml"));
+            Parent root = fxmlLoader.load();
 
-                Scene scene = new Scene(root);
-                scene.getStylesheets().add("/styles/LoadImages.css");
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add("/styles/LoadImages.css");
 
-                Stage stage = new Stage();
-                stage.setTitle("Annotation Tool");
-                stage.setScene(scene);
-                stage.setResizable(false);
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.showAndWait();
-                lCategories.getItems().clear();
-                for(Category cat:logic.getCategories())
-                {
-                    lCategories.getItems().add(cat.getName());
-                }
-                lCategories.getItems().add("Unassigned");
-                
-                lCategories.getSelectionModel().selectFirst();
-
-            } catch (IOException ex) {
-                Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
+            Stage stage = new Stage();
+            stage.setTitle("Annotation Tool");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+            lCategories.getItems().clear();
+            for (Category cat : logic.getCategories()) {
+                lCategories.getItems().add(cat.getName());
             }
-        
+            lCategories.getItems().add("Unassigned");
+
+            lCategories.getSelectionModel().selectFirst();
+
+        } catch (IOException ex) {
+            Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     @FXML
