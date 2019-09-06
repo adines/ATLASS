@@ -27,8 +27,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.control.TextInputDialog;
@@ -60,6 +62,24 @@ public class ImagesController implements Initializable {
 
     @FXML
     private AnchorPane paneImages;
+    
+    @FXML
+    private Button modifyButton;
+    
+    @FXML
+    private Button deleteButton;
+    
+    @FXML
+    private MenuItem editMenu;
+    
+    @FXML
+    private MenuItem deleteMenu;
+    
+    @FXML
+    private MenuItem uncategorizeMenu;
+    
+    @FXML
+    private MenuItem changeMenu;
 
     /**
      * Initializes the controller class.
@@ -93,9 +113,20 @@ public class ImagesController implements Initializable {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 try {
                     changeImages(newValue, scrollPane.getWidth()-20, true);
+                    changeMenu.setDisable(true);
                     if(newValue.equalsIgnoreCase("Unassigned"))
                     {
-                        
+                        modifyButton.setDisable(true);
+                        deleteButton.setDisable(true);
+                        editMenu.setDisable(true);
+                        deleteMenu.setDisable(true);
+                        uncategorizeMenu.setDisable(true);
+                    }else{
+                        modifyButton.setDisable(false);
+                        deleteButton.setDisable(false);
+                        editMenu.setDisable(false);
+                        deleteMenu.setDisable(false);
+                        uncategorizeMenu.setDisable(false);
                     }
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
@@ -170,6 +201,14 @@ public class ImagesController implements Initializable {
                         } else {
                             imview.setOpacity(0.5);
                             selectedIm.add(displayImages.get(imview.getImage()));
+                        }
+                        if(selectedIm.isEmpty())
+                        {
+                            changeMenu.setDisable(true);
+                            uncategorizeMenu.setDisable(true);
+                        }else{
+                            changeMenu.setDisable(false);
+                            uncategorizeMenu.setDisable(false);
                         }
                     }
                 });

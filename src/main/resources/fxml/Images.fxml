@@ -29,14 +29,14 @@
           <Menu mnemonicParsing="false" onAction="#addCategory" text="Categories">
             <items>
               <MenuItem mnemonicParsing="false" text="Add" />
-                  <MenuItem mnemonicParsing="false" onAction="#modifyCategory" text="Edit" />
-                  <MenuItem mnemonicParsing="false" onAction="#deleteCategory" text="Delete" />
+                  <MenuItem fx:id="editMenu" mnemonicParsing="false" onAction="#modifyCategory" text="Edit" />
+                  <MenuItem fx:id="deleteMenu" mnemonicParsing="false" onAction="#deleteCategory" text="Delete" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Images">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#changeCategory" text="Change Category" />
-                  <MenuItem mnemonicParsing="false" onAction="#deleteImagesCategory" text="Uncategorize" />
+              <MenuItem fx:id="changeMenu" mnemonicParsing="false" onAction="#changeCategory" text="Change Category" />
+                  <MenuItem fx:id="uncategorizeMenu" mnemonicParsing="false" onAction="#deleteImagesCategory" text="Uncategorize" />
             </items>
           </Menu>
         </menus>
