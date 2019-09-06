@@ -30,12 +30,14 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * FXML Controller class
@@ -71,13 +73,14 @@ public class ImagesController implements Initializable {
         }
         lCategories.getItems().add("Unassigned");
 
+        scrollPane.setHbarPolicy(ScrollBarPolicy.NEVER);
         scrollPane.widthProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                paneImages.prefWidth(newValue.doubleValue());
+                paneImages.prefWidth(newValue.doubleValue()-50);
                 if (!displayImages.values().isEmpty()) {
                     try {
-                        changeImages(lCategories.getSelectionModel().getSelectedItems().get(0), newValue.doubleValue(), false);
+                        changeImages(lCategories.getSelectionModel().getSelectedItems().get(0), newValue.doubleValue()-20, false);
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -89,7 +92,11 @@ public class ImagesController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 try {
-                    changeImages(newValue, scrollPane.getWidth(), true);
+                    changeImages(newValue, scrollPane.getWidth()-20, true);
+                    if(newValue.equalsIgnoreCase("Unassigned"))
+                    {
+                        
+                    }
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -99,77 +106,78 @@ public class ImagesController implements Initializable {
 
     private void changeImages(String category, double tamPane, boolean clear) throws FileNotFoundException {
 
-            if (category == null) {
-                return;
-            }
-            paneImages.getChildren().clear();
-            displayImages.clear();
-            if (clear) {
-                selectedIm.clear();
-            }
-            List<Image> images = null;
-            if (!category.equalsIgnoreCase("Unassigned")) {
-                images = logic.getImagesCategory(new Category(category));
-            } else {
-                images = logic.getUnassignedImages();
-            }
+        if (category == null) {
+            return;
+        }
+        
+        paneImages.getChildren().clear();
+        displayImages.clear();
+        if (clear) {
+            selectedIm.clear();
+        }
+        List<Image> images = null;
+        if (!category.equalsIgnoreCase("Unassigned")) {
+            images = logic.getImagesCategory(new Category(category));
+        } else {
+            images = logic.getUnassignedImages();
+        }
 
-            if (!images.isEmpty()) {
-                int i = 0;
-                int tam = (int) ((tamPane - 24) / 8);
+        if (!images.isEmpty()) {
+            int i = 0;
+            int tam = (int) ((tamPane - 24) / 8);
 
-                for (Image image : images) {
+            for (Image image : images) {
 
-                    final ImageView imview = new ImageView();
-                    imview.setFitWidth(tam);
-                    imview.setFitHeight(tam);
+                final ImageView imview = new ImageView();
+                imview.setFitWidth(tam);
+                imview.setFitHeight(tam);
 
-                    javafx.scene.image.Image im2=new javafx.scene.image.Image("file:"+image.getPath(),tam,tam,true,false,true);
-                    displayImages.put(im2, image);
-                    imview.setImage(im2);
+                javafx.scene.image.Image im2 = new javafx.scene.image.Image("file:" + image.getPath(), tam, tam, true, false, true);
+                displayImages.put(im2, image);
+                imview.setImage(im2);
 
-                    imview.setLayoutX((tam + 3) * (i % 8));
-                    imview.setLayoutY((tam + 3) * (i / 8));
-                    if (selectedIm.contains(image)) {
-                        imview.setOpacity(0.5);
-                    }
-
-                    imview.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            if (!selectedIm.contains(displayImages.get(imview.getImage()))) {
-                                imview.setOpacity(0.5);
-                            }
-
-                        }
-                    });
-
-                    imview.setOnMouseExited(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            if (!selectedIm.contains(displayImages.get(imview.getImage()))) {
-                                imview.setOpacity(1);
-                            }
-                        }
-                    });
-
-                    imview.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            if (selectedIm.contains(displayImages.get(imview.getImage()))) {
-                                imview.setOpacity(1);
-                                selectedIm.remove(displayImages.get(imview.getImage()));
-                            } else {
-                                imview.setOpacity(0.5);
-                                selectedIm.add(displayImages.get(imview.getImage()));
-                            }
-                        }
-                    });
-
-                    paneImages.getChildren().add(imview);
-
-                    i++;
+                imview.setLayoutX((tam + 3) * (i % 8));
+                imview.setLayoutY((tam + 3) * (i / 8));
+                if (selectedIm.contains(image)) {
+                    imview.setOpacity(0.5);
                 }
+
+                imview.setOnMouseEntered(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        if (!selectedIm.contains(displayImages.get(imview.getImage()))) {
+                            imview.setOpacity(0.5);
+                        }
+
+                    }
+                });
+
+                imview.setOnMouseExited(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        if (!selectedIm.contains(displayImages.get(imview.getImage()))) {
+                            imview.setOpacity(1);
+                        }
+                    }
+                });
+
+                imview.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        if (selectedIm.contains(displayImages.get(imview.getImage()))) {
+                            imview.setOpacity(1);
+                            selectedIm.remove(displayImages.get(imview.getImage()));
+                        } else {
+                            imview.setOpacity(0.5);
+                            selectedIm.add(displayImages.get(imview.getImage()));
+                        }
+                    }
+                });
+
+                paneImages.getChildren().add(imview);
+
+                i++;
+            }
         }
 
     }
@@ -183,8 +191,30 @@ public class ImagesController implements Initializable {
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
             String category = result.get();
-            logic.addCategory(new Category(category));
-            lCategories.getItems().add(category);
+            if (StringUtils.isAlphanumeric(category)) {
+                if (!logic.getCategories().contains(new Category(category))) {
+                    logic.addCategory(new Category(category));
+                    lCategories.getItems().add(category);
+                } else {
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Category not allowed");
+                    alert.setContentText("The category " + category + " already exists.");
+
+                    alert.showAndWait();
+                    addCategory(event);
+                }
+
+            } else {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Category not allowed");
+                alert.setContentText("The name of the category contains characters not allowed.");
+
+                alert.showAndWait();
+                addCategory(event);
+            }
+
         }
     }
 
@@ -215,8 +245,31 @@ public class ImagesController implements Initializable {
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
             String cat = result.get();
-            logic.modifyCategory(new Category(category), cat);
-            lCategories.getItems().set(index, cat);
+
+            if (StringUtils.isAlphanumeric(category)) {
+                if (!logic.getCategories().contains(new Category(category))) {
+                    logic.modifyCategory(new Category(category), cat);
+                    lCategories.getItems().set(index, cat);
+                } else {
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Category not allowed");
+                    alert.setContentText("The category " + category + " already exists.");
+
+                    alert.showAndWait();
+                    modifyCategory(event);
+                }
+
+            } else {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Category not allowed");
+                alert.setContentText("The name of the category contains characters not allowed.");
+
+                alert.showAndWait();
+                modifyCategory(event);
+            }
+
         }
     }
 

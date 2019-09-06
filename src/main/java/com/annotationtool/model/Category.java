@@ -37,6 +37,23 @@ public class Category implements Comparable<Category>{
     {
         this.name=name;
     }
+    
+    @Override
+    public boolean equals(Object o)
+    {
+        if(this==o)
+        {
+            return true;
+        }else{
+            if(o instanceof Category)
+            {
+                Category cat=(Category)o;
+                return cat.getName().equalsIgnoreCase(this.getName());
+            }else{
+                return false;
+            }
+        }
+    }
 
     @Override
     public int compareTo(Category o) {
