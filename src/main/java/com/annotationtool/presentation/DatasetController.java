@@ -34,7 +34,7 @@ import javafx.stage.Stage;
 public class DatasetController implements Initializable {
 
     private static Logic logic = new Logic();
-    
+
     private int numCategories = 2;
     private String dataset = "";
     private String savePath = "";
@@ -119,7 +119,6 @@ public class DatasetController implements Initializable {
                 alert.setTitle("Error");
                 alert.setHeaderText("The direcotory is not empty");
                 alert.setContentText("You must select an empty directory.");
-
                 alert.showAndWait();
             }
 
@@ -148,43 +147,53 @@ public class DatasetController implements Initializable {
     void accept(ActionEvent event) {
         if (lDataset.getText().length() != 0) {
             if (lLocation.getText().length() != 0) {
-                try{
-                Stage stage = (Stage) lLocation.getScene().getWindow();
-                accepted = true;
-                automatically = cbAuto.isSelected();
+                try {
+                    Stage stage = (Stage) lLocation.getScene().getWindow();
+                    accepted = true;
+                    automatically = cbAuto.isSelected();
 
-                int numCat = getNumCategories();
-                String dataset = getDataset();
-                String savePath = getSavePath();
-                boolean automatically = getAutomatically();
-                List<Category> categories = getCategories();
-                int i = categories.size() + 1;
-                while (numCat > categories.size()) {
-                    categories.add(new Category("Cluster " + i));
-                    i++;
-                }
+                    int numCat = getNumCategories();
+                    String dataset = getDataset();
+                    String savePath = getSavePath();
+                    boolean automatically = getAutomatically();
+                    List<Category> categories = getCategories();
+                    int i = categories.size() + 1;
+                    while (numCat > categories.size()) {
+                        categories.add(new Category("Cluster " + i));
+                        i++;
+                    }
 
-                if (automatically) {
-                    logic.initializeDatasetAutomatically(dataset, savePath, categories);
-                } else {
-                    logic.initializeDatasetManually(dataset, savePath, categories);
-                }
+                    if (automatically) {
+                        logic.initializeDatasetAutomatically(dataset, savePath, categories);
+                    } else {
+                        logic.initializeDatasetManually(dataset, savePath, categories);
+                    }
 
-                FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("/fxml/Images.fxml"));
-                Parent root2 = fxmlLoader2.load();
+                    FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("/fxml/Images.fxml"));
+                    Parent root2 = fxmlLoader2.load();
 
-                Scene scene2 = new Scene(root2);
-                scene2.getStylesheets().add("/styles/Images.css");
+                    Scene scene2 = new Scene(root2);
+                    scene2.getStylesheets().add("/styles/Images.css");
 
-                stage.setScene(scene2);
-                stage.setMaximized(true);
-                stage.setResizable(true);
-                stage.show();
-                }catch(ExcepcionDeAplicacion ex)
-                {
+                    stage.setScene(scene2);
+                    stage.setMaximized(true);
+                    stage.setResizable(true);
+                    stage.show();
+                } catch (ExcepcionDeAplicacion ex) {
                     Logger.getLogger(DatasetController.class.getName()).log(Level.SEVERE, null, ex);
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("An unexpected error ocurred.");
+                    alert.setContentText("Unexpected error loading the images. Try to load the images again.");
+                    alert.showAndWait();
                 } catch (IOException ex) {
                     Logger.getLogger(DatasetController.class.getName()).log(Level.SEVERE, null, ex);
+                    
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("An unexpected error ocurred.");
+                    alert.setContentText("Unexpected error loading the program. Reset the application.");
+                    alert.showAndWait();
                 }
 
             } else {
@@ -192,7 +201,6 @@ public class DatasetController implements Initializable {
                 alert.setTitle("Error");
                 alert.setHeaderText("The information is inclompete");
                 alert.setContentText("You must select a save location.");
-
                 alert.showAndWait();
             }
         } else {
@@ -200,7 +208,6 @@ public class DatasetController implements Initializable {
             alert.setTitle("Error");
             alert.setHeaderText("The information is inclompete");
             alert.setContentText("You must select a dataset.");
-
             alert.showAndWait();
         }
 

@@ -62,22 +62,22 @@ public class ImagesController implements Initializable {
 
     @FXML
     private AnchorPane paneImages;
-    
+
     @FXML
     private Button modifyButton;
-    
+
     @FXML
     private Button deleteButton;
-    
+
     @FXML
     private MenuItem editMenu;
-    
+
     @FXML
     private MenuItem deleteMenu;
-    
+
     @FXML
     private MenuItem uncategorizeMenu;
-    
+
     @FXML
     private MenuItem changeMenu;
 
@@ -97,12 +97,18 @@ public class ImagesController implements Initializable {
         scrollPane.widthProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                paneImages.prefWidth(newValue.doubleValue()-50);
+                paneImages.prefWidth(newValue.doubleValue() - 50);
                 if (!displayImages.values().isEmpty()) {
                     try {
-                        changeImages(lCategories.getSelectionModel().getSelectedItems().get(0), newValue.doubleValue()-20, false);
+                        changeImages(lCategories.getSelectionModel().getSelectedItems().get(0), newValue.doubleValue() - 20, false);
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
+
+                        Alert alert = new Alert(AlertType.ERROR);
+                        alert.setTitle("Error");
+                        alert.setHeaderText("An unexpected error ocurred.");
+                        alert.setContentText("Unexpected error try to reset the application.");
+                        alert.showAndWait();
                     }
                 }
             }
@@ -112,16 +118,15 @@ public class ImagesController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 try {
-                    changeImages(newValue, scrollPane.getWidth()-20, true);
+                    changeImages(newValue, scrollPane.getWidth() - 20, true);
                     changeMenu.setDisable(true);
-                    if(newValue.equalsIgnoreCase("Unassigned"))
-                    {
+                    if (newValue.equalsIgnoreCase("Unassigned")) {
                         modifyButton.setDisable(true);
                         deleteButton.setDisable(true);
                         editMenu.setDisable(true);
                         deleteMenu.setDisable(true);
                         uncategorizeMenu.setDisable(true);
-                    }else{
+                    } else {
                         modifyButton.setDisable(false);
                         deleteButton.setDisable(false);
                         editMenu.setDisable(false);
@@ -130,6 +135,11 @@ public class ImagesController implements Initializable {
                     }
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("An unexpected error ocurred.");
+                    alert.setContentText("Unexpected error try to reset the application.");
+                    alert.showAndWait();
                 }
             }
         });
@@ -140,7 +150,7 @@ public class ImagesController implements Initializable {
         if (category == null) {
             return;
         }
-        
+
         paneImages.getChildren().clear();
         displayImages.clear();
         if (clear) {
@@ -202,11 +212,10 @@ public class ImagesController implements Initializable {
                             imview.setOpacity(0.5);
                             selectedIm.add(displayImages.get(imview.getImage()));
                         }
-                        if(selectedIm.isEmpty())
-                        {
+                        if (selectedIm.isEmpty()) {
                             changeMenu.setDisable(true);
                             uncategorizeMenu.setDisable(true);
-                        }else{
+                        } else {
                             changeMenu.setDisable(false);
                             uncategorizeMenu.setDisable(false);
                         }
@@ -371,6 +380,12 @@ public class ImagesController implements Initializable {
                 logic.generateDataset();
             } catch (ExcepcionDeAplicacion ex) {
                 Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
+
+                Alert alert2 = new Alert(AlertType.ERROR);
+                alert2.setTitle("Error");
+                alert2.setHeaderText("An unexpected error ocurred.");
+                alert2.setContentText("Unexpected error generating the dataset. Try it again.");
+                alert2.showAndWait();
             }
         }
 
@@ -402,6 +417,11 @@ public class ImagesController implements Initializable {
 
         } catch (IOException ex) {
             Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("An unexpected error ocurred.");
+            alert.setContentText("Unexpected error try to reset the application.");
+            alert.showAndWait();
         }
 
     }
@@ -430,6 +450,11 @@ public class ImagesController implements Initializable {
 
             } catch (IOException ex) {
                 Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert alert2 = new Alert(AlertType.ERROR);
+                alert2.setTitle("Error");
+                alert2.setHeaderText("An unexpected error ocurred.");
+                alert2.setContentText("Unexpected error try to reset the application.");
+                alert2.showAndWait();
             }
         }
     }

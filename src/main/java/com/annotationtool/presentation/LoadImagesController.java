@@ -98,6 +98,12 @@ public class LoadImagesController implements Initializable {
                 stage.close();
             } catch (ExcepcionDeAplicacion ex) {
                 Logger.getLogger(DatasetController.class.getName()).log(Level.SEVERE, null, ex);
+
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("An unexpected error ocurred.");
+                alert.setContentText("Unexpected error loading the images. Try to load the images again.");
+                alert.showAndWait();
             }
 
         } else {
