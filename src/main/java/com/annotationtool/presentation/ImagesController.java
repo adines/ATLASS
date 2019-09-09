@@ -120,18 +120,17 @@ public class ImagesController implements Initializable {
                 try {
                     changeImages(newValue, scrollPane.getWidth() - 20, true);
                     changeMenu.setDisable(true);
+                    uncategorizeMenu.setDisable(true);
                     if (newValue.equalsIgnoreCase("Unassigned")) {
                         modifyButton.setDisable(true);
                         deleteButton.setDisable(true);
                         editMenu.setDisable(true);
                         deleteMenu.setDisable(true);
-                        uncategorizeMenu.setDisable(true);
                     } else {
                         modifyButton.setDisable(false);
                         deleteButton.setDisable(false);
                         editMenu.setDisable(false);
                         deleteMenu.setDisable(false);
-                        uncategorizeMenu.setDisable(false);
                     }
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
