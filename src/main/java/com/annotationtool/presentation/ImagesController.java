@@ -121,12 +121,13 @@ public class ImagesController implements Initializable {
                     changeImages(newValue, scrollPane.getWidth() - 20, true);
                     changeMenu.setDisable(true);
                     uncategorizeMenu.setDisable(true);
-                    if (newValue.equalsIgnoreCase("Unassigned")) {
+                    if(newValue.equalsIgnoreCase("Unassigned"))
+                    {
                         modifyButton.setDisable(true);
                         deleteButton.setDisable(true);
                         editMenu.setDisable(true);
                         deleteMenu.setDisable(true);
-                    } else {
+                    }else{
                         modifyButton.setDisable(false);
                         deleteButton.setDisable(false);
                         editMenu.setDisable(false);
