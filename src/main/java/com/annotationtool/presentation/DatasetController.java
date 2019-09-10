@@ -72,7 +72,7 @@ public class DatasetController implements Initializable {
     private Button bPlus;
 
     @FXML
-    private Button bSavePath;
+    private Button bSavepath;
 
     @FXML
     private CheckBox cbAuto;
@@ -94,6 +94,7 @@ public class DatasetController implements Initializable {
             lDataset.setText(dataset);
             if (cbContinue.isSelected()) {
                 lLocation.setText(dataset);
+                savePath=dataset;
             } else {
 
                 categories = new ArrayList<>();
@@ -144,18 +145,20 @@ public class DatasetController implements Initializable {
     @FXML
     void selectContinue(ActionEvent event) {
         if (cbContinue.isSelected()) {
-            bSavePath.disableProperty().set(true);
+            bSavepath.disableProperty().set(true);
             lLocation.setText(lDataset.getText());
             cbAuto.disableProperty().set(true);
             bMinus.disableProperty().set(true);
             bPlus.disableProperty().set(true);
+            savePath=dataset;
 
         } else {
-            bSavePath.disableProperty().set(false);
+            bSavepath.disableProperty().set(false);
             lLocation.setText("");
             cbAuto.disableProperty().set(false);
             bMinus.disableProperty().set(false);
             bPlus.disableProperty().set(false);
+            savePath="";
 
             categories = new ArrayList<>();
 
