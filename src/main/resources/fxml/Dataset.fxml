@@ -10,12 +10,12 @@
 
 <AnchorPane id="AnchorPane" fx:id="anchorid" maxHeight="398.0" maxWidth="589.0" minHeight="398.0" minWidth="589.0" prefHeight="398.0" prefWidth="589.0" stylesheets="@../styles/Dataset.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.annotationtool.presentation.DatasetController">
    <children>
-      <Button layoutX="439.0" layoutY="50.0" mnemonicParsing="false" onAction="#selecDataset" text="Select  Dataset" AnchorPane.rightAnchor="55.0" />
-      <Separator layoutY="145.0" prefHeight="9.0" prefWidth="600.0" />
-      <Button layoutX="327.0" layoutY="205.0" mnemonicParsing="false" onAction="#increaseCategory" styleClass="plus-button" stylesheets="@../styles/Dataset.css" text="+" />
+      <Button layoutX="439.0" layoutY="50.0" mnemonicParsing="false" onAction="#selectDataset" text="Select  Dataset" AnchorPane.rightAnchor="55.0" />
+      <Separator layoutY="163.0" prefHeight="9.0" prefWidth="600.0" />
+      <Button fx:id="bPlus" layoutX="327.0" layoutY="205.0" mnemonicParsing="false" onAction="#increaseCategory" styleClass="plus-button" stylesheets="@../styles/Dataset.css" text="+" />
       <Label fx:id="lCategory" alignment="CENTER" contentDisplay="CENTER" layoutX="281.0" layoutY="209.0" prefHeight="17.0" prefWidth="33.0" text="2" textAlignment="CENTER" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="275.0" />
       <Button fx:id="bMinus" layoutX="249.0" layoutY="205.0" mnemonicParsing="false" onAction="#decreaseCategory" styleClass="minus-button" text="−" />
-      <Label layoutX="55.0" layoutY="168.0" text="Categories" AnchorPane.leftAnchor="55.0">
+      <Label layoutX="55.0" layoutY="180.0" text="Categories" AnchorPane.leftAnchor="55.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -27,10 +27,10 @@
       </Label>
       <Button defaultButton="true" layoutX="274.0" layoutY="349.0" mnemonicParsing="false" onAction="#accept" text="Accept" />
       <Label layoutX="55.0" layoutY="54.0" text="Dataset:" AnchorPane.leftAnchor="55.0" />
-      <Label layoutX="55.0" layoutY="103.0" text="Save location:" AnchorPane.leftAnchor="55.0" />
-      <Button layoutX="439.0" layoutY="99.0" mnemonicParsing="false" onAction="#selecSavePath" prefHeight="25.0" prefWidth="95.0" text="Save Path" AnchorPane.rightAnchor="55.0" />
+      <Label layoutX="55.0" layoutY="93.0" text="Save location:" AnchorPane.leftAnchor="55.0" />
+      <Button fx:id="bSavepath" layoutX="439.0" layoutY="89.0" mnemonicParsing="false" onAction="#selectSavePath" prefHeight="25.0" prefWidth="95.0" text="Save Path" AnchorPane.rightAnchor="55.0" />
       <Label fx:id="lDataset" layoutX="152.0" layoutY="54.0" maxHeight="17.0" maxWidth="285.0" prefHeight="17.0" prefWidth="285.0" AnchorPane.leftAnchor="152.0" />
-      <Label fx:id="lLocation" layoutX="152.0" layoutY="103.0" maxHeight="17.0" maxWidth="285.0" prefHeight="17.0" prefWidth="285.0" AnchorPane.leftAnchor="152.0" />
+      <Label fx:id="lLocation" layoutX="152.0" layoutY="93.0" maxHeight="17.0" maxWidth="285.0" prefHeight="17.0" prefWidth="285.0" AnchorPane.leftAnchor="152.0" />
       <Separator layoutY="242.0" prefHeight="9.0" prefWidth="600.0" />
       <Label layoutX="55.0" layoutY="261.0" text="Organization" AnchorPane.leftAnchor="55.0">
          <font>
@@ -39,5 +39,7 @@
       </Label>
       <Label layoutX="53.0" layoutY="303.0" text="Do you want to organize the images automatically?" AnchorPane.leftAnchor="55.0" />
       <CheckBox fx:id="cbAuto" layoutX="414.0" layoutY="303.0" mnemonicParsing="false" styleClass="toggle-switch" />
+      <CheckBox fx:id="cbContinue" layoutX="476.0" layoutY="128.0" mnemonicParsing="false" onAction="#selectContinue" styleClass="toggle-switch" />
+      <Label layoutX="55.0" layoutY="128.0" prefHeight="17.0" prefWidth="304.0" text="Do you want to continue the work in the same folder?" />
    </children>
 </AnchorPane>

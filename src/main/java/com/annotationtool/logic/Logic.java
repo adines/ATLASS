@@ -39,6 +39,17 @@ public class Logic {
 
     private static final Persistence persistence = new FolderManager();
 
+    
+    /**
+    * Method that continue in the dataset specified.
+    * @param path A valid path to the folder that has the dataset.
+    **/
+    public void continueDataset(String path)
+    {
+        persistence.continueDataset(path);
+    }
+    
+    
     /**
      * Method that generates a new category in the system.
      *

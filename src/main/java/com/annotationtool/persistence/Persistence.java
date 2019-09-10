@@ -13,6 +13,12 @@ public interface Persistence {
     
     
     /**
+    * Method that continue in the dataset specified.
+    * @param path A valid path to the folder that has the dataset.
+    **/
+    public void continueDataset(String path);
+    
+    /**
     * Method that generates a new category in the system.
     * @param category This parameter defines the new category to create. This category should not exists in the system.
     **/

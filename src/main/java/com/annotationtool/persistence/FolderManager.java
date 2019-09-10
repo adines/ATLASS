@@ -225,4 +225,9 @@ public class FolderManager implements Persistence {
         return file.substring(outputPath.length() + 1, file.length());
     }
 
+    @Override
+    public void continueDataset(String path) {
+        this.outputPath=path;
+    }
+
 }

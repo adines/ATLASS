@@ -69,10 +69,19 @@ public class DatasetController implements Initializable {
     private Button bMinus;
 
     @FXML
+    private Button bPlus;
+
+    @FXML
+    private Button bSavePath;
+
+    @FXML
     private CheckBox cbAuto;
 
     @FXML
-    void selecDataset(ActionEvent event) {
+    private CheckBox cbContinue;
+
+    @FXML
+    void selectDataset(ActionEvent event) {
         DirectoryChooser directoryChooser = new DirectoryChooser();
 
         Stage stage = (Stage) anchorid.getScene().getWindow();
@@ -80,30 +89,37 @@ public class DatasetController implements Initializable {
         File selectedDirectory = directoryChooser.showDialog(stage);
 
         if (selectedDirectory != null && selectedDirectory.exists()) {
-            categories = new ArrayList<>();
+
             dataset = selectedDirectory.getAbsolutePath();
             lDataset.setText(dataset);
-            File direcory = new File(dataset);
-            File files[] = direcory.listFiles();
-            int numCat = 0;
-            for (File f : files) {
-                if (f.isDirectory()) {
-                    numCat++;
-                    categories.add(new Category(f.getName()));
-                }
-            }
+            if (cbContinue.isSelected()) {
+                lLocation.setText(dataset);
+            } else {
 
-            if (numCat >= 2) {
-                this.minCategories = numCat;
-                this.numCategories = numCat;
-                this.lCategory.setText(String.valueOf(numCat));
-                this.bMinus.setDisable(true);
+                categories = new ArrayList<>();
+
+                File direcory = new File(dataset);
+                File files[] = direcory.listFiles();
+                int numCat = 0;
+                for (File f : files) {
+                    if (f.isDirectory()) {
+                        numCat++;
+                        categories.add(new Category(f.getName()));
+                    }
+                }
+
+                if (numCat >= 2) {
+                    this.minCategories = numCat;
+                    this.numCategories = numCat;
+                    this.lCategory.setText(String.valueOf(numCat));
+                    this.bMinus.setDisable(true);
+                }
             }
         }
     }
 
     @FXML
-    void selecSavePath(ActionEvent event) {
+    void selectSavePath(ActionEvent event) {
         DirectoryChooser directoryChooser = new DirectoryChooser();
 
         Stage stage = (Stage) anchorid.getScene().getWindow();
@@ -122,6 +138,43 @@ public class DatasetController implements Initializable {
                 alert.showAndWait();
             }
 
+        }
+    }
+
+    @FXML
+    void selectContinue(ActionEvent event) {
+        if (cbContinue.isSelected()) {
+            bSavePath.disableProperty().set(true);
+            lLocation.setText(lDataset.getText());
+            cbAuto.disableProperty().set(true);
+            bMinus.disableProperty().set(true);
+            bPlus.disableProperty().set(true);
+
+        } else {
+            bSavePath.disableProperty().set(false);
+            lLocation.setText("");
+            cbAuto.disableProperty().set(false);
+            bMinus.disableProperty().set(false);
+            bPlus.disableProperty().set(false);
+
+            categories = new ArrayList<>();
+
+            File direcory = new File(dataset);
+            File files[] = direcory.listFiles();
+            int numCat = 0;
+            for (File f : files) {
+                if (f.isDirectory()) {
+                    numCat++;
+                    categories.add(new Category(f.getName()));
+                }
+            }
+
+            if (numCat >= 2) {
+                this.minCategories = numCat;
+                this.numCategories = numCat;
+                this.lCategory.setText(String.valueOf(numCat));
+                this.bMinus.setDisable(true);
+            }
         }
     }
 
@@ -150,23 +203,29 @@ public class DatasetController implements Initializable {
                 try {
                     Stage stage = (Stage) lLocation.getScene().getWindow();
                     accepted = true;
-                    automatically = cbAuto.isSelected();
 
-                    int numCat = getNumCategories();
-                    String dataset = getDataset();
-                    String savePath = getSavePath();
-                    boolean automatically = getAutomatically();
-                    List<Category> categories = getCategories();
-                    int i = categories.size() + 1;
-                    while (numCat > categories.size()) {
-                        categories.add(new Category("Cluster " + i));
-                        i++;
-                    }
-
-                    if (automatically) {
-                        logic.initializeDatasetAutomatically(dataset, savePath, categories);
+                    if (cbContinue.isSelected()) {
+                        logic.continueDataset(savePath);
                     } else {
-                        logic.initializeDatasetManually(dataset, savePath, categories);
+
+                        automatically = cbAuto.isSelected();
+
+                        int numCat = getNumCategories();
+                        String dataset = getDataset();
+                        String savePath = getSavePath();
+                        boolean automatically = getAutomatically();
+                        List<Category> categories = getCategories();
+                        int i = categories.size() + 1;
+                        while (numCat > categories.size()) {
+                            categories.add(new Category("Cluster " + i));
+                            i++;
+                        }
+
+                        if (automatically) {
+                            logic.initializeDatasetAutomatically(dataset, savePath, categories);
+                        } else {
+                            logic.initializeDatasetManually(dataset, savePath, categories);
+                        }
                     }
 
                     FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("/fxml/Images.fxml"));
@@ -188,7 +247,7 @@ public class DatasetController implements Initializable {
                     alert.showAndWait();
                 } catch (IOException ex) {
                     Logger.getLogger(DatasetController.class.getName()).log(Level.SEVERE, null, ex);
-                    
+
                     Alert alert = new Alert(AlertType.ERROR);
                     alert.setTitle("Error");
                     alert.setHeaderText("An unexpected error ocurred.");
