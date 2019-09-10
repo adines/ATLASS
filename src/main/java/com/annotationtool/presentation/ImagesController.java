@@ -436,6 +436,7 @@ public class ImagesController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
             try {
+                
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Dataset.fxml"));
                 Parent root = fxmlLoader.load();
 
@@ -443,6 +444,11 @@ public class ImagesController implements Initializable {
                 scene.getStylesheets().add("/styles/Dataset.css");
 
                 Stage stage = (Stage) lCategories.getScene().getWindow();
+                stage.hide();
+                stage.setMaxWidth(589);
+                stage.setMinWidth(589);
+                stage.setMinHeight(420);
+                stage.setMaxHeight(420);
                 stage.setTitle("Annotation Tool");
                 stage.setScene(scene);
                 stage.setResizable(false);
