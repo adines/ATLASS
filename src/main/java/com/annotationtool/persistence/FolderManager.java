@@ -115,6 +115,7 @@ public class FolderManager implements Persistence {
         List<Image> images = new ArrayList<>();
         File dir = new File(path);
         File files[] = dir.listFiles();
+        List<Category> categories=getCategories();
         for (File f : files) {
             if (f.isFile()) {
                 try {
@@ -132,8 +133,9 @@ public class FolderManager implements Persistence {
                 File files2[] = f.listFiles();
                 for (File f2 : files2) {
                     try {
+                        String fname=categories.get(categories.indexOf(new Category(name))).getName();
                         String newName = f2.getName().replace(".", "_"+String.valueOf(System.currentTimeMillis()) + ".");
-                        File file = new File(outputPath + File.separator + name + File.separator + newName);
+                        File file = new File(outputPath + File.separator + fname + File.separator + newName);
                         Files.copy(f2.toPath(), file.toPath());
                         images.add(new Image(file.getName(), file.getAbsolutePath(), new Category(name)));
                     } catch (IOException ex) {

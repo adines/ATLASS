@@ -464,4 +464,12 @@ public class ImagesController implements Initializable {
             }
         }
     }
+    
+    
+    @FXML
+    void closeApp(ActionEvent event) {
+        Stage stage = (Stage) lCategories.getScene().getWindow();
+        stage.close();
+    }
+    
 }

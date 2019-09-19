@@ -67,7 +67,7 @@ public class LoadImagesController implements Initializable {
             File direcory = new File(dataset);
             File files[] = direcory.listFiles();
             for (File f : files) {
-                if (f.isDirectory() && !categories.contains(f.getName())) {
+                if (f.isDirectory() && !categories.contains(new Category(f.getName()))) {
                     newCategories.add(new Category(f.getName()));
                 }
             }
@@ -78,8 +78,9 @@ public class LoadImagesController implements Initializable {
     void accept(ActionEvent event) {
 
         if (lDataset.getText().length() != 0) {
+            Stage stage=null;
             try {
-                Stage stage = (Stage) lDataset.getScene().getWindow();
+                stage = (Stage) lDataset.getScene().getWindow();
                 accepted = true;
                 automatically = cbAuto.isSelected();
 
@@ -90,10 +91,10 @@ public class LoadImagesController implements Initializable {
                     logic.addCategory(categ);
                 }
 
-                if (automatically) {
+                if (automatically) {                  
                     logic.loadImagesAutomatically(dataset);
                 } else {
-                    logic.loadImagesManually(dataset);
+                    logic.loadImagesManually(dataset); 
                 }
                 stage.close();
             } catch (ExcepcionDeAplicacion ex) {
