@@ -8,27 +8,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorid" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.annotationtool.presentation.LoadImagesController">
+<AnchorPane id="AnchorPane" fx:id="anchorid" prefHeight="236.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.annotationtool.presentation.LoadImagesController">
     <stylesheets>
         <URL value="@/styles/loadimages.css" />
     </stylesheets>
    <children>
-      <CheckBox fx:id="cbAuto" layoutX="424.0" layoutY="252.0" mnemonicParsing="false" styleClass="toggle-switch" />
-      <Label layoutX="63.0" layoutY="252.0" text="Do you want to organize the images automatically?" />
-      <Label layoutX="65.0" layoutY="210.0" text="Organization">
+      <Label fx:id="lDataset" layoutX="162.0" layoutY="90.0" maxHeight="17.0" maxWidth="285.0" prefHeight="17.0" prefWidth="285.0" />
+      <Label layoutX="65.0" layoutY="90.0" text="Images:" />
+      <Button defaultButton="true" layoutX="284.0" layoutY="182.0" mnemonicParsing="false" onAction="#accept" text="Accept" AnchorPane.bottomAnchor="43.0" />
+      <Label layoutX="65.0" layoutY="43.0" text="Data" AnchorPane.topAnchor="43.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="lDataset" layoutX="162.0" layoutY="111.0" maxHeight="17.0" maxWidth="285.0" prefHeight="17.0" prefWidth="285.0" />
-      <Label layoutX="65.0" layoutY="111.0" text="Images:" />
-      <Button defaultButton="true" layoutX="284.0" layoutY="331.0" mnemonicParsing="false" onAction="#accept" text="Accept" />
-      <Label layoutX="65.0" layoutY="72.0" text="Data">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Separator layoutX="10.0" layoutY="167.0" prefHeight="9.0" prefWidth="600.0" />
-      <Button layoutX="449.0" layoutY="107.0" mnemonicParsing="false" onAction="#selecDataset" text="Select  Images" />
+      <Button layoutX="449.0" layoutY="86.0" mnemonicParsing="false" onAction="#selecDataset" text="Select  Images" />
    </children>
 </AnchorPane>
