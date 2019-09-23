@@ -38,8 +38,6 @@ public class DatasetController implements Initializable {
     private int numCategories = 2;
     private String dataset = "";
     private String savePath = "";
-    private boolean accepted = false;
-    private boolean automatically = false;
 
     private int minCategories = 2;
     private List<Category> categories;
@@ -94,7 +92,7 @@ public class DatasetController implements Initializable {
             lDataset.setText(dataset);
             if (cbContinue.isSelected()) {
                 lLocation.setText(dataset);
-                savePath=dataset;
+                savePath = dataset;
             } else {
 
                 categories = new ArrayList<>();
@@ -150,7 +148,7 @@ public class DatasetController implements Initializable {
             cbAuto.disableProperty().set(true);
             bMinus.disableProperty().set(true);
             bPlus.disableProperty().set(true);
-            savePath=dataset;
+            savePath = dataset;
 
         } else {
             bSavepath.disableProperty().set(false);
@@ -158,7 +156,7 @@ public class DatasetController implements Initializable {
             cbAuto.disableProperty().set(false);
             bMinus.disableProperty().set(false);
             bPlus.disableProperty().set(false);
-            savePath="";
+            savePath = "";
 
             categories = new ArrayList<>();
 
@@ -205,30 +203,18 @@ public class DatasetController implements Initializable {
             if (lLocation.getText().length() != 0) {
                 try {
                     Stage stage = (Stage) lLocation.getScene().getWindow();
-                    accepted = true;
 
                     if (cbContinue.isSelected()) {
                         logic.continueDataset(savePath);
                     } else {
-
-                        automatically = cbAuto.isSelected();
-
-                        int numCat = getNumCategories();
-                        String dataset = getDataset();
-                        String savePath = getSavePath();
-                        boolean automatically = getAutomatically();
-                        List<Category> categories = getCategories();
                         int i = categories.size() + 1;
-                        while (numCat > categories.size()) {
+                        while (numCategories > categories.size()) {
                             categories.add(new Category("Cluster " + i));
                             i++;
                         }
 
-                        if (automatically) {
-                            logic.initializeDatasetAutomatically(dataset, savePath, categories);
-                        } else {
-                            logic.initializeDatasetManually(dataset, savePath, categories);
-                        }
+                        logic.initializeDatasetManually(dataset, savePath, categories);
+
                     }
 
                     FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("/fxml/Images.fxml"));
@@ -273,29 +259,5 @@ public class DatasetController implements Initializable {
             alert.showAndWait();
         }
 
-    }
-
-    public int getNumCategories() {
-        return numCategories;
-    }
-
-    public String getDataset() {
-        return dataset;
-    }
-
-    public String getSavePath() {
-        return savePath;
-    }
-
-    public boolean getAccepted() {
-        return accepted;
-    }
-
-    public boolean getAutomatically() {
-        return automatically;
-    }
-
-    public List<Category> getCategories() {
-        return categories;
     }
 }
