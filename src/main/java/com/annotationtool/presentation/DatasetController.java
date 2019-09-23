@@ -73,9 +73,6 @@ public class DatasetController implements Initializable {
     private Button bSavepath;
 
     @FXML
-    private CheckBox cbAuto;
-
-    @FXML
     private CheckBox cbContinue;
 
     @FXML
@@ -145,7 +142,6 @@ public class DatasetController implements Initializable {
         if (cbContinue.isSelected()) {
             bSavepath.disableProperty().set(true);
             lLocation.setText(lDataset.getText());
-            cbAuto.disableProperty().set(true);
             bMinus.disableProperty().set(true);
             bPlus.disableProperty().set(true);
             savePath = dataset;
@@ -153,7 +149,6 @@ public class DatasetController implements Initializable {
         } else {
             bSavepath.disableProperty().set(false);
             lLocation.setText("");
-            cbAuto.disableProperty().set(false);
             bMinus.disableProperty().set(false);
             bPlus.disableProperty().set(false);
             savePath = "";
