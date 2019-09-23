@@ -14,7 +14,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
@@ -34,11 +33,6 @@ public class LoadImagesController implements Initializable {
     private List<Category> newCategories;
 
     private String dataset = "";
-    private boolean accepted = false;
-    private boolean automatically = false;
-
-    @FXML
-    private CheckBox cbAuto;
 
     @FXML
     private AnchorPane anchorid;
@@ -67,7 +61,7 @@ public class LoadImagesController implements Initializable {
             File direcory = new File(dataset);
             File files[] = direcory.listFiles();
             for (File f : files) {
-                if (f.isDirectory() && !categories.contains(f.getName())) {
+                if (f.isDirectory() && !categories.contains(new Category(f.getName()))) {
                     newCategories.add(new Category(f.getName()));
                 }
             }
@@ -78,23 +72,15 @@ public class LoadImagesController implements Initializable {
     void accept(ActionEvent event) {
 
         if (lDataset.getText().length() != 0) {
+            Stage stage = null;
             try {
-                Stage stage = (Stage) lDataset.getScene().getWindow();
-                accepted = true;
-                automatically = cbAuto.isSelected();
+                stage = (Stage) lDataset.getScene().getWindow();
 
-                String dataset = getDataset();
-                boolean automatically = getAutomatically();
-                List<Category> categories = getCategories();
                 for (Category categ : newCategories) {
                     logic.addCategory(categ);
                 }
 
-                if (automatically) {
-                    logic.loadImagesAutomatically(dataset);
-                } else {
-                    logic.loadImagesManually(dataset);
-                }
+                logic.loadImagesManually(dataset);
                 stage.close();
             } catch (ExcepcionDeAplicacion ex) {
                 Logger.getLogger(DatasetController.class.getName()).log(Level.SEVERE, null, ex);
@@ -115,22 +101,6 @@ public class LoadImagesController implements Initializable {
             alert.showAndWait();
         }
 
-    }
-
-    public String getDataset() {
-        return dataset;
-    }
-
-    public boolean getAccepted() {
-        return accepted;
-    }
-
-    public boolean getAutomatically() {
-        return automatically;
-    }
-
-    public List<Category> getCategories() {
-        return categories;
     }
 
 }

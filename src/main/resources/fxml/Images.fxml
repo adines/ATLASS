@@ -23,7 +23,7 @@
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#loadImages" text="Load Images" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" onAction="#addCategory" text="Categories">

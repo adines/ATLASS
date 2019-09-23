@@ -57,7 +57,7 @@ public class Category implements Comparable<Category>{
 
     @Override
     public int compareTo(Category o) {
-        if(o.getName().equals(this.getName()))
+        if(o.getName().equalsIgnoreCase(this.getName()))
         {
             return 0;
         }else{
