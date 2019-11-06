@@ -6,6 +6,8 @@ import com.annotationtool.model.Image;
 import com.annotationtool.persistence.FolderManager;
 import com.annotationtool.persistence.Persistence;
 import java.util.List;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 /**
@@ -185,6 +187,69 @@ public class Logic {
 //            Logger.getLogger(Logic.class.getName()).log(Level.SEVERE, null, ex);
 //            throw new ExcepcionDeAplicacion(ex);
 //        }
+    }
+    
+    private void createIpynb()
+    {
+        JSONObject root=new JSONObject();
+        root.put("nbformat", 4);
+        root.put("nbformat_minor", 0);
+        
+        JSONObject metadata=new JSONObject();
+        JSONObject colab=new JSONObject();
+        colab.put("name", "Name.ipynb");
+        colab.put("version", "0.3.2");
+        colab.put("provenance", new JSONArray());
+        
+        JSONObject kernelspec=new JSONObject();
+        kernelspec.put("name", "python3");
+        kernelspec.put("display_name", "Python 3");
+        
+        metadata.put("colab", colab);
+        metadata.put("kernelspec", kernelspec);
+        metadata.put("accelerator", "GPU");
+        
+        root.put("metadata", metadata);
+        
+        JSONArray cells=new JSONArray();
+        
+        JSONObject cell1=new JSONObject();
+        cell1.put("cell_type", "markdown");
+        
+        JSONObject cell1Meta=new JSONObject();
+        cell1Meta.put("id", "gqLtwdNgOadF");
+        cell1Meta.put("colab_type", "text");
+        cell1.put("metadata", cell1Meta);
+        
+        JSONArray cell1Source=new JSONArray();
+        cell1Source.add("## Training model\n");
+        cell1Source.add("\n");
+        cell1.put("source", cell1Source);
+        
+        cells.add(cell1);
+        
+        
+        JSONObject cell2=new JSONObject();
+        cell2.put("cell_type", "markdown");
+        
+        JSONObject cell2Meta=new JSONObject();
+        cell2Meta.put("id", "dh5y3QhpO5MP");
+        cell2Meta.put("colab_type", "text");
+        cell2.put("metadata", cell2Meta);
+        
+        JSONArray cell2Source=new JSONArray();
+        cell2Source.add("First of all, we upload the dataset that we will use.");
+        cell2.put("source", cell2Source);
+        
+        cells.add(cell2);
+        
+        JSONObject cell3=new JSONObject();
+        
+        
+        
+        root.put("cells", cells);
+        
+        
     }
 
 
