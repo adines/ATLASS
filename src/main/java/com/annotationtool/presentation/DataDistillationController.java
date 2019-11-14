@@ -7,15 +7,20 @@ package com.annotationtool.presentation;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
  *
  * @author adines
  */
-public class TransferLearningController implements Initializable {
+public class DataDistillationController implements Initializable {
 
+    @FXML
+    private TextField tbThresField;
+    
     /**
      * Initializes the controller class.
      */
@@ -23,5 +28,10 @@ public class TransferLearningController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    public void setNoIterative()
+    {
+        tbThresField.setDisable(true);
+    }
     
 }
