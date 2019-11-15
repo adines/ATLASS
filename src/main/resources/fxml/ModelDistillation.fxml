@@ -7,25 +7,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.annotationtool.presentation.ModelDistillationController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.annotationtool.presentation.ModelDistillationController">
     <stylesheets>
         <URL value="@/styles/modeldistillation.css" />
     </stylesheets>
    <children>
       <Label layoutX="42.0" layoutY="23.0" text="Select the models:" />
-      <CheckBox fx:id="cbResnet34" layoutX="33.0" layoutY="107.0" mnemonicParsing="false" text="ResNet34" />
-      <CheckBox fx:id="cbResnet50" layoutX="33.0" layoutY="142.0" mnemonicParsing="false" text="ResNet50" />
-      <CheckBox fx:id="cbResnet101" layoutX="37.0" layoutY="193.0" mnemonicParsing="false" text="ResNet101" />
-      <CheckBox fx:id="cbResnet152" layoutX="37.0" layoutY="232.0" mnemonicParsing="false" text="ResNet152" />
-      <CheckBox fx:id="cbDensenet161" layoutX="201.0" layoutY="99.0" mnemonicParsing="false" text="DenseNet161" />
-      <CheckBox fx:id="cbResnet18" layoutX="33.0" layoutY="63.0" mnemonicParsing="false" text="ResNet18" />
-      <CheckBox fx:id="cbDensenet201" layoutX="207.0" layoutY="218.0" mnemonicParsing="false" text="DenseNet201" />
-      <CheckBox fx:id="cbDensenet169" layoutX="207.0" layoutY="166.0" mnemonicParsing="false" text="DenseNet169" />
-      <CheckBox fx:id="cbDensenet121" layoutX="207.0" layoutY="63.0" mnemonicParsing="false" text="DenseNet121" />
-      <CheckBox fx:id="cbAlexnet" layoutX="391.0" layoutY="55.0" mnemonicParsing="false" text="AlexNet" />
+      <CheckBox fx:id="cbResnet34" layoutX="64.0" layoutY="107.0" mnemonicParsing="false" onAction="#selectCb" text="ResNet34" />
+      <CheckBox fx:id="cbResnet50" layoutX="64.0" layoutY="149.0" mnemonicParsing="false" onAction="#selectCb" text="ResNet50" />
+      <CheckBox fx:id="cbResnet101" layoutX="66.0" layoutY="189.0" mnemonicParsing="false" onAction="#selectCb" text="ResNet101" />
+      <CheckBox fx:id="cbResnet152" layoutX="67.0" layoutY="230.0" mnemonicParsing="false" onAction="#selectCb" text="ResNet152" />
+      <CheckBox fx:id="cbDensenet161" layoutX="232.0" layoutY="107.0" mnemonicParsing="false" onAction="#selectCb" text="DenseNet161" />
+      <CheckBox fx:id="cbResnet18" layoutX="64.0" layoutY="63.0" mnemonicParsing="false" onAction="#selectCb" text="ResNet18" />
+      <CheckBox fx:id="cbDensenet201" layoutX="232.0" layoutY="189.0" mnemonicParsing="false" onAction="#selectCb" text="DenseNet201" />
+      <CheckBox fx:id="cbDensenet169" layoutX="232.0" layoutY="149.0" mnemonicParsing="false" onAction="#selectCb" text="DenseNet169" />
+      <CheckBox fx:id="cbDensenet121" layoutX="232.0" layoutY="63.0" mnemonicParsing="false" onAction="#selectCb" text="DenseNet121" />
+      <CheckBox fx:id="cbAlexnet" layoutX="419.0" layoutY="63.0" mnemonicParsing="false" onAction="#selectCb" text="AlexNet" />
       <Button fx:id="bAccept" layoutX="268.0" layoutY="349.0" mnemonicParsing="false" text="Accept" />
-      <TextField fx:id="tbThreshold" layoutX="233.0" layoutY="288.0" prefHeight="25.0" prefWidth="53.0" />
-      <Label layoutX="54.0" layoutY="292.0" text="Threshold" />
-      <Separator layoutX="45.0" layoutY="267.0" prefHeight="5.0" prefWidth="537.0" />
+      <TextField fx:id="tbThreshold" layoutX="158.0" layoutY="284.0" prefHeight="25.0" prefWidth="53.0" />
+      <Label layoutX="53.0" layoutY="288.0" text="Threshold" />
+      <Separator layoutX="38.0" layoutY="264.0" prefHeight="5.0" prefWidth="537.0" />
    </children>
 </AnchorPane>
