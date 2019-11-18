@@ -77,7 +77,7 @@ public class ProcessesController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         processesNoSelected = new ArrayList<Process>();
-        processesSelected = new ArrayList<>();
+        processesSelected = new ArrayList<Process>();
 
         //No distillation por defecto
         Process ndProcess = new Process("ND");
@@ -137,11 +137,19 @@ public class ProcessesController implements Initializable {
         if(event.getSource() instanceof CheckBox)
         {
             CheckBox cb=(CheckBox) event.getSource();
+            String name=cb.getText();
+            name=name.split(":")[0];
             if(cb.isSelected())
             {
-                
+                int i=processesNoSelected.indexOf(new Process(name));
+                Process pr=processesNoSelected.get(i);
+                processesNoSelected.remove(pr);
+                processesSelected.add(pr);
             }else{
-                
+                int i=processesSelected.indexOf(new Process(name));
+                Process pr=processesSelected.get(i);
+                processesSelected.remove(pr);
+                processesNoSelected.add(pr);
             }
         }
     }

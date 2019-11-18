@@ -7,37 +7,37 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="728.0" prefWidth="1007.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.annotationtool.presentation.ModelDataDistillationController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="617.0" prefWidth="702.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.annotationtool.presentation.ModelDataDistillationController">
     <stylesheets>
         <URL value="@/styles/modeldatadistillation.css" />
     </stylesheets>
    <children>
-      <CheckBox fx:id="cbEqualize" layoutX="259.0" layoutY="260.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Equalize histogram" />
-      <CheckBox fx:id="cbBiateralFilter" layoutX="258.0" layoutY="215.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Bilateral Filter" />
-      <CheckBox fx:id="cbMedianBlur" layoutX="258.0" layoutY="172.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Median Blur" />
-      <CheckBox fx:id="cbGaussianBlur" layoutX="258.0" layoutY="125.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Gaussian Blur" />
-      <CheckBox fx:id="cb2dFilter" layoutX="258.0" layoutY="82.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="2D-Filter" />
-      <CheckBox fx:id="cbGamma" layoutX="57.0" layoutY="260.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Gamma" />
-      <CheckBox fx:id="cbBlurring" layoutX="56.0" layoutY="215.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Blurring" />
-      <CheckBox fx:id="cbHVFlip" layoutX="55.0" layoutY="172.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="H+V Flip" />
-      <CheckBox fx:id="cbVFlip" layoutX="55.0" layoutY="125.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="V Flip" />
-      <CheckBox fx:id="cbHFlip" layoutX="55.0" layoutY="82.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="H Flip" />
-      <Label layoutX="55.0" layoutY="45.0" text="Select the transformations:" />
-      <Separator layoutX="55.0" layoutY="306.0" prefHeight="0.0" prefWidth="595.0" />
-      <Separator layoutX="55.0" layoutY="559.0" prefHeight="0.0" prefWidth="595.0" />
-      <TextField fx:id="tbThreshold" layoutX="155.0" layoutY="574.0" prefHeight="25.0" prefWidth="53.0" />
-      <Label layoutX="66.0" layoutY="578.0" text="Threshold" />
-      <Button fx:id="bAccept" layoutX="493.0" layoutY="639.0" mnemonicParsing="false" text="Accept" />
-      <CheckBox fx:id="cbAlexnet" layoutX="444.0" layoutY="357.0" mnemonicParsing="false" onAction="#selectCbModel" text="AlexNet" />
-      <CheckBox fx:id="cbDensenet121" layoutX="257.0" layoutY="357.0" mnemonicParsing="false" onAction="#selectCbModel" text="DenseNet121" />
-      <CheckBox fx:id="cbDensenet169" layoutX="257.0" layoutY="443.0" mnemonicParsing="false" onAction="#selectCbModel" text="DenseNet169" />
-      <CheckBox fx:id="cbDensenet201" layoutX="257.0" layoutY="483.0" mnemonicParsing="false" onAction="#selectCbModel" text="DenseNet201" />
-      <CheckBox fx:id="cbResnet18" layoutX="89.0" layoutY="357.0" mnemonicParsing="false" onAction="#selectCbModel" text="ResNet18" />
-      <CheckBox fx:id="cbDensenet161" layoutX="257.0" layoutY="401.0" mnemonicParsing="false" onAction="#selectCbModel" text="DenseNet161" />
-      <CheckBox fx:id="cbResnet152" layoutX="92.0" layoutY="524.0" mnemonicParsing="false" onAction="#selectCbModel" text="ResNet152" />
-      <CheckBox fx:id="cbResnet101" layoutX="91.0" layoutY="483.0" mnemonicParsing="false" onAction="#selectCbModel" text="ResNet101" />
-      <CheckBox fx:id="cbResnet50" layoutX="89.0" layoutY="443.0" mnemonicParsing="false" onAction="#selectCbModel" text="ResNet50" />
-      <CheckBox fx:id="cbResnet34" layoutX="89.0" layoutY="401.0" mnemonicParsing="false" onAction="#selectCbModel" text="ResNet34" />
-      <Label layoutX="61.0" layoutY="322.0" text="Select the models" />
+      <CheckBox fx:id="cbEqualize" layoutX="508.0" layoutY="125.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Equalize histogram" />
+      <CheckBox fx:id="cbBiateralFilter" layoutX="305.0" layoutY="211.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Bilateral Filter" />
+      <CheckBox fx:id="cbMedianBlur" layoutX="305.0" layoutY="168.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Median Blur" />
+      <CheckBox fx:id="cbGaussianBlur" layoutX="305.0" layoutY="125.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Gaussian Blur" />
+      <CheckBox fx:id="cb2dFilter" layoutX="305.0" layoutY="82.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="2D-Filter" />
+      <CheckBox fx:id="cbGamma" layoutX="508.0" layoutY="82.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Gamma" />
+      <CheckBox fx:id="cbBlurring" layoutX="91.0" layoutY="211.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Blurring" />
+      <CheckBox fx:id="cbHVFlip" layoutX="91.0" layoutY="168.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="H+V Flip" />
+      <CheckBox fx:id="cbVFlip" layoutX="91.0" layoutY="125.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="V Flip" />
+      <CheckBox fx:id="cbHFlip" layoutX="91.0" layoutY="82.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="H Flip" />
+      <Label layoutX="70.0" layoutY="43.0" text="Select the transformations:" />
+      <Separator layoutX="68.0" layoutY="250.0" prefHeight="3.0" prefWidth="599.0" />
+      <TextField fx:id="tbThreshold" layoutX="191.0" layoutY="530.0" prefHeight="25.0" prefWidth="53.0" />
+      <Label layoutX="70.0" layoutY="534.0" text="Threshold" />
+      <Button fx:id="bAccept" layoutX="325.0" layoutY="562.0" mnemonicParsing="false" text="Accept" />
+      <CheckBox fx:id="cbAlexnet" layoutX="508.0" layoutY="300.0" mnemonicParsing="false" onAction="#selectCbModel" text="AlexNet" />
+      <CheckBox fx:id="cbDensenet121" layoutX="305.0" layoutY="300.0" mnemonicParsing="false" onAction="#selectCbModel" text="DenseNet121" />
+      <CheckBox fx:id="cbDensenet169" layoutX="305.0" layoutY="388.0" mnemonicParsing="false" onAction="#selectCbModel" text="DenseNet169" />
+      <CheckBox fx:id="cbDensenet201" layoutX="305.0" layoutY="432.0" mnemonicParsing="false" onAction="#selectCbModel" text="DenseNet201" />
+      <CheckBox fx:id="cbResnet18" layoutX="91.0" layoutY="300.0" mnemonicParsing="false" onAction="#selectCbModel" text="ResNet18" />
+      <CheckBox fx:id="cbDensenet161" layoutX="305.0" layoutY="344.0" mnemonicParsing="false" onAction="#selectCbModel" text="DenseNet161" />
+      <CheckBox fx:id="cbResnet152" layoutX="91.0" layoutY="476.0" mnemonicParsing="false" onAction="#selectCbModel" text="ResNet152" />
+      <CheckBox fx:id="cbResnet101" layoutX="91.0" layoutY="432.0" mnemonicParsing="false" onAction="#selectCbModel" text="ResNet101" />
+      <CheckBox fx:id="cbResnet50" layoutX="91.0" layoutY="388.0" mnemonicParsing="false" onAction="#selectCbModel" text="ResNet50" />
+      <CheckBox fx:id="cbResnet34" layoutX="91.0" layoutY="344.0" mnemonicParsing="false" onAction="#selectCbModel" text="ResNet34" />
+      <Label layoutX="70.0" layoutY="266.0" text="Select the models" />
+      <Separator layoutX="68.0" layoutY="511.0" prefHeight="3.0" prefWidth="599.0" />
    </children>
 </AnchorPane>

@@ -7,26 +7,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.annotationtool.presentation.ProcessesController">
+<AnchorPane id="AnchorPane" prefHeight="443.0" prefWidth="550.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.annotationtool.presentation.ProcessesController">
     <stylesheets>
         <URL value="@/styles/processes.css" />
     </stylesheets>
    <children>
-      <CheckBox fx:id="cbDD" layoutX="82.0" layoutY="97.0" mnemonicParsing="false" text="Data Distillation" />
-      <CheckBox fx:id="cbIDD" layoutX="82.0" layoutY="139.0" mnemonicParsing="false" text="Iterative Data Distillation" />
-      <CheckBox fx:id="cbMD" layoutX="82.0" layoutY="177.0" mnemonicParsing="false" text="Model Distillation" />
-      <CheckBox fx:id="cbIMD" layoutX="82.0" layoutY="221.0" mnemonicParsing="false" text="Iterative Model Distillation" />
-      <CheckBox fx:id="cbMDD" layoutX="82.0" layoutY="262.0" mnemonicParsing="false" text="Model + Data Distillation" />
-      <CheckBox fx:id="cbIMDD" layoutX="82.0" layoutY="302.0" mnemonicParsing="false" text="Iterative Model + Data Distillation" />
-      <Button fx:id="bAccept" layoutX="274.0" layoutY="342.0" mnemonicParsing="false" text="Accept" />
-      <Label layoutX="82.0" layoutY="31.0" text="Select the processes you want use" />
-      <Button fx:id="bConfDD" layoutX="350.0" layoutY="93.0" mnemonicParsing="false" onAction="#configureDD" text="Configure" />
-      <Button fx:id="bConfIDD" layoutX="350.0" layoutY="135.0" mnemonicParsing="false" onAction="#configureIDD" text="Configure" />
-      <Button fx:id="bConfMD" layoutX="350.0" layoutY="173.0" mnemonicParsing="false" onAction="#configureMD" text="Configure" />
-      <Button fx:id="bConfIMD" layoutX="350.0" layoutY="217.0" mnemonicParsing="false" onAction="#configureIMD" text="Configure" />
-      <Button fx:id="bMDD" layoutX="350.0" layoutY="258.0" mnemonicParsing="false" onAction="#configureMDD" text="Configure" />
-      <Button fx:id="bIMDD" layoutX="350.0" layoutY="298.0" mnemonicParsing="false" onAction="#configureIMDD" text="Configure" />
-      <CheckBox fx:id="cbND" layoutX="82.0" layoutY="60.0" mnemonicParsing="false" text="No Distillation" />
-      <Button fx:id="bConfND" layoutX="350.0" layoutY="56.0" mnemonicParsing="false" onAction="#configureDD" text="Configure" />
+      <CheckBox fx:id="cbDD" layoutX="82.0" layoutY="111.0" mnemonicParsing="false" text="DD: Data Distillation" />
+      <CheckBox fx:id="cbIDD" layoutX="82.0" layoutY="161.0" mnemonicParsing="false" text="IDD: Iterative Data Distillation" />
+      <CheckBox fx:id="cbMD" layoutX="82.0" layoutY="211.0" mnemonicParsing="false" text="MD: Model Distillation" />
+      <CheckBox fx:id="cbIMD" layoutX="82.0" layoutY="261.0" mnemonicParsing="false" text="IMD: Iterative Model Distillation" />
+      <CheckBox fx:id="cbMDD" layoutX="82.0" layoutY="311.0" mnemonicParsing="false" text="MDD: Model + Data Distillation" />
+      <CheckBox fx:id="cbIMDD" layoutX="82.0" layoutY="361.0" mnemonicParsing="false" text="IMDD: Iterative Model + Data Distillation" />
+      <Button fx:id="bAccept" layoutX="249.0" layoutY="400.0" mnemonicParsing="false" text="Accept" />
+      <Label layoutX="65.0" layoutY="28.0" text="Select the processes you want use" />
+      <Button fx:id="bConfDD" layoutX="365.0" layoutY="108.0" mnemonicParsing="false" onAction="#configureDD" text="Configure" />
+      <Button fx:id="bConfIDD" layoutX="365.0" layoutY="157.0" mnemonicParsing="false" onAction="#configureIDD" text="Configure" />
+      <Button fx:id="bConfMD" layoutX="365.0" layoutY="207.0" mnemonicParsing="false" onAction="#configureMD" text="Configure" />
+      <Button fx:id="bConfIMD" layoutX="365.0" layoutY="257.0" mnemonicParsing="false" onAction="#configureIMD" text="Configure" />
+      <Button fx:id="bMDD" layoutX="365.0" layoutY="307.0" mnemonicParsing="false" onAction="#configureMDD" text="Configure" />
+      <Button fx:id="bIMDD" layoutX="365.0" layoutY="357.0" mnemonicParsing="false" onAction="#configureIMDD" text="Configure" />
+      <CheckBox fx:id="cbND" layoutX="82.0" layoutY="61.0" mnemonicParsing="false" text="ND: No Distillation" />
+      <Button fx:id="bConfND" layoutX="365.0" layoutY="56.0" mnemonicParsing="false" onAction="#configureDD" text="Configure" />
    </children>
 </AnchorPane>
