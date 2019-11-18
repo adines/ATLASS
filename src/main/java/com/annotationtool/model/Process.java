@@ -15,7 +15,7 @@ public class Process {
     
     private ArrayList<String> models;
     
-    private float threshold;
+    private double threshold;
     
     public Process(String name)
     {
@@ -25,7 +25,7 @@ public class Process {
         this.threshold=0;
     }
     
-    public Process(String name, ArrayList<String> transformations, ArrayList<String> models,float threshold)
+    public Process(String name, ArrayList<String> transformations, ArrayList<String> models,double threshold)
     {
         this.name=name;
         this.transformations=transformations;
@@ -48,7 +48,7 @@ public class Process {
         return this.models;
     }
     
-    public float getThreshold()
+    public double getThreshold()
     {
         return this.threshold;
     }
@@ -63,6 +63,11 @@ public class Process {
         this.transformations.add(transformation);
     }
     
+    public void removeTransformation(String transformation)
+    {
+        this.transformations.remove(transformation);
+    }
+    
     public void setModels(ArrayList<String> models)
     {
         this.models=models;
@@ -73,9 +78,31 @@ public class Process {
         this.models.add(model);
     }
     
-    public void setThreshold(float threshold)
+    public void removeModel(String model)
+    {
+        this.models.remove(model);
+    }
+    
+    public void setThreshold(double threshold)
     {
         this.threshold=threshold;
+    }
+    
+    @Override
+    public boolean equals(Object o)
+    {
+        if(this==o)
+        {
+            return true;
+        }else{
+            if(o instanceof Process)
+            {
+                Process pr=(Process)o;
+                return pr.getName().equals(this.getName());
+            }else{
+                return false;
+            }
+        }
     }
     
 }

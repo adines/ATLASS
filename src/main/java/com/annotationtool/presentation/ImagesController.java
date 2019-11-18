@@ -23,6 +23,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -121,13 +122,12 @@ public class ImagesController implements Initializable {
                     changeImages(newValue, scrollPane.getWidth() - 20, true);
                     changeMenu.setDisable(true);
                     uncategorizeMenu.setDisable(true);
-                    if(newValue.equalsIgnoreCase("Unassigned"))
-                    {
+                    if (newValue.equalsIgnoreCase("Unassigned")) {
                         modifyButton.setDisable(true);
                         deleteButton.setDisable(true);
                         editMenu.setDisable(true);
                         deleteMenu.setDisable(true);
-                    }else{
+                    } else {
                         modifyButton.setDisable(false);
                         deleteButton.setDisable(false);
                         editMenu.setDisable(false);
@@ -378,6 +378,24 @@ public class ImagesController implements Initializable {
         if (result.get() == ButtonType.OK) {
             try {
                 logic.generateDataset();
+
+                Stage stage = new Stage();
+                FXMLLoader loader = new FXMLLoader(ProcessesController.class.getResource("/fxml/Processes.fxml"));
+                Parent root = loader.load();
+
+                ProcessesController controller = loader.getController();
+                
+                if(logic.getUnassignedImages()==null)
+                {
+                    controller.setNoUnlabelledImages();
+                }
+
+                stage.setScene(new Scene(root));
+                stage.setTitle("Processes");
+                stage.initModality(Modality.WINDOW_MODAL);
+                stage.initOwner(this.deleteButton.getScene().getWindow());
+                stage.showAndWait();
+
             } catch (ExcepcionDeAplicacion ex) {
                 Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -386,6 +404,8 @@ public class ImagesController implements Initializable {
                 alert2.setHeaderText("An unexpected error ocurred.");
                 alert2.setContentText("Unexpected error generating the dataset. Try it again.");
                 alert2.showAndWait();
+            } catch (IOException ex) {
+                Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -436,7 +456,7 @@ public class ImagesController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
             try {
-                
+
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Dataset.fxml"));
                 Parent root = fxmlLoader.load();
 
@@ -464,12 +484,11 @@ public class ImagesController implements Initializable {
             }
         }
     }
-    
-    
+
     @FXML
     void closeApp(ActionEvent event) {
         Stage stage = (Stage) lCategories.getScene().getWindow();
         stage.close();
     }
-    
+
 }

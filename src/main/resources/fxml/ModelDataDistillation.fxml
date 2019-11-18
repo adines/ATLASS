@@ -12,16 +12,16 @@
         <URL value="@/styles/modeldatadistillation.css" />
     </stylesheets>
    <children>
-      <CheckBox fx:id="selectCbTransformation" layoutX="259.0" layoutY="260.0" mnemonicParsing="false" text="Equalize histogram" />
-      <CheckBox fx:id="selectCbTransformation" layoutX="258.0" layoutY="215.0" mnemonicParsing="false" text="Bilateral Filter" />
-      <CheckBox fx:id="selectCbTransformation" layoutX="258.0" layoutY="172.0" mnemonicParsing="false" text="Median Blur" />
-      <CheckBox fx:id="selectCbTransformation" layoutX="258.0" layoutY="125.0" mnemonicParsing="false" text="Gaussian Blur" />
-      <CheckBox fx:id="selectCbTransformation" layoutX="258.0" layoutY="82.0" mnemonicParsing="false" text="2D-Filter" />
-      <CheckBox fx:id="selectCbTransformation" layoutX="57.0" layoutY="260.0" mnemonicParsing="false" text="Gamma" />
-      <CheckBox fx:id="selectCbTransformation" layoutX="56.0" layoutY="215.0" mnemonicParsing="false" text="Blurring" />
-      <CheckBox fx:id="selectCbTransformation" layoutX="55.0" layoutY="172.0" mnemonicParsing="false" text="H+V Flip" />
-      <CheckBox fx:id="selectCbTransformation" layoutX="55.0" layoutY="125.0" mnemonicParsing="false" text="V Flip" />
-      <CheckBox fx:id="selectCbTransformation" layoutX="55.0" layoutY="82.0" mnemonicParsing="false" text="H Flip" />
+      <CheckBox fx:id="cbEqualize" layoutX="259.0" layoutY="260.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Equalize histogram" />
+      <CheckBox fx:id="cbBiateralFilter" layoutX="258.0" layoutY="215.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Bilateral Filter" />
+      <CheckBox fx:id="cbMedianBlur" layoutX="258.0" layoutY="172.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Median Blur" />
+      <CheckBox fx:id="cbGaussianBlur" layoutX="258.0" layoutY="125.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Gaussian Blur" />
+      <CheckBox fx:id="cb2dFilter" layoutX="258.0" layoutY="82.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="2D-Filter" />
+      <CheckBox fx:id="cbGamma" layoutX="57.0" layoutY="260.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Gamma" />
+      <CheckBox fx:id="cbBlurring" layoutX="56.0" layoutY="215.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="Blurring" />
+      <CheckBox fx:id="cbHVFlip" layoutX="55.0" layoutY="172.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="H+V Flip" />
+      <CheckBox fx:id="cbVFlip" layoutX="55.0" layoutY="125.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="V Flip" />
+      <CheckBox fx:id="cbHFlip" layoutX="55.0" layoutY="82.0" mnemonicParsing="false" onAction="#selectCbTransformation" text="H Flip" />
       <Label layoutX="55.0" layoutY="45.0" text="Select the transformations:" />
       <Separator layoutX="55.0" layoutY="306.0" prefHeight="0.0" prefWidth="595.0" />
       <Separator layoutX="55.0" layoutY="559.0" prefHeight="0.0" prefWidth="595.0" />

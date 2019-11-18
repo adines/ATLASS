@@ -8,7 +8,10 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import com.annotationtool.model.Process;
 import java.util.ArrayList;
+import java.util.List;
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -18,10 +21,15 @@ import javafx.event.ActionEvent;
 public class DataDistillationController implements Initializable {
 
     @FXML
-    private TextField tbThresField;
+    private TextField tbThreshold;
+    
+    @FXML
+    private AnchorPane pane;
+    
+    private Process process;
     
     
-    private ArrayList<String> transformationsSelected;
+//    private ArrayList<String> transformationsSelected;
     
     
     /**
@@ -30,7 +38,28 @@ public class DataDistillationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }  
+    }
+    
+    public void initProcess(Process process)
+    {
+        this.process=process;
+        List<String> transformations=this.process.getTransformations();
+        for(Node node:pane.getChildren())
+        {
+            if(node instanceof CheckBox)
+            {
+                CheckBox cb=(CheckBox)node;
+                if(transformations.contains(cb.getText()))
+                {
+                    cb.setSelected(true);
+                }else{
+                    cb.setSelected(false);
+                }
+            }
+        }
+        
+        this.tbThreshold.setText(String.valueOf(this.process.getThreshold()));
+    }
     
     @FXML
     void selectCb(ActionEvent event)
@@ -40,32 +69,22 @@ public class DataDistillationController implements Initializable {
             CheckBox cb=(CheckBox) event.getSource();
             if(cb.isSelected())
             {
-                transformationsSelected.add(cb.getText());
+                this.process.addTransformation(cb.getText());
             }else{
-                transformationsSelected.remove(cb.getText());
+                this.process.removeTransformation(cb.getText());
             }
         }
     }
     
     public void setNoIterative()
     {
-        tbThresField.setDisable(true);
+        tbThreshold.setDisable(true);
     }
     
     public Process getProcess()
-    {
-        Process process=new Process("Data Distillation");
-        
-        if(tbThresField.getText()==null)
-        {
-            process.setThreshold(0);
-        }else{
-            process.setThreshold(Float.valueOf(tbThresField.getText()));
-        } 
-        process.setTransformations(transformationsSelected);
-        
-        
-        return process;
+    {      
+        process.setThreshold(Double.valueOf(tbThreshold.getText()));
+        return this.process;
     }
     
 }
