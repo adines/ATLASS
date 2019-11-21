@@ -53,11 +53,12 @@ We have also shown the benefits of using our semi-supervised learning method in 
 Best accuracy using the whole dataset (4125 images): 96.16%
 
 Results using part of the dataset and applying our method with different strategies. 
+
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
-  |25 per class | 0.8348 | 0.8688 | 0.8906 | 0.8833 | \textbf{0.9167 | 0.8819 | 0.9130|
-  |50 per class | 0.8905 | 0.9174 | \textbf{0.9355 | 0.9341 | 0.9341 | 0.9261 | 0.9304|
-  |75 per class | 0.9137 | 0.9282 | 0.9399 | 0.9413 | **0.9514** | 0.9399 | 0.9500|
+  25 per class | 0.8348 | 0.8688 | 0.8906 | 0.8833 | 0.9167 | 0.8819 | 0.9130|
+  50 per class | 0.8905 | 0.9174 | 0.9355 | 0.9341 | 0.9341 | 0.9261 | 0.9304|
+  75 per class | 0.9137 | 0.9282 | 0.9399 | 0.9413 | **0.9514** | 0.9399 | 0.9500|
 
 
 #### [Kvasir dataset](http://doi.acm.org/10.1145/3083187.3083212)
