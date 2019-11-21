@@ -9,12 +9,12 @@ annotated datasets.
 
 The workflow of our method is summarised in the following figure, and is described in detail in a [draft paper](assets/draft.pdf).
 
-![workflow](assets/worflow.jpg)
+![workflow](assets/workflow.jpg)
 
 ## Notebooks
 
 The workflow can be executed using with a user's dataset by adapting a [Colab notebook](). Such a notebook can be run also locally 
-provided that the user has installed the Python packages indicated in the [requirements file](assets/requiremens).
+provided that the user has installed the Python packages indicated in the [requirements file](assets/requirementsFastAI.txt).
 
 ## Application
 
