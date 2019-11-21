@@ -50,7 +50,7 @@ We have also shown the benefits of using our semi-supervised learning method in 
 
 #### [Plant Seedlings dataset](https://arxiv.org/abs/1711.05458)
 
-Best accuracy using the whole dataset (4125 images): 96.16%
+Best accuracy using the whole training set (4125 images): 0.9616
 
 Results using part of the dataset and applying our method with different strategies. 
 
@@ -63,7 +63,29 @@ Results using part of the dataset and applying our method with different strateg
 
 #### [Kvasir dataset](http://doi.acm.org/10.1145/3083187.3083212)
 
+Best accuracy using the whole training set (6000 images): 0.9340
+
+Results using part of the dataset and applying our method with different strategies. 
+
+  | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
+|------|------|------|------|------|------|------|------|
+ 25 per class | 0.7975 | 0.8500 | 0.8850 | 0.8800 | 0.8925 | 0.8845 | 0.8970|
+ 50 per class | 0.8430 | 0.8665 | 0.8855 | 0.8880 | 0.9025 | 0.8880 | 0.9010|
+ 75 per class | 0.8730 | 0.9040 | 0.9165 | 0.9050 | 0.9155 | 0.9070 | **0.9170**|
+
+
 #### [ISIC dataset](https://arxiv.org/abs/1902.03368)
 
+Best accuracy using the whole training set (1125 images): 0.8724
 
-A java application that allows users to annotate datasets and creates classification models automatically.
+Results using part of the dataset and applying our method with different strategies. 
+
+  | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
+|------|------|------|------|------|------|------|------|
+ 25 per class | 0.7473 | 0.7765 | 0.7819 | 0.7845 | 0.8377 | 0.8005 | 0.8337 |
+ 50 per class| 0.8111 | 0.8111  | 0.8404 | 0.8218 | 0.8377 | 0.8297 | 0.8510 |
+ 75 per class| 0.8404 | 0.8324 | 0.8590 | 0.8537 | **0.8776** | 0.8430 | 0.8723|
+
+
+
+
