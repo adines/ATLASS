@@ -50,6 +50,8 @@ We have also shown the benefits of using our semi-supervised learning method in 
 
 #### [Plant Seedlings dataset](https://arxiv.org/abs/1711.05458)
 
+Size of dataset: 6000 images. Number of classes: 12.
+
 Best accuracy using the whole training set (4125 images): 0.9616
 
 Results using part of the dataset and applying our method with different strategies. 
@@ -63,6 +65,8 @@ Results using part of the dataset and applying our method with different strateg
 
 #### [Kvasir dataset](http://doi.acm.org/10.1145/3083187.3083212)
 
+Size of dataset: 8000 images. Number of classes: 8.
+
 Best accuracy using the whole training set (6000 images): 0.9340
 
 Results using part of the dataset and applying our method with different strategies. 
@@ -75,6 +79,8 @@ Results using part of the dataset and applying our method with different strateg
 
 
 #### [ISIC dataset](https://arxiv.org/abs/1902.03368)
+
+Size of dataset: 1500 images. Number of classes: 7.
 
 Best accuracy using the whole training set (1125 images): 0.8724
 
