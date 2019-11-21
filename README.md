@@ -7,7 +7,7 @@ annotated datasets.
 
 ## Workflow
 
-The workflow of our method is summarised in the following figure, and is described in detail in a [draft paper](assets/draft.pdf).
+The workflow of our method is summarised in the following figure, and it is described in detail in a [draft paper](assets/draft.pdf).
 
 ![workflow](assets/workflow.jpg)
 
