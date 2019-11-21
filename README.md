@@ -43,7 +43,7 @@ Our method ResNet50 | 1.00 | 0.91 | 0.98 | 0.91 | 0.94 | 0.64|
 Our method ResNet101 | 1.00 | 0.95 | 0.97 | 0.8 | 0.96 | 0.74|
 Our method DenseNet121 | 1.00 | 0.92 | 0.96 | 0.93 | 0.96 | 0.62|
 
-Notebooks for the experiments using our method:
+Colab notebooks for the experiments using our method:
 - [Binucleate](https://colab.research.google.com/drive/1PHY1fLevi040LJKQk73xnJnNfMsSvvV_).
 - [Cho](https://colab.research.google.com/drive/1rgz5U2FZYZpsuK0fBWW1VfetVxWt9FXq).
 - [Hela](https://colab.research.google.com/drive/1ffZXAlOCwhPhIxbiFUsWS23hl19EA9rd).
