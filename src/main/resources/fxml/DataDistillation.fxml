@@ -19,7 +19,7 @@
       <CheckBox fx:id="cbBlurring" layoutX="55.0" layoutY="210.0" mnemonicParsing="false" onAction="#selectCb" text="Blurring" />
       <CheckBox fx:id="cbGamma" layoutX="55.0" layoutY="254.0" mnemonicParsing="false" onAction="#selectCb" text="Gamma" />
       <Separator layoutX="35.0" layoutY="287.0" prefHeight="5.0" prefWidth="537.0" />
-      <Button fx:id="bAccept" layoutX="286.0" layoutY="361.0" mnemonicParsing="false" text="Accept" />
+      <Button fx:id="bAccept" onAction="#accept" layoutX="286.0" layoutY="361.0" mnemonicParsing="false" text="Accept" />
       <Label layoutX="44.0" layoutY="312.0" text="Threshold" />
       <TextField fx:id="tbThreshold" layoutX="150.0" layoutY="308.0" prefHeight="25.0" prefWidth="53.0" />
       <CheckBox fx:id="cbFilter" layoutX="267.0" layoutY="72.0" mnemonicParsing="false" onAction="#selectCb" text="2D-Filter" />

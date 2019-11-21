@@ -23,7 +23,7 @@
       <CheckBox fx:id="cbDensenet169" layoutX="232.0" layoutY="151.0" mnemonicParsing="false" onAction="#selectCb" text="DenseNet169" />
       <CheckBox fx:id="cbDensenet121" layoutX="232.0" layoutY="63.0" mnemonicParsing="false" onAction="#selectCb" text="DenseNet121" />
       <CheckBox fx:id="cbAlexnet" layoutX="419.0" layoutY="63.0" mnemonicParsing="false" onAction="#selectCb" text="AlexNet" />
-      <Button fx:id="bAccept" layoutX="268.0" layoutY="349.0" mnemonicParsing="false" text="Accept" />
+      <Button fx:id="bAccept" onAction="#accept" layoutX="268.0" layoutY="349.0" mnemonicParsing="false" text="Accept" />
       <TextField fx:id="tbThreshold" layoutX="158.0" layoutY="295.0" prefHeight="25.0" prefWidth="53.0" />
       <Label layoutX="53.0" layoutY="299.0" text="Threshold" />
       <Separator layoutX="38.0" layoutY="272.0" prefHeight="5.0" prefWidth="537.0" />

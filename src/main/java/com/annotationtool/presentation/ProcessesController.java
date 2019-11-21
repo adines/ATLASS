@@ -33,7 +33,7 @@ public class ProcessesController implements Initializable {
 
     @FXML
     private CheckBox cbND;
-    
+
     @FXML
     private CheckBox cbDD;
 
@@ -81,28 +81,63 @@ public class ProcessesController implements Initializable {
 
         //No distillation por defecto
         Process ndProcess = new Process("ND");
-        ndProcess.addModel("ResNet34");
         ndProcess.addModel("ResNet50");
 
         //Data Distillation por defecto
         Process ddProcess = new Process("DD");
+        ddProcess.addTransformation("H Flip");
+        ddProcess.addTransformation("V Flip");
+        ddProcess.addTransformation("H+V Flip");
+        ddProcess.addTransformation("Blurring");
+        ddProcess.addTransformation("Gamma");
 
         //Iterative data distillation por defecto
         Process iddProcess = new Process("IDD");
+        iddProcess.addTransformation("H Flip");
+        iddProcess.addTransformation("V Flip");
+        iddProcess.addTransformation("H+V Flip");
+        iddProcess.addTransformation("Blurring");
+        iddProcess.addTransformation("Gamma");
         iddProcess.setThreshold(0.8);
 
         //Model distillation por defecto
         Process mdProcess = new Process("MD");
+        mdProcess.addModel("ResNet34");
+        mdProcess.addModel("ResNet50");
+        mdProcess.addModel("ResNet101");
+        mdProcess.addModel("DenseNet121");
 
         //Iterative model distillation por defecto
         Process imdProcess = new Process("IMD");
+        imdProcess.addModel("ResNet34");
+        imdProcess.addModel("ResNet50");
+        imdProcess.addModel("ResNet101");
+        imdProcess.addModel("DenseNet121");
         imdProcess.setThreshold(0.8);
 
         //Model data distillation por defecto
         Process mddProcess = new Process("MDD");
+        mddProcess.addModel("ResNet34");
+        mddProcess.addModel("ResNet50");
+        mddProcess.addModel("ResNet101");
+        mddProcess.addModel("DenseNet121");
+        mddProcess.addTransformation("H Flip");
+        mddProcess.addTransformation("V Flip");
+        mddProcess.addTransformation("H+V Flip");
+        mddProcess.addTransformation("Blurring");
+        mddProcess.addTransformation("Gamma");
 
         //Iterative model data distillation por defecto
         Process imddProcess = new Process("IMDD");
+        imddProcess.addModel("ResNet34");
+        imddProcess.addModel("ResNet50");
+        imddProcess.addModel("ResNet101");
+        imddProcess.addModel("DenseNet121");
+        imddProcess.addTransformation("H Flip");
+        imddProcess.addTransformation("V Flip");
+        imddProcess.addTransformation("H+V Flip");
+        imddProcess.addTransformation("Blurring");
+        imddProcess.addTransformation("Gamma");
         imddProcess.setThreshold(0.8);
 
         processesNoSelected.add(ndProcess);
@@ -130,67 +165,63 @@ public class ProcessesController implements Initializable {
         bConfIMDD.setDisable(true);
     }
 
-    
     @FXML
-    void selectCb(ActionEvent event)
-    {
-        if(event.getSource() instanceof CheckBox)
-        {
-            CheckBox cb=(CheckBox) event.getSource();
-            String name=cb.getText();
-            name=name.split(":")[0];
-            if(cb.isSelected())
-            {
-                int i=processesNoSelected.indexOf(new Process(name));
-                Process pr=processesNoSelected.get(i);
+    void selectCb(ActionEvent event) {
+        if (event.getSource() instanceof CheckBox) {
+            CheckBox cb = (CheckBox) event.getSource();
+            String name = cb.getText();
+            name = name.split(":")[0];
+            if (cb.isSelected()) {
+                int i = processesNoSelected.indexOf(new Process(name));
+                Process pr = processesNoSelected.get(i);
                 processesNoSelected.remove(pr);
                 processesSelected.add(pr);
-            }else{
-                int i=processesSelected.indexOf(new Process(name));
-                Process pr=processesSelected.get(i);
+            } else {
+                int i = processesSelected.indexOf(new Process(name));
+                Process pr = processesSelected.get(i);
                 processesSelected.remove(pr);
                 processesNoSelected.add(pr);
             }
         }
     }
-    
+
     @FXML
     void configureND(ActionEvent event) {
 
         try {
             Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(DataDistillationController.class.getResource("/fxml/DataDistillation.fxml"));
+            FXMLLoader loader = new FXMLLoader(NoDistillationController.class.getResource("/fxml/NoDistillation.fxml"));
             Parent root = loader.load();
-            DataDistillationController controller = loader.getController();
+            NoDistillationController controller = loader.getController();
 
-            controller.setNoIterative();
-            
             if (cbND.isSelected()) {
                 controller.initProcess(processesSelected.get(processesSelected.lastIndexOf(new Process("ND"))));
             } else {
                 controller.initProcess(processesNoSelected.get(processesNoSelected.lastIndexOf(new Process("ND"))));
             }
-            
+
             stage.setScene(new Scene(root));
             stage.setTitle("No Distillation configuration");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node) event.getSource()).getScene().getWindow());
             stage.showAndWait();
-            
-            Process pr=controller.getProcess();
-            if (cbND.isSelected()) {
-                processesSelected.remove(pr);
-                processesSelected.add(pr);
-            } else {
-                processesNoSelected.remove(pr);
-                processesNoSelected.add(pr);
+
+            if (controller.getAccepted()) {
+                Process pr = controller.getProcess();
+                if (cbND.isSelected()) {
+                    processesSelected.remove(pr);
+                    processesSelected.add(pr);
+                } else {
+                    processesNoSelected.remove(pr);
+                    processesNoSelected.add(pr);
+                }
             }
+
         } catch (IOException ex) {
             Logger.getLogger(ProcessesController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+
     @FXML
     void configureDD(ActionEvent event) {
 
@@ -201,28 +232,30 @@ public class ProcessesController implements Initializable {
             DataDistillationController controller = loader.getController();
 
             controller.setNoIterative();
-            
+
             if (cbDD.isSelected()) {
                 controller.initProcess(processesSelected.get(processesSelected.lastIndexOf(new Process("DD"))));
             } else {
                 controller.initProcess(processesNoSelected.get(processesNoSelected.lastIndexOf(new Process("DD"))));
             }
-            
+
             stage.setScene(new Scene(root));
             stage.setTitle("Data Distillation configuration");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node) event.getSource()).getScene().getWindow());
             stage.showAndWait();
-            
-            Process pr=controller.getProcess();
-            if (cbDD.isSelected()) {
-                processesSelected.remove(pr);
-                processesSelected.add(pr);
-            } else {
-                processesNoSelected.remove(pr);
-                processesNoSelected.add(pr);
+
+            Process pr = controller.getProcess();
+            if (controller.getAccepted()) {
+                if (cbDD.isSelected()) {
+                    processesSelected.remove(pr);
+                    processesSelected.add(pr);
+                } else {
+                    processesNoSelected.remove(pr);
+                    processesNoSelected.add(pr);
+                }
             }
-            
+
         } catch (IOException ex) {
             Logger.getLogger(ProcessesController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -236,28 +269,30 @@ public class ProcessesController implements Initializable {
             FXMLLoader loader = new FXMLLoader(DataDistillationController.class.getResource("/fxml/DataDistillation.fxml"));
             Parent root = loader.load();
             DataDistillationController controller = loader.getController();
-            
-            if (cbDD.isSelected()) {
+
+            if (cbIDD.isSelected()) {
                 controller.initProcess(processesSelected.get(processesSelected.lastIndexOf(new Process("IDD"))));
             } else {
                 controller.initProcess(processesNoSelected.get(processesNoSelected.lastIndexOf(new Process("IDD"))));
             }
-            
+
             stage.setScene(new Scene(root));
             stage.setTitle("Iterative Data Distillation configuration");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node) event.getSource()).getScene().getWindow());
             stage.showAndWait();
-            
-            Process pr=controller.getProcess();
-            if (cbIDD.isSelected()) {
-                processesSelected.remove(pr);
-                processesSelected.add(pr);
-            } else {
-                processesNoSelected.remove(pr);
-                processesNoSelected.add(pr);
+
+            Process pr = controller.getProcess();
+            if (controller.getAccepted()) {
+                if (cbIDD.isSelected()) {
+                    processesSelected.remove(pr);
+                    processesSelected.add(pr);
+                } else {
+                    processesNoSelected.remove(pr);
+                    processesNoSelected.add(pr);
+                }
             }
-            
+
         } catch (IOException ex) {
             Logger.getLogger(ProcessesController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -284,16 +319,18 @@ public class ProcessesController implements Initializable {
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node) event.getSource()).getScene().getWindow());
             stage.showAndWait();
-            
-            Process pr=controller.getProcess();
-            if (cbMD.isSelected()) {
-                processesSelected.remove(pr);
-                processesSelected.add(pr);
-            } else {
-                processesNoSelected.remove(pr);
-                processesNoSelected.add(pr);
+
+            Process pr = controller.getProcess();
+            if (controller.getAccepted()) {
+                if (cbMD.isSelected()) {
+                    processesSelected.remove(pr);
+                    processesSelected.add(pr);
+                } else {
+                    processesNoSelected.remove(pr);
+                    processesNoSelected.add(pr);
+                }
             }
-            
+
         } catch (IOException ex) {
             Logger.getLogger(ProcessesController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -319,16 +356,18 @@ public class ProcessesController implements Initializable {
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node) event.getSource()).getScene().getWindow());
             stage.showAndWait();
-            
-            Process pr=controller.getProcess();
-            if (cbIMD.isSelected()) {
-                processesSelected.remove(pr);
-                processesSelected.add(pr);
-            } else {
-                processesNoSelected.remove(pr);
-                processesNoSelected.add(pr);
+
+            Process pr = controller.getProcess();
+            if (controller.getAccepted()) {
+                if (cbIMD.isSelected()) {
+                    processesSelected.remove(pr);
+                    processesSelected.add(pr);
+                } else {
+                    processesNoSelected.remove(pr);
+                    processesNoSelected.add(pr);
+                }
             }
-            
+
         } catch (IOException ex) {
             Logger.getLogger(ProcessesController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -344,11 +383,10 @@ public class ProcessesController implements Initializable {
 
             ModelDataDistillationController controller = loader.getController();
             controller.setNoIterative();
-            
-            if(cbMDD.isSelected())
-            {
-                 controller.initProcess(processesSelected.get(processesSelected.lastIndexOf(new Process("MDD"))));
-            }else{
+
+            if (cbMDD.isSelected()) {
+                controller.initProcess(processesSelected.get(processesSelected.lastIndexOf(new Process("MDD"))));
+            } else {
                 controller.initProcess(processesNoSelected.get(processesNoSelected.lastIndexOf(new Process("MDD"))));
             }
 
@@ -357,16 +395,18 @@ public class ProcessesController implements Initializable {
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node) event.getSource()).getScene().getWindow());
             stage.showAndWait();
-            
-            Process pr=controller.getProcess();
-            if (cbMDD.isSelected()) {
-                processesSelected.remove(pr);
-                processesSelected.add(pr);
-            } else {
-                processesNoSelected.remove(pr);
-                processesNoSelected.add(pr);
+
+            Process pr = controller.getProcess();
+            if (controller.getAccepted()) {
+                if (cbMDD.isSelected()) {
+                    processesSelected.remove(pr);
+                    processesSelected.add(pr);
+                } else {
+                    processesNoSelected.remove(pr);
+                    processesNoSelected.add(pr);
+                }
             }
-            
+
         } catch (IOException ex) {
             Logger.getLogger(ProcessesController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -381,11 +421,10 @@ public class ProcessesController implements Initializable {
             Parent root = loader.load();
 
             ModelDataDistillationController controller = loader.getController();
-            
-            if(cbMDD.isSelected())
-            {
-                 controller.initProcess(processesSelected.get(processesSelected.lastIndexOf(new Process("IMDD"))));
-            }else{
+
+            if (cbIMDD.isSelected()) {
+                controller.initProcess(processesSelected.get(processesSelected.lastIndexOf(new Process("IMDD"))));
+            } else {
                 controller.initProcess(processesNoSelected.get(processesNoSelected.lastIndexOf(new Process("IMDD"))));
             }
 
@@ -394,16 +433,18 @@ public class ProcessesController implements Initializable {
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node) event.getSource()).getScene().getWindow());
             stage.showAndWait();
-            
-            Process pr=controller.getProcess();
-            if (cbIMDD.isSelected()) {
-                processesSelected.remove(pr);
-                processesSelected.add(pr);
-            } else {
-                processesNoSelected.remove(pr);
-                processesNoSelected.add(pr);
+
+            Process pr = controller.getProcess();
+            if (controller.getAccepted()) {
+                if (cbIMDD.isSelected()) {
+                    processesSelected.remove(pr);
+                    processesSelected.add(pr);
+                } else {
+                    processesNoSelected.remove(pr);
+                    processesNoSelected.add(pr);
+                }
             }
-            
+
         } catch (IOException ex) {
             Logger.getLogger(ProcessesController.class.getName()).log(Level.SEVERE, null, ex);
         }

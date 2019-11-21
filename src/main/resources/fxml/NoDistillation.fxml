@@ -7,12 +7,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.annotationtool.presentation.NoDistillationController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.annotationtool.presentation.NoDistillationController">
     <stylesheets>
         <URL value="@/styles/nodistillation.css" />
     </stylesheets>
    <children>
-      <Button fx:id="bAccept" layoutX="262.0" layoutY="324.0" mnemonicParsing="false" text="Accept" />
+      <Button fx:id="bAccept" onAction="#accept" layoutX="262.0" layoutY="324.0" mnemonicParsing="false" text="Accept" />
       <CheckBox fx:id="cbAlexnet" layoutX="429.0" layoutY="88.0" mnemonicParsing="false" onAction="#selectCb" text="AlexNet" />
       <CheckBox fx:id="cbDensenet121" layoutX="242.0" layoutY="88.0" mnemonicParsing="false" onAction="#selectCb" text="DenseNet121" />
       <CheckBox fx:id="cbDensenet169" layoutX="242.0" layoutY="176.0" mnemonicParsing="false" onAction="#selectCb" text="DenseNet169" />
