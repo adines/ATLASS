@@ -8,7 +8,7 @@ import com.annotationtool.persistence.Persistence;
 import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import com.annotationtool.model.Process;
 
 /**
  * Class that represents the logic layer of the application.
@@ -173,20 +173,7 @@ public class Logic {
      * @throws com.annotationtool.model.ExcepcionDeAplicacion
      */
     public void generateDataset() throws ExcepcionDeAplicacion {
-        JSONParser parser = new JSONParser();
-
         persistence.generateDataset();
-//        try (Reader reader = new FileReader("")) {
-//            JSONObject jsonobject = (JSONObject) parser.parse(reader);
-
-        //Generar archivo ipynb
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(Logic.class.getName()).log(Level.SEVERE, null, ex);
-//            throw new ExcepcionDeAplicacion(ex);
-//        } catch (IOException | ParseException ex) {
-//            Logger.getLogger(Logic.class.getName()).log(Level.SEVERE, null, ex);
-//            throw new ExcepcionDeAplicacion(ex);
-//        }
     }
     
     private void createIpynb()
@@ -251,6 +238,75 @@ public class Logic {
         
         
     }
+    
+    
+    private void createProcessND(Process process)
+    {
+        
+    }
+    
+    
+    private void createProcessDD(Process process)
+    {
+        
+    }
+    
+    private void createProcessIDD(Process process)
+    {
+        
+    }
 
+    
+    private void createProcessMD(Process process)
+    {
+        
+    }
+    
+    private void createProcessIMD(Process process)
+    {
+        
+    }
+    
+    private void createProcessMDD(Process process)
+    {
+        
+    }
+    
+    private void createProcessIMDD(Process process)
+    {
+        
+    }
+    
+    
+    public void generateProcessIpynb(List<Process> processes)
+    {
+        for(Process process: processes)
+        {
+            switch(process.getName())
+            {
+                case "ND":
+                    createProcessND(process);
+                    break;
+                case "DD":
+                    createProcessDD(process);
+                    break;
+                case "IDD":
+                    createProcessIDD(process);
+                    break;
+                case "MD":
+                    createProcessMD(process);
+                    break;
+                case "IMD":
+                    createProcessIMD(process);
+                    break;
+                case "MDD":
+                    createProcessMDD(process);
+                    break;
+                case "IMDD":
+                    createProcessIMDD(process);
+                    break;          
+            }
+        }
+    }
 
 }

@@ -41,6 +41,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.commons.lang3.StringUtils;
+import com.annotationtool.model.Process;
 
 /**
  * FXML Controller class
@@ -377,7 +378,7 @@ public class ImagesController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
             try {
-                logic.generateDataset();
+                
 
                 Stage stage = new Stage();
                 FXMLLoader loader = new FXMLLoader(ProcessesController.class.getResource("/fxml/Processes.fxml"));
@@ -395,6 +396,12 @@ public class ImagesController implements Initializable {
                 stage.initModality(Modality.WINDOW_MODAL);
                 stage.initOwner(this.deleteButton.getScene().getWindow());
                 stage.showAndWait();
+                if(controller.getAccepted())
+                {
+                    logic.generateDataset();
+                    List<Process> processes=controller.getProcesses();
+                    //Hacer metodo para crear cada uno de los cuadernos
+                }
 
             } catch (ExcepcionDeAplicacion ex) {
                 Logger.getLogger(ImagesController.class.getName()).log(Level.SEVERE, null, ex);

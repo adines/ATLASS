@@ -18,7 +18,7 @@
       <CheckBox fx:id="cbIMD" layoutX="82.0" layoutY="261.0" mnemonicParsing="false" onAction="#selectCb" text="IMD: Iterative Model Distillation" />
       <CheckBox fx:id="cbMDD" layoutX="82.0" layoutY="311.0" mnemonicParsing="false" onAction="#selectCb" text="MDD: Model + Data Distillation" />
       <CheckBox fx:id="cbIMDD" layoutX="82.0" layoutY="361.0" mnemonicParsing="false" onAction="#selectCb" text="IMDD: Iterative Model + Data Distillation" />
-      <Button fx:id="bAccept" layoutX="249.0" layoutY="400.0" mnemonicParsing="false" text="Accept" />
+      <Button fx:id="bAccept" layoutX="249.0" layoutY="400.0" mnemonicParsing="false" onAction="#accept" text="Accept" />
       <Label layoutX="65.0" layoutY="28.0" text="Select the processes you want use" />
       <Button fx:id="bConfDD" layoutX="365.0" layoutY="108.0" mnemonicParsing="false" onAction="#configureDD" text="Configure" />
       <Button fx:id="bConfIDD" layoutX="365.0" layoutY="157.0" mnemonicParsing="false" onAction="#configureIDD" text="Configure" />

@@ -19,6 +19,8 @@ import javafx.scene.control.CheckBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import com.annotationtool.model.Process;
+import javafx.scene.control.Alert;
+import org.bytedeco.opencv.presets.opencv_core;
 
 /**
  * FXML Controller class
@@ -69,6 +71,8 @@ public class ProcessesController implements Initializable {
 
     @FXML
     private Button bConfIMDD;
+    
+    private boolean accepted;
 
     /**
      * Initializes the controller class.
@@ -76,6 +80,7 @@ public class ProcessesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        accepted=false;
         processesNoSelected = new ArrayList<Process>();
         processesSelected = new ArrayList<Process>();
 
@@ -448,6 +453,32 @@ public class ProcessesController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(ProcessesController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    
+    @FXML
+    void accept(ActionEvent event)
+    {
+        if(processesSelected.isEmpty())
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid selection");
+            alert.setContentText("You must select at least one option.");
+            alert.showAndWait();
+        }else{
+            accepted=true;
+        }
+    }
+    
+    public boolean getAccepted()
+    {
+        return this.accepted;
+    }
+    
+    public List<Process> getProcesses()
+    {
+        return this.processesSelected;
     }
 
 }
