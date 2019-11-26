@@ -164,7 +164,6 @@ public class FolderManager implements Persistence {
         try {
             zipIt("dataset.zip");
 
-            //¿Crear archivo Ipynb?
         } catch (IOException ex) {
             Logger.getLogger(FolderManager.class.getName()).log(Level.SEVERE, null, ex);
             throw new ExcepcionDeAplicacion(ex);

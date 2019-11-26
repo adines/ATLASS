@@ -378,16 +378,14 @@ public class ImagesController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
             try {
-                
 
                 Stage stage = new Stage();
                 FXMLLoader loader = new FXMLLoader(ProcessesController.class.getResource("/fxml/Processes.fxml"));
                 Parent root = loader.load();
 
                 ProcessesController controller = loader.getController();
-                
-                if(logic.getUnassignedImages()==null)
-                {
+
+                if (logic.getUnassignedImages() == null) {
                     controller.setNoUnlabelledImages();
                 }
 
@@ -396,11 +394,15 @@ public class ImagesController implements Initializable {
                 stage.initModality(Modality.WINDOW_MODAL);
                 stage.initOwner(this.deleteButton.getScene().getWindow());
                 stage.showAndWait();
-                if(controller.getAccepted())
-                {
+                if (controller.getAccepted()) {
                     logic.generateDataset();
-                    List<Process> processes=controller.getProcesses();
-                    //Hacer metodo para crear cada uno de los cuadernos
+                    List<Process> processes = controller.getProcesses();
+                    logic.generateProcessIpynb(processes);
+                    Alert alert2 = new Alert(AlertType.INFORMATION);
+                    alert2.setTitle("Dataset created");
+                    alert2.setHeaderText("The dataset has been createad.");
+                    alert2.setContentText("The dataset and the corresponding ipynb files have been created.");
+                    alert2.showAndWait();
                 }
 
             } catch (ExcepcionDeAplicacion ex) {

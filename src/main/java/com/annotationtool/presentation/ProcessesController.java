@@ -71,7 +71,7 @@ public class ProcessesController implements Initializable {
 
     @FXML
     private Button bConfIMDD;
-    
+
     private boolean accepted;
 
     /**
@@ -80,7 +80,7 @@ public class ProcessesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        accepted=false;
+        accepted = false;
         processesNoSelected = new ArrayList<Process>();
         processesSelected = new ArrayList<Process>();
 
@@ -454,30 +454,27 @@ public class ProcessesController implements Initializable {
             Logger.getLogger(ProcessesController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+
     @FXML
-    void accept(ActionEvent event)
-    {
-        if(processesSelected.isEmpty())
-        {
+    void accept(ActionEvent event) {
+        if (processesSelected.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Invalid selection");
             alert.setContentText("You must select at least one option.");
             alert.showAndWait();
-        }else{
-            accepted=true;
+        } else {
+            this.accepted = true;
+            Stage stage = (Stage) this.bConfDD.getScene().getWindow();
+            stage.close();
         }
     }
-    
-    public boolean getAccepted()
-    {
+
+    public boolean getAccepted() {
         return this.accepted;
     }
-    
-    public List<Process> getProcesses()
-    {
+
+    public List<Process> getProcesses() {
         return this.processesSelected;
     }
 
