@@ -232,9 +232,9 @@ public class ProcessesController implements Initializable {
 
         try {
             Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(DataDistillationController.class.getResource("/fxml/DataDistillation.fxml"));
+            FXMLLoader loader = new FXMLLoader(ModelDataDistillationController.class.getResource("/fxml/ModelDataDistillation.fxml"));
             Parent root = loader.load();
-            DataDistillationController controller = loader.getController();
+            ModelDataDistillationController controller = loader.getController();
 
             controller.setNoIterative();
 
@@ -271,9 +271,9 @@ public class ProcessesController implements Initializable {
 
         try {
             Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(DataDistillationController.class.getResource("/fxml/DataDistillation.fxml"));
+            FXMLLoader loader = new FXMLLoader(ModelDataDistillationController.class.getResource("/fxml/ModelDataDistillation.fxml"));
             Parent root = loader.load();
-            DataDistillationController controller = loader.getController();
+            ModelDataDistillationController controller = loader.getController();
 
             if (cbIDD.isSelected()) {
                 controller.initProcess(processesSelected.get(processesSelected.lastIndexOf(new Process("IDD"))));
