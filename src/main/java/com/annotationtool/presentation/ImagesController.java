@@ -385,7 +385,7 @@ public class ImagesController implements Initializable {
 
                 ProcessesController controller = loader.getController();
 
-                if (logic.getUnassignedImages() == null) {
+                if (logic.getUnassignedImages().isEmpty()) {
                     controller.setNoUnlabelledImages();
                 }
 

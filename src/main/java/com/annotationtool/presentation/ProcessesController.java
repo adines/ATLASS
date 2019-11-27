@@ -95,6 +95,7 @@ public class ProcessesController implements Initializable {
         ddProcess.addTransformation("H+V Flip");
         ddProcess.addTransformation("Blurring");
         ddProcess.addTransformation("Gamma");
+        ddProcess.addModel("ResNet50");
 
         //Iterative data distillation por defecto
         Process iddProcess = new Process("IDD");
@@ -103,6 +104,7 @@ public class ProcessesController implements Initializable {
         iddProcess.addTransformation("H+V Flip");
         iddProcess.addTransformation("Blurring");
         iddProcess.addTransformation("Gamma");
+        iddProcess.addModel("ResNet50");
         iddProcess.setThreshold(0.8);
 
         //Model distillation por defecto

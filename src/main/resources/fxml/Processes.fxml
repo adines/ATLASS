@@ -24,8 +24,8 @@
       <Button fx:id="bConfIDD" layoutX="365.0" layoutY="157.0" mnemonicParsing="false" onAction="#configureIDD" text="Configure" />
       <Button fx:id="bConfMD" layoutX="365.0" layoutY="207.0" mnemonicParsing="false" onAction="#configureMD" text="Configure" />
       <Button fx:id="bConfIMD" layoutX="365.0" layoutY="257.0" mnemonicParsing="false" onAction="#configureIMD" text="Configure" />
-      <Button fx:id="bMDD" layoutX="365.0" layoutY="307.0" mnemonicParsing="false" onAction="#configureMDD" text="Configure" />
-      <Button fx:id="bIMDD" layoutX="365.0" layoutY="357.0" mnemonicParsing="false" onAction="#configureIMDD" text="Configure" />
+      <Button fx:id="bConfMDD" layoutX="365.0" layoutY="307.0" mnemonicParsing="false" onAction="#configureMDD" text="Configure" />
+      <Button fx:id="bConfIMDD" layoutX="365.0" layoutY="357.0" mnemonicParsing="false" onAction="#configureIMDD" text="Configure" />
       <CheckBox fx:id="cbND" layoutX="82.0" layoutY="61.0" mnemonicParsing="false" onAction="#selectCb" text="ND: No Distillation" />
       <Button fx:id="bConfND" layoutX="365.0" layoutY="56.0" mnemonicParsing="false" onAction="#configureND" text="Configure" />
    </children>
