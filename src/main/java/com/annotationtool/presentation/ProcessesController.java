@@ -20,7 +20,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import com.annotationtool.model.Process;
 import javafx.scene.control.Alert;
-import org.bytedeco.opencv.presets.opencv_core;
 
 /**
  * FXML Controller class

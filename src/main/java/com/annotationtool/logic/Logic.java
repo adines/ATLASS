@@ -184,16 +184,16 @@ public class Logic {
         FileWriter file = null;
         try {
             JSONObject root = new JSONObject();
-            
+
             root.put("nbformat", 4);
             root.put("nbformat_minor", 0);
-            
+
             JSONObject metadata = new JSONObject();
             JSONObject colab = new JSONObject();
             colab.put("name", "No Distillation.ipynb");
             colab.put("version", "0.3.2");
             colab.put("provenance", new JSONArray());
-            
+
             JSONObject kernelspec = new JSONObject();
             kernelspec.put("name", "python3");
             kernelspec.put("display_name", "Python 3");
@@ -201,44 +201,44 @@ public class Logic {
             metadata.put("kernelspec", kernelspec);
             metadata.put("accelerator", "GPU");
             root.put("metadata", metadata);
-            
+
             JSONArray cells = new JSONArray();
             JSONObject cell1 = new JSONObject();
             cell1.put("cell_type", "markdown");
-            
+
             JSONObject cell1Meta = new JSONObject();
             cell1Meta.put("id", "gqLtwdNgOadF");
             cell1Meta.put("colab_type", "text");
             cell1.put("metadata", cell1Meta);
-            
+
             JSONArray cell1Source = new JSONArray();
             cell1Source.add("## No distillation\n");
             cell1Source.add("\n");
             cell1.put("source", cell1Source);
             cells.add(cell1);
-            
+
             JSONObject cell2 = new JSONObject();
             cell2.put("cell_type", "markdown");
-            
+
             JSONObject cell2Meta = new JSONObject();
             cell2Meta.put("id", "dh5y3QhpO5MP");
             cell2Meta.put("colab_type", "text");
             cell2.put("metadata", cell2Meta);
-            
+
             JSONArray cell2Source = new JSONArray();
             cell2Source.add("In this notebook we train models without applying any distillation or transfer learning technique.");
             cell2.put("source", cell2Source);
             cells.add(cell2);
-            
+
             JSONObject cell3 = new JSONObject();
             cell3.put("cell_type", "code");
-            
+
             JSONObject cell3Metadata = new JSONObject();
             cell3Metadata.put("id", "-iwz5io7PYsd");
             cell3Metadata.put("colab_type", "code");
             cell3Metadata.put("colab", new JSONObject());
             cell3.put("metadata", cell3Metadata);
-            
+
             JSONArray cell3Source = new JSONArray();
             cell3Source.add("from google.colab import drive\n");
             cell3Source.add("drive.mount('/content/drive')");
@@ -246,7 +246,7 @@ public class Logic {
             cell3.put("execution_count", 0);
             cell3.put("outputs", new JSONArray());
             cells.add(cell3);
-            
+
             JSONObject cell3_5 = new JSONObject();
             cell3_5.put("cell_type", "code");
             JSONObject cell3_5Metadata = new JSONObject();
@@ -254,7 +254,7 @@ public class Logic {
             cell3_5Metadata.put("colab_type", "code");
             cell3_5Metadata.put("colab", new JSONObject());
             cell3_5.put("metadata", cell3_5Metadata);
-            
+
             JSONArray cell3_5Source = new JSONArray();
             cell3_5Source.add("from google.colab import files\n");
             cell3_5Source.add("uploaded = files.upload()\n");
@@ -263,10 +263,10 @@ public class Logic {
             cell3_5.put("execution_count", 0);
             cell3_5.put("outputs", new JSONArray());
             cells.add(cell3_5);
-            
+
             JSONObject cell4 = new JSONObject();
             cell4.put("cell_type", "code");
-            
+
             JSONObject cell4Metadata = new JSONObject();
             cell4Metadata.put("id", "h75IjZlhwL9H");
             cell4Metadata.put("colab_type", "code");
@@ -320,13 +320,14 @@ public class Logic {
             for (String model : process.getModels()) {
                 cell4Source.add("learner_" + model.toLowerCase() + ",data=learn_with_model(dataset,models." + model.toLowerCase() + ")\n");
                 cell4Source.add("learner_" + model.toLowerCase() + ".export('/content/drive/My Drive/learner_" + model.toLowerCase() + ".pkl')\n");
-            }   cell4.put("source", cell4Source);
+            }
+            cell4.put("source", cell4Source);
             cell4.put("execution_count", 0);
             cell4.put("outputs", new JSONArray());
             cells.add(cell4);
-            
+
             root.put("cells", cells);
-            
+
             file = new FileWriter("NoDistillation.ipynb");
             file.write(root.toJSONString());
             file.flush();
@@ -336,8 +337,7 @@ public class Logic {
             throw new ExcepcionDeAplicacion(ex);
         } finally {
             try {
-                if(file!=null)
-                {
+                if (file != null) {
                     file.close();
                 }
             } catch (IOException ex) {
@@ -351,16 +351,16 @@ public class Logic {
         FileWriter file = null;
         try {
             JSONObject root = new JSONObject();
-            
+
             root.put("nbformat", 4);
             root.put("nbformat_minor", 0);
-            
+
             JSONObject metadata = new JSONObject();
             JSONObject colab = new JSONObject();
             colab.put("name", "Data Distillation.ipynb");
             colab.put("version", "0.3.2");
             colab.put("provenance", new JSONArray());
-            
+
             JSONObject kernelspec = new JSONObject();
             kernelspec.put("name", "python3");
             kernelspec.put("display_name", "Python 3");
@@ -368,44 +368,44 @@ public class Logic {
             metadata.put("kernelspec", kernelspec);
             metadata.put("accelerator", "GPU");
             root.put("metadata", metadata);
-            
+
             JSONArray cells = new JSONArray();
             JSONObject cell1 = new JSONObject();
             cell1.put("cell_type", "markdown");
-            
+
             JSONObject cell1Meta = new JSONObject();
             cell1Meta.put("id", "gqLtwdNgOadF");
             cell1Meta.put("colab_type", "text");
             cell1.put("metadata", cell1Meta);
-            
+
             JSONArray cell1Source = new JSONArray();
             cell1Source.add("## Data Distillation\n");
             cell1Source.add("\n");
             cell1.put("source", cell1Source);
             cells.add(cell1);
-            
+
             JSONObject cell2 = new JSONObject();
             cell2.put("cell_type", "markdown");
-            
+
             JSONObject cell2Meta = new JSONObject();
             cell2Meta.put("id", "dh5y3QhpO5MP");
             cell2Meta.put("colab_type", "text");
             cell2.put("metadata", cell2Meta);
-            
+
             JSONArray cell2Source = new JSONArray();
             cell2Source.add("In this notebook we train models using data distillation.");
             cell2.put("source", cell2Source);
             cells.add(cell2);
-            
+
             JSONObject cell3 = new JSONObject();
             cell3.put("cell_type", "code");
-            
+
             JSONObject cell3Metadata = new JSONObject();
             cell3Metadata.put("id", "-iwz5io7PYsd");
             cell3Metadata.put("colab_type", "code");
             cell3Metadata.put("colab", new JSONObject());
             cell3.put("metadata", cell3Metadata);
-            
+
             JSONArray cell3Source = new JSONArray();
             cell3Source.add("from google.colab import drive\n");
             cell3Source.add("drive.mount('/content/drive')");
@@ -413,7 +413,7 @@ public class Logic {
             cell3.put("execution_count", 0);
             cell3.put("outputs", new JSONArray());
             cells.add(cell3);
-            
+
             JSONObject cell3_5 = new JSONObject();
             cell3_5.put("cell_type", "code");
             JSONObject cell3_5Metadata = new JSONObject();
@@ -421,7 +421,7 @@ public class Logic {
             cell3_5Metadata.put("colab_type", "code");
             cell3_5Metadata.put("colab", new JSONObject());
             cell3_5.put("metadata", cell3_5Metadata);
-            
+
             JSONArray cell3_5Source = new JSONArray();
             cell3_5Source.add("from google.colab import files\n");
             cell3_5Source.add("uploaded = files.upload()\n");
@@ -430,10 +430,10 @@ public class Logic {
             cell3_5.put("execution_count", 0);
             cell3_5.put("outputs", new JSONArray());
             cells.add(cell3_5);
-            
+
             JSONObject cell4 = new JSONObject();
             cell4.put("cell_type", "code");
-            
+
             JSONObject cell4Metadata = new JSONObject();
             cell4Metadata.put("id", "h75IjZlhwL9H");
             cell4Metadata.put("colab_type", "code");
@@ -502,14 +502,12 @@ public class Logic {
             cell4Source.add("    im=cv2.imread(image,1)\n");
             cell4Source.add("    im = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)\n");
             cell4Source.add("    lista=[]\n");
-            
+
             cell4Source.add("    n=Image(pil2tensor(im, dtype=np.float32).div_(255))\n");
             cell4Source.add("    pn=learn.predict(n)\n");
             cell4Source.add("    lista.append(pn)\n");
-            for(String s:process.getTransformations())
-            {
-                switch(s)
-                {
+            for (String s : process.getTransformations()) {
+                switch (s) {
                     case "H Flip":
                         cell4Source.add("    h_im=cv2.flip(im,0)\n");
                         cell4Source.add("    h=Image(pil2tensor(h_im, dtype=np.float32).div_(255))\n");
@@ -581,22 +579,22 @@ public class Logic {
             cell4Source.add("    os.remove(image)\n");
             cell4Source.add("    print(image+\\\" --> \\\"+dataset+'/train/'+data.classes[mod]+'/'+data.classes[mod]+'_'+image.split('/')[-1])\n");
             cell4Source.add("\n");
-            
+
             for (String model : process.getModels()) {
                 cell4Source.add("learner_" + model.toLowerCase() + ",data=learn_with_model(dataset,models." + model.toLowerCase() + ")\n");
-                cell4Source.add("shutil.copytree(dataset, 'dataset_"+model.toLowerCase()+"')\n");
-                cell4Source.add("omniData('dataset_"+model.toLowerCase()+"',learner_"+model.toLowerCase()+",0)\n");
-                cell4Source.add("learnerDD_" + model.toLowerCase() + ",data=learn_with_model('dataset_"+model.toLowerCase()+"',models." + model.toLowerCase() + ")\n");
+                cell4Source.add("shutil.copytree(dataset, 'dataset_" + model.toLowerCase() + "')\n");
+                cell4Source.add("omniData('dataset_" + model.toLowerCase() + "',learner_" + model.toLowerCase() + ",0)\n");
+                cell4Source.add("learnerDD_" + model.toLowerCase() + ",data=learn_with_model('dataset_" + model.toLowerCase() + "',models." + model.toLowerCase() + ")\n");
                 cell4Source.add("learnerDD_" + model.toLowerCase() + ".export('/content/drive/My Drive/learnerDD_" + model.toLowerCase() + ".pkl')\n");
                 cell4Source.add("\n");
-            }   
+            }
             cell4.put("source", cell4Source);
             cell4.put("execution_count", 0);
             cell4.put("outputs", new JSONArray());
             cells.add(cell4);
-            
+
             root.put("cells", cells);
-            
+
             file = new FileWriter("DataDistillation.ipynb");
             file.write(root.toJSONString());
             file.flush();
@@ -606,8 +604,7 @@ public class Logic {
             throw new ExcepcionDeAplicacion(ex);
         } finally {
             try {
-                if(file!=null)
-                {
+                if (file != null) {
                     file.close();
                 }
             } catch (IOException ex) {
@@ -617,20 +614,20 @@ public class Logic {
         }
     }
 
-    private void createProcessIDD(Process process) throws ExcepcionDeAplicacion{
+    private void createProcessIDD(Process process) throws ExcepcionDeAplicacion {
         FileWriter file = null;
         try {
             JSONObject root = new JSONObject();
-            
+
             root.put("nbformat", 4);
             root.put("nbformat_minor", 0);
-            
+
             JSONObject metadata = new JSONObject();
             JSONObject colab = new JSONObject();
             colab.put("name", "Iterative Data Distillation.ipynb");
             colab.put("version", "0.3.2");
             colab.put("provenance", new JSONArray());
-            
+
             JSONObject kernelspec = new JSONObject();
             kernelspec.put("name", "python3");
             kernelspec.put("display_name", "Python 3");
@@ -638,44 +635,44 @@ public class Logic {
             metadata.put("kernelspec", kernelspec);
             metadata.put("accelerator", "GPU");
             root.put("metadata", metadata);
-            
+
             JSONArray cells = new JSONArray();
             JSONObject cell1 = new JSONObject();
             cell1.put("cell_type", "markdown");
-            
+
             JSONObject cell1Meta = new JSONObject();
             cell1Meta.put("id", "gqLtwdNgOadF");
             cell1Meta.put("colab_type", "text");
             cell1.put("metadata", cell1Meta);
-            
+
             JSONArray cell1Source = new JSONArray();
             cell1Source.add("## Iterative Data Distillation\n");
             cell1Source.add("\n");
             cell1.put("source", cell1Source);
             cells.add(cell1);
-            
+
             JSONObject cell2 = new JSONObject();
             cell2.put("cell_type", "markdown");
-            
+
             JSONObject cell2Meta = new JSONObject();
             cell2Meta.put("id", "dh5y3QhpO5MP");
             cell2Meta.put("colab_type", "text");
             cell2.put("metadata", cell2Meta);
-            
+
             JSONArray cell2Source = new JSONArray();
             cell2Source.add("In this notebook we train models using data distillation.");
             cell2.put("source", cell2Source);
             cells.add(cell2);
-            
+
             JSONObject cell3 = new JSONObject();
             cell3.put("cell_type", "code");
-            
+
             JSONObject cell3Metadata = new JSONObject();
             cell3Metadata.put("id", "-iwz5io7PYsd");
             cell3Metadata.put("colab_type", "code");
             cell3Metadata.put("colab", new JSONObject());
             cell3.put("metadata", cell3Metadata);
-            
+
             JSONArray cell3Source = new JSONArray();
             cell3Source.add("from google.colab import drive\n");
             cell3Source.add("drive.mount('/content/drive')");
@@ -683,7 +680,7 @@ public class Logic {
             cell3.put("execution_count", 0);
             cell3.put("outputs", new JSONArray());
             cells.add(cell3);
-            
+
             JSONObject cell3_5 = new JSONObject();
             cell3_5.put("cell_type", "code");
             JSONObject cell3_5Metadata = new JSONObject();
@@ -691,7 +688,7 @@ public class Logic {
             cell3_5Metadata.put("colab_type", "code");
             cell3_5Metadata.put("colab", new JSONObject());
             cell3_5.put("metadata", cell3_5Metadata);
-            
+
             JSONArray cell3_5Source = new JSONArray();
             cell3_5Source.add("from google.colab import files\n");
             cell3_5Source.add("uploaded = files.upload()\n");
@@ -700,10 +697,10 @@ public class Logic {
             cell3_5.put("execution_count", 0);
             cell3_5.put("outputs", new JSONArray());
             cells.add(cell3_5);
-            
+
             JSONObject cell4 = new JSONObject();
             cell4.put("cell_type", "code");
-            
+
             JSONObject cell4Metadata = new JSONObject();
             cell4Metadata.put("id", "h75IjZlhwL9H");
             cell4Metadata.put("colab_type", "code");
@@ -772,14 +769,12 @@ public class Logic {
             cell4Source.add("    im=cv2.imread(image,1)\n");
             cell4Source.add("    im = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)\n");
             cell4Source.add("    lista=[]\n");
-            
+
             cell4Source.add("    n=Image(pil2tensor(im, dtype=np.float32).div_(255))\n");
             cell4Source.add("    pn=learn.predict(n)\n");
             cell4Source.add("    lista.append(pn)\n");
-            for(String s:process.getTransformations())
-            {
-                switch(s)
-                {
+            for (String s : process.getTransformations()) {
+                switch (s) {
                     case "H Flip":
                         cell4Source.add("    h_im=cv2.flip(im,0)\n");
                         cell4Source.add("    h=Image(pil2tensor(h_im, dtype=np.float32).div_(255))\n");
@@ -851,24 +846,24 @@ public class Logic {
             cell4Source.add("    os.remove(image)\n");
             cell4Source.add("    print(image+\\\" --> \\\"+dataset+'/train/'+data.classes[mod]+'/'+data.classes[mod]+'_'+image.split('/')[-1])\n");
             cell4Source.add("\n");
-            
+
             for (String model : process.getModels()) {
                 cell4Source.add("learner_" + model.toLowerCase() + ",data=learn_with_model(dataset,models." + model.toLowerCase() + ")\n");
-                cell4Source.add("shutil.copytree(dataset, 'dataset_"+model.toLowerCase()+"')\n");
-                cell4Source.add("omniData('dataset_"+model.toLowerCase()+"',learner_"+model.toLowerCase()+","+process.getThreshold()+")\n");
-                cell4Source.add("learner1IDD_" + model.toLowerCase() + ",data=learn_with_model('dataset_"+model.toLowerCase()+"',models." + model.toLowerCase() + ")\n");
-                cell4Source.add("omniData('dataset_"+model.toLowerCase()+"',learner1IDD_"+model.toLowerCase()+","+process.getThreshold()+")\n");
-                cell4Source.add("learner2IDD_" + model.toLowerCase() + ",data=learn_with_model('dataset_"+model.toLowerCase()+"',models." + model.toLowerCase() + ")\n");
+                cell4Source.add("shutil.copytree(dataset, 'dataset_" + model.toLowerCase() + "')\n");
+                cell4Source.add("omniData('dataset_" + model.toLowerCase() + "',learner_" + model.toLowerCase() + "," + process.getThreshold() + ")\n");
+                cell4Source.add("learner1IDD_" + model.toLowerCase() + ",data=learn_with_model('dataset_" + model.toLowerCase() + "',models." + model.toLowerCase() + ")\n");
+                cell4Source.add("omniData('dataset_" + model.toLowerCase() + "',learner1IDD_" + model.toLowerCase() + "," + process.getThreshold() + ")\n");
+                cell4Source.add("learner2IDD_" + model.toLowerCase() + ",data=learn_with_model('dataset_" + model.toLowerCase() + "',models." + model.toLowerCase() + ")\n");
                 cell4Source.add("learner2IDD_" + model.toLowerCase() + ".export('/content/drive/My Drive/learnerIDD_" + model.toLowerCase() + ".pkl')\n");
                 cell4Source.add("\n");
-            }   
+            }
             cell4.put("source", cell4Source);
             cell4.put("execution_count", 0);
             cell4.put("outputs", new JSONArray());
             cells.add(cell4);
-            
+
             root.put("cells", cells);
-            
+
             file = new FileWriter("IterativeDataDistillation.ipynb");
             file.write(root.toJSONString());
             file.flush();
@@ -878,8 +873,7 @@ public class Logic {
             throw new ExcepcionDeAplicacion(ex);
         } finally {
             try {
-                if(file!=null)
-                {
+                if (file != null) {
                     file.close();
                 }
             } catch (IOException ex) {
@@ -889,8 +883,208 @@ public class Logic {
         }
     }
 
-    private void createProcessMD(Process process) {
+    private void createProcessMD(Process process) throws ExcepcionDeAplicacion {
+        FileWriter file = null;
+        try {
+            JSONObject root = new JSONObject();
 
+            root.put("nbformat", 4);
+            root.put("nbformat_minor", 0);
+
+            JSONObject metadata = new JSONObject();
+            JSONObject colab = new JSONObject();
+            colab.put("name", "Model Distillation.ipynb");
+            colab.put("version", "0.3.2");
+            colab.put("provenance", new JSONArray());
+
+            JSONObject kernelspec = new JSONObject();
+            kernelspec.put("name", "python3");
+            kernelspec.put("display_name", "Python 3");
+            metadata.put("colab", colab);
+            metadata.put("kernelspec", kernelspec);
+            metadata.put("accelerator", "GPU");
+            root.put("metadata", metadata);
+
+            JSONArray cells = new JSONArray();
+            JSONObject cell1 = new JSONObject();
+            cell1.put("cell_type", "markdown");
+
+            JSONObject cell1Meta = new JSONObject();
+            cell1Meta.put("id", "gqLtwdNgOadF");
+            cell1Meta.put("colab_type", "text");
+            cell1.put("metadata", cell1Meta);
+
+            JSONArray cell1Source = new JSONArray();
+            cell1Source.add("## Model Distillation\n");
+            cell1Source.add("\n");
+            cell1.put("source", cell1Source);
+            cells.add(cell1);
+
+            JSONObject cell2 = new JSONObject();
+            cell2.put("cell_type", "markdown");
+
+            JSONObject cell2Meta = new JSONObject();
+            cell2Meta.put("id", "dh5y3QhpO5MP");
+            cell2Meta.put("colab_type", "text");
+            cell2.put("metadata", cell2Meta);
+
+            JSONArray cell2Source = new JSONArray();
+            cell2Source.add("In this notebook we train models using model distillation.");
+            cell2.put("source", cell2Source);
+            cells.add(cell2);
+
+            JSONObject cell3 = new JSONObject();
+            cell3.put("cell_type", "code");
+
+            JSONObject cell3Metadata = new JSONObject();
+            cell3Metadata.put("id", "-iwz5io7PYsd");
+            cell3Metadata.put("colab_type", "code");
+            cell3Metadata.put("colab", new JSONObject());
+            cell3.put("metadata", cell3Metadata);
+
+            JSONArray cell3Source = new JSONArray();
+            cell3Source.add("from google.colab import drive\n");
+            cell3Source.add("drive.mount('/content/drive')");
+            cell3.put("source", cell3Source);
+            cell3.put("execution_count", 0);
+            cell3.put("outputs", new JSONArray());
+            cells.add(cell3);
+
+            JSONObject cell3_5 = new JSONObject();
+            cell3_5.put("cell_type", "code");
+            JSONObject cell3_5Metadata = new JSONObject();
+            cell3_5Metadata.put("id", "-iwz5io7PYsd");
+            cell3_5Metadata.put("colab_type", "code");
+            cell3_5Metadata.put("colab", new JSONObject());
+            cell3_5.put("metadata", cell3_5Metadata);
+
+            JSONArray cell3_5Source = new JSONArray();
+            cell3_5Source.add("from google.colab import files\n");
+            cell3_5Source.add("uploaded = files.upload()\n");
+            cell3_5Source.add("!unzip dataset.zip -d dataset");
+            cell3_5.put("source", cell3_5Source);
+            cell3_5.put("execution_count", 0);
+            cell3_5.put("outputs", new JSONArray());
+            cells.add(cell3_5);
+
+            JSONObject cell4 = new JSONObject();
+            cell4.put("cell_type", "code");
+
+            JSONObject cell4Metadata = new JSONObject();
+            cell4Metadata.put("id", "h75IjZlhwL9H");
+            cell4Metadata.put("colab_type", "code");
+            cell4Metadata.put("colab", new JSONObject());
+            cell4.put("metadata", cell4Metadata);
+            JSONArray cell4Source = new JSONArray();
+            cell4Source.add("import warnings\n");
+            cell4Source.add("import os\n");
+            cell4Source.add("import shutil\n");
+            cell4Source.add("import glob\n");
+            cell4Source.add("import random\n");
+            cell4Source.add("import random\n");
+            cell4Source.add("import cv2");
+            cell4Source.add("from fastai.vision import *\n");
+            cell4Source.add("from fastai.utils.mem import *\n");
+            cell4Source.add("\n");
+            cell4Source.add("warnings.filterwarnings(\"ignore\", category=UserWarning, module=\"torch.nn.functional\")\n");
+            cell4Source.add("\n");
+            cell4Source.add("dataset=\"dataset\"");
+            cell4Source.add("\n");
+            cell4Source.add("os.makedirs('kvasir/train')\n");
+            cell4Source.add("os.makedirs('kvasir/valid')\n");
+            cell4Source.add("os.makedirs('kvasir/images')\n");
+            cell4Source.add("\n");
+            cell4Source.add("classesPaths=sorted(glob.glob(dataset+\"/images/*\"))\n");
+            cell4Source.add("classes=[pt.split(os.sep)[-1] for pt in classesPaths if os.path.isdir(pt)]\n");
+            cell4Source.add("images=[pt for pt in classesPaths if not os.path.isdir(pt)]\n");
+            cell4Source.add("\n");
+            cell4Source.add("for im in images:\n");
+            cell4Source.add("  shutil.move(images,dataset+'/images/')\n");
+            cell4Source.add("\n");
+            cell4Source.add("for cl in classes:\n");
+            cell4Source.add("  os.mkdir(dataset+'/train/'+cl)\n");
+            cell4Source.add("  images=sorted(glob.glob(dataset+'/images/'+cl+'/*'))\n");
+            cell4Source.add("  for i in range(len(images)*0.75):\n");
+            cell4Source.add("    images=sorted(glob.glob(dataset+'/images/'+cl+'/*'))\n");
+            cell4Source.add("    j=random.randint(0,len(images)-1)\n");
+            cell4Source.add("    shutil.move(images[j],dataset+'/train/'+cl)\n");
+            cell4Source.add("\n");
+            cell4Source.add("def learn_with_model(dataset,model):\n");
+            cell4Source.add("  data=ImageDataBunch.from_folder(dataset,\n");
+            cell4Source.add("        ds_tfms=get_transforms(), size=224,bs=32).normalize(imagenet_stats)\n");
+            cell4Source.add("  learn = cnn_learner(data, model, metrics=accuracy)\n");
+            cell4Source.add("  learn.fit_one_cycle(2)\n");
+            cell4Source.add("  learn.unfreeze()\n");
+            cell4Source.add("  learn.lr_find()\n");
+            cell4Source.add("  lr=learn.recorder.lrs[np.argmin(learn.recorder.losses)]\n");
+            cell4Source.add("  if lr<1e-05:\n");
+            cell4Source.add("    lr=1e-03\n");
+            cell4Source.add("  learn.fit_one_cycle(8,max_lr=slice(lr/100,lr))\n");
+            cell4Source.add("  return learn,data\n");
+            cell4Source.add("\n");
+            cell4Source.add("def moda(lista):\n");
+            cell4Source.add("  tam=len(lista[0][2])\n");
+            cell4Source.add("  x=np.zeros(tam)\n");
+            cell4Source.add("  for l in lista:\n");
+            cell4Source.add("    x=x+l[2].numpy()\n");
+            cell4Source.add("  x=x/len(lista)\n");
+            cell4Source.add("  maximo=x.argmax()\n");
+            cell4Source.add("  return maximo, x[maximo]\n");
+            cell4Source.add("\n");
+            cell4Source.add("def omniModel(dataset,learners,th):\n");
+            cell4Source.add("  images=sorted(glob.glob(dataset+\"/images/*\"))\n");
+            cell4Source.add("\n");
+            cell4Source.add("  for image in images:\n");
+            cell4Source.add("    h=open_image(image)\n");
+            cell4Source.add("    lista=[]\n");
+
+            cell4Source.add("    for learn in learners:\n");
+            cell4Source.add("      p=learn.predict(h)\n");
+            cell4Source.add("      lista.append(p)\n");
+            cell4Source.add("    mod, predMax=moda(lista)\n");
+            cell4Source.add("    shutil.copyfile(image,dataset+'/train/'+data.classes[mod]+'/'+data.classes[mod]+'_'+image.split('/')[-1])");
+            cell4Source.add("    os.remove(image");
+            cell4Source.add("    print(image+\\\" --> \\\"+dataset+'/train/'+data.classes[mod]+'/'+data.classes[mod]+'_'+image.split('/')[-1])\n");
+            cell4Source.add("\n");
+            cell4Source.add("listaModels=[]\n");
+
+            for (String model : process.getModels()) {
+                cell4Source.add("learner_" + model.toLowerCase() + ",data=learn_with_model(dataset,models." + model.toLowerCase() + ")\n");
+                cell4Source.add("listaModels.append(learner_" + model.toLowerCase() + ")\n");
+            }
+            cell4Source.add("shutil.copytree(dataset, 'dataset_MD1')\n");
+            cell4Source.add("omniModel('dataset_MD1',listaModels," + process.getThreshold() + ")\n");
+            
+            for (String model : process.getModels()) {
+                cell4Source.add("learner2MD_" + model.toLowerCase() + ",data=learn_with_model(dataset_MD1,models." + model.toLowerCase() + ")\n");
+                cell4Source.add("learner2MD_" + model.toLowerCase() + ".export('/content/drive/My Drive/learnerMD_" + model.toLowerCase() + ".pkl')\n");
+            }
+            
+            cell4Source.add("\n");
+            cell4.put("source", cell4Source);
+            cell4.put("execution_count", 0);
+            cell4.put("outputs", new JSONArray());
+            cells.add(cell4);
+
+            root.put("cells", cells);
+
+            file = new FileWriter("ModelDistillation.ipynb");
+            file.write(root.toJSONString());
+            file.flush();
+            file.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Logic.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionDeAplicacion(ex);
+        } finally {
+            try {
+                if (file != null) {
+                    file.close();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(Logic.class.getName()).log(Level.SEVERE, null, ex);
+                throw new ExcepcionDeAplicacion(ex);
+            }
+        }
     }
 
     private void createProcessIMD(Process process) {
@@ -905,7 +1099,7 @@ public class Logic {
 
     }
 
-    public void generateProcessIpynb(List<Process> processes) throws ExcepcionDeAplicacion{
+    public void generateProcessIpynb(List<Process> processes) throws ExcepcionDeAplicacion {
         for (Process process : processes) {
             switch (process.getName()) {
                 case "ND":
