@@ -80,9 +80,9 @@ Results using part of the dataset and applying our method with different strateg
 
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
- 25 per class | 0.7975 | 0.8500 | 0.8850 | 0.8800 | 0.8925 | 0.8845 | 0.8970|
- 50 per class | 0.8430 | 0.8665 | 0.8855 | 0.8880 | 0.9025 | 0.8880 | 0.9010|
- 75 per class | 0.8730 | 0.9040 | 0.9165 | 0.9050 | 0.9155 | 0.9070 | **0.9170**|
+ [25 per class](https://colab.research.google.com/drive/1bSCiR25a4AQ1-JNL8cIQESXXAeLcXzKC) | 0.7975 | 0.8500 | 0.8850 | 0.8800 | 0.8925 | 0.8845 | 0.8970|
+ [50 per class](https://colab.research.google.com/drive/1ACV4JzssjNUn-0J6IEei65j625QT7MKZ) | 0.8430 | 0.8665 | 0.8855 | 0.8880 | 0.9025 | 0.8880 | 0.9010|
+ [75 per class](https://colab.research.google.com/drive/1B5q-Y7yDM9zsxi9zw1v2bdbnKZP3UHNk) | 0.8730 | 0.9040 | 0.9165 | 0.9050 | 0.9155 | 0.9070 | **0.9170**|
 
 
 #### [ISIC dataset](https://arxiv.org/abs/1902.03368)
