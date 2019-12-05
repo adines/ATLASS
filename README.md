@@ -20,7 +20,7 @@ provided that the user has installed the Python packages indicated in the [requi
 
 We have also developed a Java application that guides the user in all the stages of the construction of an image classification model using our workflow; 
 namely, it helps to annotate the images, train a model, test it, and finally use it. The source code of this application is provided
-in this repository, and the application can be downloaded from the following [link]().
+in this repository, and the application can be downloaded from the following [link](https://github.com/adines/AnnotationTool/releases/download/v1.0/AnnotationTool-1.0.jar).
 
 ## Experiments
 
