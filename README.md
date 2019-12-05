@@ -13,7 +13,7 @@ The workflow of our method is summarised in the following figure, and it is desc
 
 ## Notebooks
 
-The workflow can be executed using with a user's dataset by adapting a [Colab notebook](). Such a notebook can be run also locally 
+The workflow can be executed using with a user's dataset by adapting a [Colab notebook](https://colab.research.google.com/drive/1U303O_dBDzIDnPxasaTXEsJS1vgUmXse). Such a notebook can be run also locally 
 provided that the user has installed the Python packages indicated in the [requirements file](assets/requirementsFastAI.txt).
 
 ## Application
@@ -65,9 +65,9 @@ Results using part of the dataset and applying our method with different strateg
 
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
-  25 per class | 0.8348 | 0.8688 | 0.8906 | 0.8833 | 0.9167 | 0.8819 | 0.9130|
-  50 per class | 0.8905 | 0.9174 | 0.9355 | 0.9341 | 0.9341 | 0.9261 | 0.9304|
-  75 per class | 0.9137 | 0.9282 | 0.9399 | 0.9413 | **0.9514** | 0.9399 | 0.9500|
+  [25 per class](https://colab.research.google.com/drive/1U303O_dBDzIDnPxasaTXEsJS1vgUmXse) | 0.8348 | 0.8688 | 0.8906 | 0.8833 | 0.9167 | 0.8819 | 0.9130|
+  [50 per class](https://colab.research.google.com/drive/1fgj4VFirrZ37LFZKifEZCpsN9EKG0XYx) | 0.8905 | 0.9174 | 0.9355 | 0.9341 | 0.9341 | 0.9261 | 0.9304|
+  [75 per class](https://colab.research.google.com/drive/14P13GVlU2ux1EQedoNK762j7XYp0rXWI) | 0.9137 | 0.9282 | 0.9399 | 0.9413 | **0.9514** | 0.9399 | 0.9500|
 
 
 #### [Kvasir dataset](http://doi.acm.org/10.1145/3083187.3083212)
@@ -80,9 +80,9 @@ Results using part of the dataset and applying our method with different strateg
 
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
- 25 per class | 0.7975 | 0.8500 | 0.8850 | 0.8800 | 0.8925 | 0.8845 | 0.8970|
- 50 per class | 0.8430 | 0.8665 | 0.8855 | 0.8880 | 0.9025 | 0.8880 | 0.9010|
- 75 per class | 0.8730 | 0.9040 | 0.9165 | 0.9050 | 0.9155 | 0.9070 | **0.9170**|
+ [25 per class](https://colab.research.google.com/drive/1bSCiR25a4AQ1-JNL8cIQESXXAeLcXzKC) | 0.7975 | 0.8500 | 0.8850 | 0.8800 | 0.8925 | 0.8845 | 0.8970|
+ [50 per class](https://colab.research.google.com/drive/1ACV4JzssjNUn-0J6IEei65j625QT7MKZ) | 0.8430 | 0.8665 | 0.8855 | 0.8880 | 0.9025 | 0.8880 | 0.9010|
+ [75 per class](https://colab.research.google.com/drive/1B5q-Y7yDM9zsxi9zw1v2bdbnKZP3UHNk) | 0.8730 | 0.9040 | 0.9165 | 0.9050 | 0.9155 | 0.9070 | **0.9170**|
 
 
 #### [ISIC dataset](https://arxiv.org/abs/1902.03368)
@@ -96,8 +96,8 @@ Results using part of the dataset and applying our method with different strateg
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
  [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.7473 | 0.7765 | 0.7819 | 0.7845 | 0.8377 | 0.8005 | 0.8337 |
- [50 per class](https://colab.research.google.com/drive/1_LgAIvkkoSEmUepo8D5UpIGFXQ9AioCN) | 0.8111 | 0.8111  | 0.8404 | 0.8218 | 0.8377 | 0.8297 | 0.8510 |
- [75 per class](https://colab.research.google.com/drive/1V9Cp63_3cvcd-dH0xQvJFq6gIVTApjbI) | 0.8404 | 0.8324 | 0.8590 | 0.8537 | **0.8776** | 0.8430 | 0.8723|
+ [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.8111 | 0.8111  | 0.8404 | 0.8218 | 0.8377 | 0.8297 | 0.8510 |
+ [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.8404 | 0.8324 | 0.8590 | 0.8537 | **0.8776** | 0.8430 | 0.8723|
 
 
 
