@@ -28,20 +28,16 @@ We have conducted several experiments with our method. A detailed description of
 
 ### Comparison with other AutoML tools
 
-We have compared our method with several AutoML tools using [6 small datasets](https://ome.grc.nia.nih.gov/iicbu2008/). The results are provided in the following table.
+We have compared our method with several AutoML tools using [11 small datasets](https://ome.grc.nia.nih.gov/iicbu2008/). The results are provided in the following table.
 
-|| Binucleate |Cho | Hela | Lymphoma | Pollen| RNAI |
-|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
- [AutoKeras](https://autokeras.com/) | 0.55 | 0.96 | 0.47 | 0.89 | 0.81 | 0.24|
- [Devol](https://github.com/joeddav/devol) | 0.54 | 0.75 | 0.68 | 0.55 | 0.89 | 0.28|
- [FrImCla](https://github.com/ManuGar/FrImCla) | 1.00 | 0.98 | 0.82 | 0.86 | 0.96 | 0.69|
- [Ludwig](https://uber.github.io/ludwig/) | 0.54 | 0.64 | 0.51 | 0.57 | 0.58 | 0|
- [WND-CHARM](https://github.com/wnd-charm/wnd-charm) | 1.00 | 0.95 | 0.88 | 0.79 | 0.96 | 0.66|
-||||||||
-Our method ResNet34 | 0.9 | 0.91 | 0.98 | 0.8 | 0.96 | 0.54|
-Our method ResNet50 | 1.00 | 0.91 | 0.98 | 0.91 | 0.94 | 0.64|
-Our method ResNet101 | 1.00 | 0.95 | 0.97 | 0.8 | 0.96 | 0.74|
-Our method DenseNet121 | 1.00 | 0.92 | 0.96 | 0.93 | 0.96 | 0.62|
+|| Binucleate | C. Elegans | Cho | Hela | Liver aging | Liver (AL) | Liver (CR) | Lymphoma | Pollen| RNAI | Term | Time (min) |
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+ [AutoKeras](https://autokeras.com/) | 0.55 | 0.66 | 0.96 | 0.47 | 0.91 | 0.98 | 1.00 | 0.89 | 0.81 | 0.24 | 0.47 | 30 |
+ [Devol](https://github.com/joeddav/devol) | 0.54 | 0.69 | 0.75 | 0.68 | 0.43 | 0.82 | 1.00 | 0.55 | 0.89 | 0.28 | 0.36 | 16 |
+ [Ludwig](https://uber.github.io/ludwig/) | 0.54 | 0.48 | 0.64 | 0.51 | 0.33 | 0.65 | 0.93 | 0.57 | 0.58 | 0 | 0.53 | 31 |
+ [WND-CHARM](https://github.com/wnd-charm/wnd-charm) | 1.00 | 0.7 | 0.95 | 0.88 | 0.93 | 0.98 | 0.97 | 0.79 | 0.96 | 0.66 | 0.45 | 53 |
+||||||||||||||
+Ours | 1.00 | 1.00 | 0.95 | 0.98 | 0.97 | 1.00 | 1.00 | 0.91 | 0.96 | 0.74 | 0.72 | 16 |
 
 Colab notebooks for the experiments using our method:
 - [Binucleate](https://colab.research.google.com/drive/1PHY1fLevi040LJKQk73xnJnNfMsSvvV_).
