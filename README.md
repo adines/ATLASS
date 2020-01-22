@@ -30,7 +30,7 @@ We have conducted several experiments with our method. A detailed description of
 
 We have compared our method with several AutoML tools using [11 small datasets](https://ome.grc.nia.nih.gov/iicbu2008/). The results are provided in the following table.
 
-|| Binucleate | C. Elegans | Cho | Hela | Liver aging | Liver (AL) | Liver (CR) | Lymphoma | Pollen| RNAI | Term | Time (min) |
+|| Binu. | C. Elegans | Cho | Hela | Liver aging | Liver (AL) | Liver (CR) | Lymp. | Pollen| RNAI | Term | Time (min) |
 |-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
  [AutoKeras](https://autokeras.com/) | 0.55 | 0.66 | 0.96 | 0.47 | 0.91 | 0.98 | 1.00 | 0.89 | 0.81 | 0.24 | 0.47 | 30 |
  [Devol](https://github.com/joeddav/devol) | 0.54 | 0.69 | 0.75 | 0.68 | 0.43 | 0.82 | 1.00 | 0.55 | 0.89 | 0.28 | 0.36 | 16 |
