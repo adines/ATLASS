@@ -171,7 +171,7 @@ Results using part of the dataset and applying our method with different strateg
 
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
-  [25 per class](https://colab.research.google.com/drive/1U303O_dBDzIDnPxasaTXEsJS1vgUmXse) | 0.83 | 0.87 | 0.89 | 0.88 | 0.92 | 0.88 | 0.91|
+  [25 per class](https://colab.research.google.com/drive/1U303O_dBDzIDnPxasaTXEsJS1vgUmXse) | 0.83 | 0.87 | 0.89 | 0.88 | **0.92** | 0.88 | 0.91|
   [50 per class](https://colab.research.google.com/drive/1fgj4VFirrZ37LFZKifEZCpsN9EKG0XYx) | 0.89 | 0.92 | **0.94** | 0.93 | 0.93 | 0.93 | 0.93|
   [75 per class](https://colab.research.google.com/drive/14P13GVlU2ux1EQedoNK762j7XYp0rXWI) | 0.91 | 0.93 | 0.94 | 0.94 | **0.95** | 0.94 | 0.95|
   
