@@ -51,22 +51,82 @@ Colab notebooks for the experiments using our method:
 
 We have also shown the benefits of using our semi-supervised learning method in three different datasets and taking differents amounts of annotated images; namely 25, 50 and 75 images per class. 
 
-#### [Plant Seedlings dataset](https://arxiv.org/abs/1711.05458)
 
-Size of dataset: 6000 images. Number of classes: 12.
+#### [Blindness](https://www.kaggle.com/c/aptos2019-blindness-detection/overview/description)
 
-Best accuracy using the whole training set (4125 images): 0.9616
+Size of dataset: 3662 images. Number of classes: 5.
+
+Best accuracy using the whole training set (2746 images): 0.83
 
 Results using part of the dataset and applying our method with different strategies. 
 
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
-  [25 per class](https://colab.research.google.com/drive/1U303O_dBDzIDnPxasaTXEsJS1vgUmXse) | 0.8348 | 0.8688 | 0.8906 | 0.8833 | 0.9167 | 0.8819 | 0.9130|
-  [50 per class](https://colab.research.google.com/drive/1fgj4VFirrZ37LFZKifEZCpsN9EKG0XYx) | 0.8905 | 0.9174 | 0.9355 | 0.9341 | 0.9341 | 0.9261 | 0.9304|
-  [75 per class](https://colab.research.google.com/drive/14P13GVlU2ux1EQedoNK762j7XYp0rXWI) | 0.9137 | 0.9282 | 0.9399 | 0.9413 | **0.9514** | 0.9399 | 0.9500|
+ [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.66 | 0.71 | **0.73** | 0.70 | 0.72 | 0.70 | 0.73 |
+ [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.71 | 0.76  | **0.78** | 0.72 | 0.71 | 0.74 | 0.76 |
+ [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.72 | 0.76 | 0.76 | 0.75 | **0.76** | 0.75 | 0.76|
 
 
-#### [Kvasir dataset](http://doi.acm.org/10.1145/3083187.3083212)
+#### [Chest X Ray](http://www.sciencedirect.com/science/article/pii/S0092867418301545)
+
+Size of dataset: 2355 images. Number of classes: 2.
+
+Best accuracy using the whole training set (1649 images): 0.93
+
+Results using part of the dataset and applying our method with different strategies. 
+
+  | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
+|------|------|------|------|------|------|------|------|
+ [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.73 | 0.73 | 0.78 | 0.74 | 0.74 | 0.76 | **0.83** |
+ [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.85 | 0.91  | 0.90 | 0.88 | **0.92** | 0.89 | 0.88 |
+ [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.87 | 0.88 | 0.83 | 0.90 | **0.91** | 0.90 | 0.90|
+
+
+#### [Fungi](https://link.springer.com/article/10.1007%2Fs00500-019-03832-8)
+
+Size of dataset: 2355 images. Number of classes: 2.
+
+Best accuracy using the whole training set (1649 images): 0.96
+
+Results using part of the dataset and applying our method with different strategies. 
+
+  | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
+|------|------|------|------|------|------|------|------|
+ [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.74 | 0.69 | 0.73 | 0.74 | 0.74 | 0.74 | **0.75** |
+ [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.80 | 0.82  | 0.79 | 0.82 | 0.83 | **0.84** | 0.83 |
+ [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.90 | 0.87 | 0.89 | 0.91 | 0.91 | 0.91 | **0.92**|
+ 
+ 
+ #### [HAM10000](https://www.nature.com/articles/sdata2018161)
+
+Size of dataset: 10015 images. Number of classes: 7.
+
+Best accuracy using the whole training set (7511 images): 0.88
+
+Results using part of the dataset and applying our method with different strategies. 
+
+  | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
+|------|------|------|------|------|------|------|------|
+ [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.55 | 0.61 | **0.65** | 0.60 | 0.63 | 0.63 | 0.63 |
+ [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.63 | 0.67  | **0.72** | 0.64 | 0.66 | 0.65 | 0.66 |
+ [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.64 | 0.69 | **0.74** | 0.69 | 0.72 | 0.69 | 0.74|
+ 
+ #### [ISIC dataset](https://arxiv.org/abs/1902.03368)
+
+Size of dataset: 1500 images. Number of classes: 7.
+
+Best accuracy using the whole training set (1125 images): 0.8724
+
+Results using part of the dataset and applying our method with different strategies. 
+
+  | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
+|------|------|------|------|------|------|------|------|
+ [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.7473 | 0.7765 | 0.7819 | 0.7845 | 0.8377 | 0.8005 | 0.8337 |
+ [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.8111 | 0.8111  | 0.8404 | 0.8218 | 0.8377 | 0.8297 | 0.8510 |
+ [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.8404 | 0.8324 | 0.8590 | 0.8537 | **0.8776** | 0.8430 | 0.8723|
+ 
+ 
+ #### [Kvasir dataset](http://doi.acm.org/10.1145/3083187.3083212)
 
 Size of dataset: 8000 images. Number of classes: 8.
 
@@ -81,20 +141,62 @@ Results using part of the dataset and applying our method with different strateg
  [75 per class](https://colab.research.google.com/drive/1B5q-Y7yDM9zsxi9zw1v2bdbnKZP3UHNk) | 0.8730 | 0.9040 | 0.9165 | 0.9050 | 0.9155 | 0.9070 | **0.9170**|
 
 
-#### [ISIC dataset](https://arxiv.org/abs/1902.03368)
+ #### [Open Sprayer](https://www.kaggle.com/gavinarmstrong/open-sprayer-images)
 
-Size of dataset: 1500 images. Number of classes: 7.
+Size of dataset: 6697 images. Number of classes: 2.
 
-Best accuracy using the whole training set (1125 images): 0.8724
+Best accuracy using the whole training set (5023 images): 0.97
 
 Results using part of the dataset and applying our method with different strategies. 
 
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
- [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.7473 | 0.7765 | 0.7819 | 0.7845 | 0.8377 | 0.8005 | 0.8337 |
- [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.8111 | 0.8111  | 0.8404 | 0.8218 | 0.8377 | 0.8297 | 0.8510 |
- [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.8404 | 0.8324 | 0.8590 | 0.8537 | **0.8776** | 0.8430 | 0.8723|
+ [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.84 | 0.90 | 0.91 | 0.83 | 0.84 | 0.85 | **0.93** |
+ [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.87 | 0.86  | 0.90 | 0.90 | 0.91 | 0.91 | **0.92** |
+ [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.90 | 0.92 | 0.94 | 0.94 | 0.94 | 0.94 | **0.94**|
 
 
+#### [Plant Seedlings dataset](https://arxiv.org/abs/1711.05458)
 
+Size of dataset: 6000 images. Number of classes: 12.
 
+Best accuracy using the whole training set (4125 images): 0.9616
+
+Results using part of the dataset and applying our method with different strategies. 
+
+  | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
+|------|------|------|------|------|------|------|------|
+  [25 per class](https://colab.research.google.com/drive/1U303O_dBDzIDnPxasaTXEsJS1vgUmXse) | 0.8348 | 0.8688 | 0.8906 | 0.8833 | 0.9167 | 0.8819 | 0.9130|
+  [50 per class](https://colab.research.google.com/drive/1fgj4VFirrZ37LFZKifEZCpsN9EKG0XYx) | 0.8905 | 0.9174 | 0.9355 | 0.9341 | 0.9341 | 0.9261 | 0.9304|
+  [75 per class](https://colab.research.google.com/drive/14P13GVlU2ux1EQedoNK762j7XYp0rXWI) | 0.9137 | 0.9282 | 0.9399 | 0.9413 | **0.9514** | 0.9399 | 0.9500|
+  
+  
+
+#### [Retinal OCT](http://www.sciencedirect.com/science/article/pii/S0092867418301545)
+
+Size of dataset: 84484 images. Number of classes: 4.
+
+Best accuracy using the whole training set (63363 images): 0.99
+
+Results using part of the dataset and applying our method with different strategies. 
+
+  | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
+|------|------|------|------|------|------|------|------|
+ [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.90 | 0.90 | 0.86 | 0.93 | **0.96** | 0.93 | 0.94 |
+ [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.93 | 0.95  | 0.95 | 0.96 | **0.98** | 0.97 | 0.97 |
+ [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.94 | 0.97 | 0.93 | 0.98 | **0.99** | 0.98 | 0.98|
+ 
+ 
+ #### [Tobacco](http://www.sciencedirect.com/science/article/pii/S0167865513004224)
+
+Size of dataset: 3492 images. Number of classes: 10.
+
+Best accuracy using the whole training set (2619 images): 0.86
+
+Results using part of the dataset and applying our method with different strategies. 
+
+  | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
+|------|------|------|------|------|------|------|------|
+ [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.66 | 0.69 | 0.70 | 0.74 | **0.76** | 0.72 | 0.74 |
+ [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.72 | 0.75  | 0.77 | 0.77 | **0.80** | 0.79 | 0.76 |
+ [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.78 | 0.81 | **0.84** | 0.81 | 0.81 | 0.81 | 0.79|
