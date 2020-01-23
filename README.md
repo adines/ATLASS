@@ -187,9 +187,9 @@ Results using part of the dataset and applying our method with different strateg
 
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
- [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.90 | 0.90 | 0.86 | 0.93 | **0.96** | 0.93 | 0.94 |
- [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.93 | 0.95  | 0.95 | 0.96 | **0.98** | 0.97 | 0.97 |
- [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.94 | 0.97 | 0.93 | 0.98 | **0.99** | 0.98 | 0.98|
+ [25 per class](https://colab.research.google.com/drive/1hXJTjDIcaMvP-9ihTdmZcO1eW3IwxyWs) | 0.90 | 0.90 | 0.86 | 0.93 | **0.96** | 0.93 | 0.94 |
+ [50 per class](https://colab.research.google.com/drive/1HzKxwvTLKuugM9YkQg_SQ83IDsunGe7S) | 0.93 | 0.95  | 0.95 | 0.96 | **0.98** | 0.97 | 0.97 |
+ [75 per class](https://colab.research.google.com/drive/1d_Nv0FAZ522QWCyqiToQoQr3bts5kV-R) | 0.94 | 0.97 | 0.93 | 0.98 | **0.99** | 0.98 | 0.98|
  
  
  #### [Tobacco](http://www.sciencedirect.com/science/article/pii/S0167865513004224)
@@ -202,6 +202,6 @@ Results using part of the dataset and applying our method with different strateg
 
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
- [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.66 | 0.69 | 0.70 | 0.74 | **0.76** | 0.72 | 0.74 |
- [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.72 | 0.75  | 0.77 | 0.77 | **0.80** | 0.79 | 0.76 |
- [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.78 | 0.81 | **0.84** | 0.81 | 0.81 | 0.81 | 0.79|
+ [25 per class](https://colab.research.google.com/drive/15hyBcuBb3jDRw1AZ9Uh9bsPcoQe-nLNi) | 0.66 | 0.69 | 0.70 | 0.74 | **0.76** | 0.72 | 0.74 |
+ [50 per class](https://colab.research.google.com/drive/1ZUbl5PjCZxU0JYxUEJRYp_18xgbrtIXU) | 0.72 | 0.75  | 0.77 | 0.77 | **0.80** | 0.79 | 0.76 |
+ [75 per class](https://colab.research.google.com/drive/1BXiSnXdffulBg7LUxnEwQL63r3u8n-fp) | 0.78 | 0.81 | **0.84** | 0.81 | 0.81 | 0.81 | 0.79|
