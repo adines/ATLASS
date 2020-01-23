@@ -67,9 +67,9 @@ Results using part of the dataset and applying our method with different strateg
 
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
- [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.66 | 0.71 | **0.73** | 0.70 | 0.72 | 0.70 | 0.73 |
- [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.71 | 0.76  | **0.78** | 0.72 | 0.71 | 0.74 | 0.76 |
- [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.72 | 0.76 | 0.76 | 0.75 | **0.76** | 0.75 | 0.76|
+ [25 per class](https://colab.research.google.com/drive/1HFlkFkofpQ4HtwDR6PiHeslK1F1O1KA0) | 0.66 | 0.71 | **0.73** | 0.70 | 0.72 | 0.70 | 0.73 |
+ [50 per class](https://colab.research.google.com/drive/14GmaCop3gRhweSnuBu6r71inUngIPPEt) | 0.71 | 0.76  | **0.78** | 0.72 | 0.71 | 0.74 | 0.76 |
+ [75 per class](https://colab.research.google.com/drive/1HdzApNEmw2Zc9t9zJggMbmnyXWTsctCu) | 0.72 | 0.76 | 0.76 | 0.75 | **0.76** | 0.75 | 0.76|
 
 
 #### [Chest X Ray](http://www.sciencedirect.com/science/article/pii/S0092867418301545)
