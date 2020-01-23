@@ -112,9 +112,9 @@ Results using part of the dataset and applying our method with different strateg
 
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
- [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.55 | 0.61 | **0.65** | 0.60 | 0.63 | 0.63 | 0.63 |
- [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.63 | 0.67  | **0.72** | 0.64 | 0.66 | 0.65 | 0.66 |
- [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.64 | 0.69 | **0.74** | 0.69 | 0.72 | 0.69 | 0.74|
+ [25 per class](https://colab.research.google.com/drive/1p-D3izzs3W12QW2Xoj3V3dclvoJQRZ57) | 0.55 | 0.61 | **0.65** | 0.60 | 0.63 | 0.63 | 0.63 |
+ [50 per class](https://colab.research.google.com/drive/1N1ge9SxbRFj-dIo1i5vad9FlyI0kcjtO) | 0.63 | 0.67  | **0.72** | 0.64 | 0.66 | 0.65 | 0.66 |
+ [75 per class](https://colab.research.google.com/drive/1mP5fYzX3K5Ca1K8c62nNeHv0mPrnqNTi) | 0.64 | 0.69 | **0.74** | 0.69 | 0.72 | 0.69 | 0.74|
  
  #### [ISIC dataset](https://arxiv.org/abs/1902.03368)
 
@@ -156,9 +156,9 @@ Results using part of the dataset and applying our method with different strateg
 
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
- [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.84 | 0.90 | 0.91 | 0.83 | 0.84 | 0.85 | **0.93** |
- [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.87 | 0.86  | 0.90 | 0.90 | 0.91 | 0.91 | **0.92** |
- [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.90 | 0.92 | 0.94 | 0.94 | 0.94 | 0.94 | **0.94**|
+ [25 per class](https://colab.research.google.com/drive/1YV3CLtiXYEf8N-BpEhjQtv-VxifkCcjF) | 0.84 | 0.90 | 0.91 | 0.83 | 0.84 | 0.85 | **0.93** |
+ [50 per class](https://colab.research.google.com/drive/1hb97HSp46PHGTFM_SdRqvKNtRLH43lAg) | 0.87 | 0.86  | 0.90 | 0.90 | 0.91 | 0.91 | **0.92** |
+ [75 per class](https://colab.research.google.com/drive/1nC0R4k5_O0UKZqxeIRESzv8lMC9Rl_kH) | 0.90 | 0.92 | 0.94 | 0.94 | 0.94 | 0.94 | **0.94**|
 
 
 #### [Plant Seedlings dataset](https://arxiv.org/abs/1711.05458)
