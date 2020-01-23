@@ -82,9 +82,9 @@ Results using part of the dataset and applying our method with different strateg
 
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
- [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.73 | 0.73 | 0.78 | 0.74 | 0.74 | 0.76 | **0.83** |
- [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.85 | 0.91  | 0.90 | 0.88 | **0.92** | 0.89 | 0.88 |
- [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.87 | 0.88 | 0.83 | 0.90 | **0.91** | 0.90 | 0.90|
+ [25 per class](https://colab.research.google.com/drive/1cG4i3ZuY5yaMSjinrILwGY-7OTlQR609) | 0.73 | 0.73 | 0.78 | 0.74 | 0.74 | 0.76 | **0.83** |
+ [50 per class](https://colab.research.google.com/drive/1OyeoYhKBloEuu_qYbMOYN6diecaffQrA) | 0.85 | 0.91  | 0.90 | 0.88 | **0.92** | 0.89 | 0.88 |
+ [75 per class](https://colab.research.google.com/drive/1DGd5yhHXr8LYORGDKP3Jf1oMLkCc0p7x) | 0.87 | 0.88 | 0.83 | 0.90 | **0.91** | 0.90 | 0.90|
 
 
 #### [Fungi](https://link.springer.com/article/10.1007%2Fs00500-019-03832-8)
@@ -97,9 +97,9 @@ Results using part of the dataset and applying our method with different strateg
 
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
- [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.74 | 0.69 | 0.73 | 0.74 | 0.74 | 0.74 | **0.75** |
- [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.80 | 0.82  | 0.79 | 0.82 | 0.83 | **0.84** | 0.83 |
- [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.90 | 0.87 | 0.89 | 0.91 | 0.91 | 0.91 | **0.92**|
+ [25 per class](https://colab.research.google.com/drive/1LvI1gHVpAzkOZ6ltnaRCd3MS7YtdhBXr) | 0.74 | 0.69 | 0.73 | 0.74 | 0.74 | 0.74 | **0.75** |
+ [50 per class](https://colab.research.google.com/drive/1YrYvrsQ3N_5wReaVaWwLhxIxNSkY_8Mb) | 0.80 | 0.82  | 0.79 | 0.82 | 0.83 | **0.84** | 0.83 |
+ [75 per class](https://colab.research.google.com/drive/1qlnbpKKVobw8aaWJ6qfD8IZi7FARhxfy) | 0.90 | 0.87 | 0.89 | 0.91 | 0.91 | 0.91 | **0.92**|
  
  
  #### [HAM10000](https://www.nature.com/articles/sdata2018161)
