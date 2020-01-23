@@ -126,9 +126,9 @@ Results using part of the dataset and applying our method with different strateg
 
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
- [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.7473 | 0.7765 | 0.7819 | 0.7845 | 0.8377 | 0.8005 | 0.8337 |
- [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.8111 | 0.8111  | 0.8404 | 0.8218 | 0.8377 | 0.8297 | 0.8510 |
- [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.8404 | 0.8324 | 0.8590 | 0.8537 | **0.8776** | 0.8430 | 0.8723|
+ [25 per class](https://colab.research.google.com/drive/1dA8OCpL2uIcgXsC566f4_nYA_6rjyX_2) | 0.75 | 0.78 | 0.78 | 0.78 | **0.84** | 0.80 | 0.83 |
+ [50 per class](https://colab.research.google.com/drive/1sSLw5t_iDF8uHDyax5rMwsXVvu_4F9fi) | 0.81 | 0.81  | 0.84 | 0.82 | 0.84 | 0.83 | **0.85** |
+ [75 per class](https://colab.research.google.com/drive/1TIpG-duY78DJlDmfmkDQ3jnWrQY1HMYX) | 0.84 | 0.83 | 0.86 | 0.85 | **0.88** | 0.84 | 0.87|
  
  
  #### [Kvasir dataset](http://doi.acm.org/10.1145/3083187.3083212)
@@ -141,9 +141,9 @@ Results using part of the dataset and applying our method with different strateg
 
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
- [25 per class](https://colab.research.google.com/drive/1bSCiR25a4AQ1-JNL8cIQESXXAeLcXzKC) | 0.7975 | 0.8500 | 0.8850 | 0.8800 | 0.8925 | 0.8845 | 0.8970|
- [50 per class](https://colab.research.google.com/drive/1ACV4JzssjNUn-0J6IEei65j625QT7MKZ) | 0.8430 | 0.8665 | 0.8855 | 0.8880 | 0.9025 | 0.8880 | 0.9010|
- [75 per class](https://colab.research.google.com/drive/1B5q-Y7yDM9zsxi9zw1v2bdbnKZP3UHNk) | 0.8730 | 0.9040 | 0.9165 | 0.9050 | 0.9155 | 0.9070 | **0.9170**|
+ [25 per class](https://colab.research.google.com/drive/1bSCiR25a4AQ1-JNL8cIQESXXAeLcXzKC) | 0.80 | 0.85 | 0.89 | 0.88 | 0.89 | 0.88 | **0.90**|
+ [50 per class](https://colab.research.google.com/drive/1ACV4JzssjNUn-0J6IEei65j625QT7MKZ) | 0.84 | 0.87 | 0.89 | 0.89 | **0.90** | 0.89 | 0.90|
+ [75 per class](https://colab.research.google.com/drive/1B5q-Y7yDM9zsxi9zw1v2bdbnKZP3UHNk) | 0.87 | 0.90 | 0.92 | 0.91 | 0.92 | 0.91 | **0.92**|
 
 
  #### [Open Sprayer](https://www.kaggle.com/gavinarmstrong/open-sprayer-images)
@@ -171,9 +171,9 @@ Results using part of the dataset and applying our method with different strateg
 
   | | N.D. | D.D. | I.D.D. | M.D. | I.M.D. | M.D.D. | I.M.D.D. |
 |------|------|------|------|------|------|------|------|
-  [25 per class](https://colab.research.google.com/drive/1U303O_dBDzIDnPxasaTXEsJS1vgUmXse) | 0.8348 | 0.8688 | 0.8906 | 0.8833 | 0.9167 | 0.8819 | 0.9130|
-  [50 per class](https://colab.research.google.com/drive/1fgj4VFirrZ37LFZKifEZCpsN9EKG0XYx) | 0.8905 | 0.9174 | 0.9355 | 0.9341 | 0.9341 | 0.9261 | 0.9304|
-  [75 per class](https://colab.research.google.com/drive/14P13GVlU2ux1EQedoNK762j7XYp0rXWI) | 0.9137 | 0.9282 | 0.9399 | 0.9413 | **0.9514** | 0.9399 | 0.9500|
+  [25 per class](https://colab.research.google.com/drive/1U303O_dBDzIDnPxasaTXEsJS1vgUmXse) | 0.83 | 0.87 | 0.89 | 0.88 | 0.92 | 0.88 | 0.91|
+  [50 per class](https://colab.research.google.com/drive/1fgj4VFirrZ37LFZKifEZCpsN9EKG0XYx) | 0.89 | 0.92 | **0.94** | 0.93 | 0.93 | 0.93 | 0.93|
+  [75 per class](https://colab.research.google.com/drive/14P13GVlU2ux1EQedoNK762j7XYp0rXWI) | 0.91 | 0.93 | 0.94 | 0.94 | **0.95** | 0.94 | 0.95|
   
   
 
