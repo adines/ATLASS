@@ -321,10 +321,31 @@ public class Logic {
             cell4Source.add("  learn.fit_one_cycle(8,max_lr=slice(lr/100,lr))\n");
             cell4Source.add("  return learn,data\n");
             cell4Source.add("\n");
-            for (String model : process.getModels()) {
-                cell4Source.add("learner_" + model.toLowerCase() + ",data=learn_with_model(dataset,models." + model.toLowerCase() + ")\n");
-                cell4Source.add("learner_" + model.toLowerCase() + ".export('/content/drive/My Drive/learner_" + model.toLowerCase() + ".pkl')\n");
+            
+            cell4Source.add("def learn_best_model(dataset,models):\n");
+            cell4Source.add("  best_accuracy=0\n");
+            cell4Source.add("  for model in models:\n");
+            cell4Source.add("    learn,data=learn_with_model(dataset,model\n");
+            cell4Source.add("    acc=learn.validate()[1].item()\n");
+            cell4Source.add("    if acc>best_accuracy:\n");
+            cell4Source.add("      best_model=learn\n");
+            cell4Source.add("      best_accuracy=acc\n");
+            cell4Source.add("  return best_model,data\n");
+            cell4Source.add("\n");
+            
+            String listaModelos="[";
+            
+            for(String model:process.getModels())
+            {
+                listaModelos+="models."+model.toLowerCase()+",";
             }
+            listaModelos=listaModelos.substring(0, listaModelos.length()-1);
+            listaModelos+="]";
+
+            cell4Source.add("learner,data=learn_best_model(dataset," + listaModelos + ")\n");
+            cell4Source.add("learner.export('/content/drive/My Drive/learner_ND.pkl')\n");
+            
+            
             cell4.put("source", cell4Source);
             cell4.put("execution_count", 0);
             cell4.put("outputs", new JSONArray());
@@ -1040,6 +1061,18 @@ public class Logic {
             cell4Source.add("  learn.fit_one_cycle(8,max_lr=slice(lr/100,lr))\n");
             cell4Source.add("  return learn,data\n");
             cell4Source.add("\n");
+            
+            cell4Source.add("def learn_best_model(dataset,models):\n");
+            cell4Source.add("  best_accuracy=0\n");
+            cell4Source.add("  for model in models:\n");
+            cell4Source.add("    learn,data=learn_with_model(dataset,model\n");
+            cell4Source.add("    acc=learn.validate()[1].item()\n");
+            cell4Source.add("    if acc>best_accuracy:\n");
+            cell4Source.add("      best_model=learn\n");
+            cell4Source.add("      best_accuracy=acc\n");
+            cell4Source.add("  return best_model,data\n");
+            cell4Source.add("\n");
+            
             cell4Source.add("def moda(lista):\n");
             cell4Source.add("  tam=len(lista[0][2])\n");
             cell4Source.add("  x=np.zeros(tam)\n");
@@ -1074,10 +1107,17 @@ public class Logic {
             cell4Source.add("shutil.copytree(dataset, 'dataset_MD1')\n");
             cell4Source.add("omniModel('dataset_MD1',listaModels," + process.getThreshold() + ")\n");
             
-            for (String model : process.getModels()) {
-                cell4Source.add("learner2MD_" + model.toLowerCase() + ",data=learn_with_model('dataset_MD1',models." + model.toLowerCase() + ")\n");
-                cell4Source.add("learner2MD_" + model.toLowerCase() + ".export('/content/drive/My Drive/learnerMD_" + model.toLowerCase() + ".pkl')\n");
+            String listaModelos="[";
+            
+            for(String model:process.getModels())
+            {
+                listaModelos+="models."+model.toLowerCase()+",";
             }
+            listaModelos=listaModelos.substring(0, listaModelos.length()-1);
+            listaModelos+="]";
+            
+            cell4Source.add("learner2MD,data=learn_best_model('dataset_MD1'," + listaModelos + ")\n");
+            cell4Source.add("learner2MD.export('/content/drive/My Drive/learnerMD.pkl')\n");
             
             cell4Source.add("\n");
             cell4.put("source", cell4Source);
@@ -1249,6 +1289,16 @@ public class Logic {
             cell4Source.add("  learn.fit_one_cycle(8,max_lr=slice(lr/100,lr))\n");
             cell4Source.add("  return learn,data\n");
             cell4Source.add("\n");
+            cell4Source.add("def learn_best_model(dataset,models):\n");
+            cell4Source.add("  best_accuracy=0\n");
+            cell4Source.add("  for model in models:\n");
+            cell4Source.add("    learn,data=learn_with_model(dataset,model\n");
+            cell4Source.add("    acc=learn.validate()[1].item()\n");
+            cell4Source.add("    if acc>best_accuracy:\n");
+            cell4Source.add("      best_model=learn\n");
+            cell4Source.add("      best_accuracy=acc\n");
+            cell4Source.add("  return best_model,data\n");
+            cell4Source.add("\n");
             cell4Source.add("def moda(lista):\n");
             cell4Source.add("  tam=len(lista[0][2])\n");
             cell4Source.add("  x=np.zeros(tam)\n");
@@ -1291,10 +1341,18 @@ public class Logic {
             }
             cell4Source.add("omniModel('dataset_IMD1',listaModels2," + process.getThreshold() + ")\n");
             
-            for (String model : process.getModels()) {
-                cell4Source.add("learner3IMD_" + model.toLowerCase() + ",data=learn_with_model('dataset_IMD1',models." + model.toLowerCase() + ")\n");
-                cell4Source.add("learner3IMD_" + model.toLowerCase() + ".export('/content/drive/My Drive/learnerIMD_" + model.toLowerCase() + ".pkl')\n");
+            
+            String listaModelos="[";
+            
+            for(String model:process.getModels())
+            {
+                listaModelos+="models."+model.toLowerCase()+",";
             }
+            listaModelos=listaModelos.substring(0, listaModelos.length()-1);
+            listaModelos+="]";
+            
+            cell4Source.add("learner3MD,data=learn_best_model('dataset_IMD1'," + listaModelos + ")\n");
+            cell4Source.add("learner3MD.export('/content/drive/My Drive/learnerMD.pkl')\n");
             
             cell4Source.add("\n");
             cell4.put("source", cell4Source);
@@ -1466,6 +1524,16 @@ public class Logic {
             cell4Source.add("  learn.fit_one_cycle(8,max_lr=slice(lr/100,lr))\n");
             cell4Source.add("  return learn,data\n");
             cell4Source.add("\n");
+            cell4Source.add("def learn_best_model(dataset,models):\n");
+            cell4Source.add("  best_accuracy=0\n");
+            cell4Source.add("  for model in models:\n");
+            cell4Source.add("    learn,data=learn_with_model(dataset,model\n");
+            cell4Source.add("    acc=learn.validate()[1].item()\n");
+            cell4Source.add("    if acc>best_accuracy:\n");
+            cell4Source.add("      best_model=learn\n");
+            cell4Source.add("      best_accuracy=acc\n");
+            cell4Source.add("  return best_model,data\n");
+            cell4Source.add("\n");
             cell4Source.add("def moda(lista):\n");
             cell4Source.add("  tam=len(lista[0][2])\n");
             cell4Source.add("  x=np.zeros(tam)\n");
@@ -1571,10 +1639,18 @@ public class Logic {
             cell4Source.add("shutil.copytree(dataset, 'dataset_MDD1')\n");
             cell4Source.add("omniModel('dataset_MDD1',listaModels," + process.getThreshold() + ")\n");
             
-            for (String model : process.getModels()) {
-                cell4Source.add("learner2MDD_" + model.toLowerCase() + ",data=learn_with_model('dataset_MDD1',models." + model.toLowerCase() + ")\n");
-                cell4Source.add("learner2MDD_" + model.toLowerCase() + ".export('/content/drive/My Drive/learnerMDD_" + model.toLowerCase() + ".pkl')\n");
+            
+            String listaModelos="[";
+            
+            for(String model:process.getModels())
+            {
+                listaModelos+="models."+model.toLowerCase()+",";
             }
+            listaModelos=listaModelos.substring(0, listaModelos.length()-1);
+            listaModelos+="]";
+            
+            cell4Source.add("learner2MDD,data=learn_best_model('dataset_MDD1'," + listaModelos + ")\n");
+            cell4Source.add("learner2MDD.export('/content/drive/My Drive/learnerMDD.pkl')\n");
             
             cell4Source.add("\n");
             cell4.put("source", cell4Source);
@@ -1746,6 +1822,16 @@ public class Logic {
             cell4Source.add("  learn.fit_one_cycle(8,max_lr=slice(lr/100,lr))\n");
             cell4Source.add("  return learn,data\n");
             cell4Source.add("\n");
+            cell4Source.add("def learn_best_model(dataset,models):\n");
+            cell4Source.add("  best_accuracy=0\n");
+            cell4Source.add("  for model in models:\n");
+            cell4Source.add("    learn,data=learn_with_model(dataset,model\n");
+            cell4Source.add("    acc=learn.validate()[1].item()\n");
+            cell4Source.add("    if acc>best_accuracy:\n");
+            cell4Source.add("      best_model=learn\n");
+            cell4Source.add("      best_accuracy=acc\n");
+            cell4Source.add("  return best_model,data\n");
+            cell4Source.add("\n");
             cell4Source.add("def moda(lista):\n");
             cell4Source.add("  tam=len(lista[0][2])\n");
             cell4Source.add("  x=np.zeros(tam)\n");
@@ -1858,10 +1944,18 @@ public class Logic {
             }
             cell4Source.add("omniModel('dataset_IMDD1',listaModels2," + process.getThreshold() + ")\n");
             
-            for (String model : process.getModels()) {
-                cell4Source.add("learner3IMDD_" + model.toLowerCase() + ",data=learn_with_model('dataset_IMDD1',models." + model.toLowerCase() + ")\n");
-                cell4Source.add("learner3IMDD_" + model.toLowerCase() + ".export('/content/drive/My Drive/learnerIMDD_" + model.toLowerCase() + ".pkl')\n");
+            
+            String listaModelos="[";
+            
+            for(String model:process.getModels())
+            {
+                listaModelos+="models."+model.toLowerCase()+",";
             }
+            listaModelos=listaModelos.substring(0, listaModelos.length()-1);
+            listaModelos+="]";
+            
+            cell4Source.add("learner3IMDD,data=learn_best_model('dataset_IMDD1'," + listaModelos + ")\n");
+            cell4Source.add("learner3IMDD.export('/content/drive/My Drive/learnerIMDD.pkl')\n");
             
             cell4Source.add("\n");
             cell4.put("source", cell4Source);
