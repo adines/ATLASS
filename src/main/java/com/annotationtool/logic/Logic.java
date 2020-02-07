@@ -325,7 +325,7 @@ public class Logic {
             cell4Source.add("def learn_best_model(dataset,models):\n");
             cell4Source.add("  best_accuracy=0\n");
             cell4Source.add("  for model in models:\n");
-            cell4Source.add("    learn,data=learn_with_model(dataset,model\n");
+            cell4Source.add("    learn,data=learn_with_model(dataset,model)\n");
             cell4Source.add("    acc=learn.validate()[1].item()\n");
             cell4Source.add("    if acc>best_accuracy:\n");
             cell4Source.add("      best_model=learn\n");
@@ -1065,7 +1065,7 @@ public class Logic {
             cell4Source.add("def learn_best_model(dataset,models):\n");
             cell4Source.add("  best_accuracy=0\n");
             cell4Source.add("  for model in models:\n");
-            cell4Source.add("    learn,data=learn_with_model(dataset,model\n");
+            cell4Source.add("    learn,data=learn_with_model(dataset,model)\n");
             cell4Source.add("    acc=learn.validate()[1].item()\n");
             cell4Source.add("    if acc>best_accuracy:\n");
             cell4Source.add("      best_model=learn\n");
@@ -1292,7 +1292,7 @@ public class Logic {
             cell4Source.add("def learn_best_model(dataset,models):\n");
             cell4Source.add("  best_accuracy=0\n");
             cell4Source.add("  for model in models:\n");
-            cell4Source.add("    learn,data=learn_with_model(dataset,model\n");
+            cell4Source.add("    learn,data=learn_with_model(dataset,model)\n");
             cell4Source.add("    acc=learn.validate()[1].item()\n");
             cell4Source.add("    if acc>best_accuracy:\n");
             cell4Source.add("      best_model=learn\n");
@@ -1527,7 +1527,7 @@ public class Logic {
             cell4Source.add("def learn_best_model(dataset,models):\n");
             cell4Source.add("  best_accuracy=0\n");
             cell4Source.add("  for model in models:\n");
-            cell4Source.add("    learn,data=learn_with_model(dataset,model\n");
+            cell4Source.add("    learn,data=learn_with_model(dataset,model)\n");
             cell4Source.add("    acc=learn.validate()[1].item()\n");
             cell4Source.add("    if acc>best_accuracy:\n");
             cell4Source.add("      best_model=learn\n");
@@ -1825,7 +1825,7 @@ public class Logic {
             cell4Source.add("def learn_best_model(dataset,models):\n");
             cell4Source.add("  best_accuracy=0\n");
             cell4Source.add("  for model in models:\n");
-            cell4Source.add("    learn,data=learn_with_model(dataset,model\n");
+            cell4Source.add("    learn,data=learn_with_model(dataset,model)\n");
             cell4Source.add("    acc=learn.validate()[1].item()\n");
             cell4Source.add("    if acc>best_accuracy:\n");
             cell4Source.add("      best_model=learn\n");
