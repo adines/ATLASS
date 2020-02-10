@@ -1,4 +1,4 @@
-package com.annotationtool.model;
+package com.atlass.model;
 
 /**
  * General exception for any type of error in the application.

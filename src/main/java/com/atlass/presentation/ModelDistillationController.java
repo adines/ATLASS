@@ -1,4 +1,4 @@
-package com.annotationtool.presentation;
+package com.atlass.presentation;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import com.annotationtool.model.Process;
+import com.atlass.model.Process;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

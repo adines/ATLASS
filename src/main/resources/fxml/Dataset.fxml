@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorid" maxHeight="398.0" maxWidth="589.0" minHeight="398.0" minWidth="589.0" prefHeight="398.0" prefWidth="589.0" stylesheets="@../styles/Dataset.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.annotationtool.presentation.DatasetController">
+<AnchorPane id="AnchorPane" fx:id="anchorid" maxHeight="398.0" maxWidth="589.0" minHeight="398.0" minWidth="589.0" prefHeight="398.0" prefWidth="589.0" stylesheets="@../styles/Dataset.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.atlass.presentation.DatasetController">
    <children>
       <Button layoutX="439.0" layoutY="50.0" mnemonicParsing="false" onAction="#selectDataset" text="Select  Dataset" AnchorPane.rightAnchor="55.0" />
       <Separator layoutY="196.0" prefHeight="9.0" prefWidth="600.0" />

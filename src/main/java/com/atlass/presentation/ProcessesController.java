@@ -1,4 +1,4 @@
-package com.annotationtool.presentation;
+package com.atlass.presentation;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,7 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import com.annotationtool.model.Process;
+import com.atlass.model.Process;
 import javafx.scene.control.Alert;
 
 /**

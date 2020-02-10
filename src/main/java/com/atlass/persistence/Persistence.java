@@ -1,8 +1,8 @@
-package com.annotationtool.persistence;
+package com.atlass.persistence;
 
-import com.annotationtool.model.Category;
-import com.annotationtool.model.ExcepcionDeAplicacion;
-import com.annotationtool.model.Image;
+import com.atlass.model.Category;
+import com.atlass.model.ExcepcionDeAplicacion;
+import com.atlass.model.Image;
 import java.util.List;
 
 /**
@@ -81,7 +81,7 @@ public interface Persistence {
      * Method that load all the images stored in a path.
      * @param path A valid path to the folder that has the images to load.
      * @return A list that contanins all the images stored in the path.
-     * @throws com.annotationtool.model.ExcepcionDeAplicacion
+     * @throws com.atlass.model.ExcepcionDeAplicacion
      */
     public List<Image> loadImages(String path) throws ExcepcionDeAplicacion;
     
@@ -91,14 +91,14 @@ public interface Persistence {
      * @param pathDest A valid path to the folder used to save the information.
      * @param categories A list with dataset categories.
      * @return A list that contains all the images loaded.
-     * @throws com.annotationtool.model.ExcepcionDeAplicacion
+     * @throws com.atlass.model.ExcepcionDeAplicacion
      */
     public List<Image> initializeDataset(String pathOrigin, String pathDest, List<Category> categories) throws ExcepcionDeAplicacion;
     
     /**
      * Method that generates a zip file with the dataset organized. Also, an ipynb 
      * file with the necessary steps to train a model with this dataset is generated.
-     * @throws com.annotationtool.model.ExcepcionDeAplicacion
+     * @throws com.atlass.model.ExcepcionDeAplicacion
      */
     public void generateDataset() throws ExcepcionDeAplicacion;
     

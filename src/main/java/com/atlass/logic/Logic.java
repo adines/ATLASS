@@ -1,14 +1,14 @@
-package com.annotationtool.logic;
+package com.atlass.logic;
 
-import com.annotationtool.model.Category;
-import com.annotationtool.model.ExcepcionDeAplicacion;
-import com.annotationtool.model.Image;
-import com.annotationtool.persistence.FolderManager;
-import com.annotationtool.persistence.Persistence;
+import com.atlass.model.Category;
+import com.atlass.model.ExcepcionDeAplicacion;
+import com.atlass.model.Image;
+import com.atlass.persistence.FolderManager;
+import com.atlass.persistence.Persistence;
 import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import com.annotationtool.model.Process;
+import com.atlass.model.Process;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -149,7 +149,7 @@ public class Logic {
      *
      * @param path A valid path to the folder that has the images to load.
      * @return A list that contanins all the images stored in the path.
-     * @throws com.annotationtool.model.ExcepcionDeAplicacion
+     * @throws com.atlass.model.ExcepcionDeAplicacion
      */
     public List<Image> loadImagesManually(String path) throws ExcepcionDeAplicacion {
         return persistence.loadImages(path);
@@ -163,7 +163,7 @@ public class Logic {
      * @param pathDest A valid path to the folder used to save the information.
      * @param categories A list with dataset categories.
      * @return A list that contains all the images loaded.
-     * @throws com.annotationtool.model.ExcepcionDeAplicacion
+     * @throws com.atlass.model.ExcepcionDeAplicacion
      */
     public List<Image> initializeDatasetManually(String pathOrigin, String pathDest, List<Category> categories) throws ExcepcionDeAplicacion {
         return persistence.initializeDataset(pathOrigin, pathDest, categories);
@@ -174,7 +174,7 @@ public class Logic {
      * ipynb file with the necessary steps to train a model with this dataset is
      * generated.
      *
-     * @throws com.annotationtool.model.ExcepcionDeAplicacion
+     * @throws com.atlass.model.ExcepcionDeAplicacion
      */
     public void generateDataset() throws ExcepcionDeAplicacion {
         persistence.generateDataset();

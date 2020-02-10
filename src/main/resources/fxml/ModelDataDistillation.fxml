@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="617.0" prefWidth="702.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.annotationtool.presentation.ModelDataDistillationController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="617.0" prefWidth="702.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.atlass.presentation.ModelDataDistillationController">
     <stylesheets>
         <URL value="@/styles/modeldatadistillation.css" />
     </stylesheets>

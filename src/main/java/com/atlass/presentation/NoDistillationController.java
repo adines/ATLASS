@@ -1,4 +1,4 @@
-package com.annotationtool.presentation;
+package com.atlass.presentation;
 
 import java.net.URL;
 import java.util.List;
@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
-import com.annotationtool.model.Process;
+import com.atlass.model.Process;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 

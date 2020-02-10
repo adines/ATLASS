@@ -1,4 +1,4 @@
-package com.annotationtool.model;
+package com.atlass.model;
 
 /**
  * Class that defines a category of an image.

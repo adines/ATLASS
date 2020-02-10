@@ -1,4 +1,4 @@
-package com.annotationtool;
+package com.atlass;
 
 import java.net.URL;
 import java.util.ResourceBundle;

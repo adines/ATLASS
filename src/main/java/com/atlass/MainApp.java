@@ -1,7 +1,7 @@
-package com.annotationtool;
+package com.atlass;
 
-import com.annotationtool.logic.Logic;
-import com.annotationtool.presentation.DatasetController;
+import com.atlass.logic.Logic;
+import com.atlass.presentation.DatasetController;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;

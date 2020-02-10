@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="443.0" prefWidth="550.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.annotationtool.presentation.ProcessesController">
+<AnchorPane id="AnchorPane" prefHeight="443.0" prefWidth="550.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.atlass.presentation.ProcessesController">
     <stylesheets>
         <URL value="@/styles/processes.css" />
     </stylesheets>

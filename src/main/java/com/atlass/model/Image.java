@@ -1,4 +1,4 @@
-package com.annotationtool.model;
+package com.atlass.model;
 
 import java.util.Arrays;
 
