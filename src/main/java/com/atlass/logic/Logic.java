@@ -587,15 +587,15 @@ public class Logic {
                         cell4Source.add("    lista.append(pbfilter)\n");
                         break;
                     case "Equalize histogram":
-                        cell4Source.add("    equ_im=cv2.equalizeHist(img)\n");
-                        cell4Source.add("    res = np.hstack((img, equ_im))\n");
+                        cell4Source.add("    equ_im=cv2.equalizeHist(im)\n");
+                        cell4Source.add("    res = np.hstack((im, equ_im))\n");
                         cell4Source.add("    equ=Image(pil2tensor(res, dtype=np.float32).div_(255))\n");
                         cell4Source.add("    pequ=learn.predict(equ)\n");
                         cell4Source.add("    lista.append(pequ)\n");
                         break;
                     case "2D-Filter":
                         cell4Source.add("    kernel = np.ones((5,5),np.float32)/25\n");
-                        cell4Source.add("    filter2d_im=cv.filter2D(img,-1,kernel)\n");
+                        cell4Source.add("    filter2d_im=cv2.filter2D(im,-1,kernel)\n");
                         cell4Source.add("    filter2d=Image(pil2tensor(filter2d_im, dtype=np.float32).div_(255))\n");
                         cell4Source.add("    pfilter2d=learn.predict(filter2d)\n");
                         cell4Source.add("    lista.append(pfilter2d)\n");
@@ -859,15 +859,15 @@ public class Logic {
                         cell4Source.add("    lista.append(pbfilter)\n");
                         break;
                     case "Equalize histogram":
-                        cell4Source.add("    equ_im=cv2.equalizeHist(img)\n");
-                        cell4Source.add("    res = np.hstack((img, equ_im))\n");
+                        cell4Source.add("    equ_im=cv2.equalizeHist(im)\n");
+                        cell4Source.add("    res = np.hstack((im, equ_im))\n");
                         cell4Source.add("    equ=Image(pil2tensor(res, dtype=np.float32).div_(255))\n");
                         cell4Source.add("    pequ=learn.predict(equ)\n");
                         cell4Source.add("    lista.append(pequ)\n");
                         break;
                     case "2D-Filter":
                         cell4Source.add("    kernel = np.ones((5,5),np.float32)/25\n");
-                        cell4Source.add("    filter2d_im=cv.filter2D(img,-1,kernel)\n");
+                        cell4Source.add("    filter2d_im=cv2.filter2D(im,-1,kernel)\n");
                         cell4Source.add("    filter2d=Image(pil2tensor(filter2d_im, dtype=np.float32).div_(255))\n");
                         cell4Source.add("    pfilter2d=learn.predict(filter2d)\n");
                         cell4Source.add("    lista.append(pfilter2d)\n");
@@ -1608,15 +1608,15 @@ public class Logic {
                         cell4Source.add("      lista.append(pbfilter)\n");
                         break;
                     case "Equalize histogram":
-                        cell4Source.add("      equ_im=cv2.equalizeHist(img)\n");
-                        cell4Source.add("      res = np.hstack((img, equ_im))\n");
+                        cell4Source.add("      equ_im=cv2.equalizeHist(im)\n");
+                        cell4Source.add("      res = np.hstack((im, equ_im))\n");
                         cell4Source.add("      equ=Image(pil2tensor(res, dtype=np.float32).div_(255))\n");
                         cell4Source.add("      pequ=learn.predict(equ)\n");
                         cell4Source.add("      lista.append(pequ)\n");
                         break;
                     case "2D-Filter":
                         cell4Source.add("      kernel = np.ones((5,5),np.float32)/25\n");
-                        cell4Source.add("      filter2d_im=cv.filter2D(img,-1,kernel)\n");
+                        cell4Source.add("      filter2d_im=cv2.filter2D(im,-1,kernel)\n");
                         cell4Source.add("      filter2d=Image(pil2tensor(filter2d_im, dtype=np.float32).div_(255))\n");
                         cell4Source.add("      pfilter2d=learn.predict(filter2d)\n");
                         cell4Source.add("      lista.append(pfilter2d)\n");
@@ -1906,15 +1906,15 @@ public class Logic {
                         cell4Source.add("      lista.append(pbfilter)\n");
                         break;
                     case "Equalize histogram":
-                        cell4Source.add("      equ_im=cv2.equalizeHist(img)\n");
-                        cell4Source.add("      res = np.hstack((img, equ_im))\n");
+                        cell4Source.add("      equ_im=cv2.equalizeHist(im)\n");
+                        cell4Source.add("      res = np.hstack((im, equ_im))\n");
                         cell4Source.add("      equ=Image(pil2tensor(res, dtype=np.float32).div_(255))\n");
                         cell4Source.add("      pequ=learn.predict(equ)\n");
                         cell4Source.add("      lista.append(pequ)\n");
                         break;
                     case "2D-Filter":
                         cell4Source.add("      kernel = np.ones((5,5),np.float32)/25\n");
-                        cell4Source.add("      filter2d_im=cv.filter2D(img,-1,kernel)\n");
+                        cell4Source.add("      filter2d_im=cv2.filter2D(im,-1,kernel)\n");
                         cell4Source.add("      filter2d=Image(pil2tensor(filter2d_im, dtype=np.float32).div_(255))\n");
                         cell4Source.add("      pfilter2d=learn.predict(filter2d)\n");
                         cell4Source.add("      lista.append(pfilter2d)\n");
